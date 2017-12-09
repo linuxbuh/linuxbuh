@@ -2,7 +2,7 @@
 <!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
 <repositories xmlns="" version="1.0">
 <repo quality="testing" status="official">
-    <name>linuxbuh.ru</name>
+    <name>linuxbuh</name>
     <description>linuxbuh.ru Overlay</description>
     <homepage>http://www.linuxbuh.ru.ru</homepage>
 	<owner type="project">
