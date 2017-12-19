@@ -21,8 +21,8 @@ RESTRICT="mirror strip"
 SLOT="0"
 
 
-RDEPEND="app-office/1c-enterprise83-common-${PV}
-	app-office/1c-enterprise83-server-${PV}"
+RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}
+	=app-office/1c-enterprise83-server-${PV}:${SLOT}"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"

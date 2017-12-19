@@ -28,7 +28,7 @@ SLOT="0"
 
 IUSE="nls pax_kernel"
 
-RDEPEND="app-office/1c-enterprise83-common-${PV}"
+RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"

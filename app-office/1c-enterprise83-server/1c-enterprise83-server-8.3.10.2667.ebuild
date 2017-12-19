@@ -36,7 +36,7 @@ MY_GROUP="grp1cv${MY_VERSION}"
 SLOT="0"
 IUSE="postgres fontconfig nls pax_kernel"
 
-RDEPEND="app-office/1c-enterprise83-common-${PV}
+RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}
 	postgres? ( dev-db/postgresql-server[1c,pg_legacytimestamp] )
 	fontconfig? ( gnome-extra/libgsf
 			app-text/ttf2pt1
