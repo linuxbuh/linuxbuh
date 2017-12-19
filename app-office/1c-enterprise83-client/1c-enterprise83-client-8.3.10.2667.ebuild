@@ -23,10 +23,10 @@ RESTRICT="mirror strip"
 
 SLOT="0"
 
-IUSE="abi_x86_32 abi_x86_64 nls"
+IUSE="abi_x86_32 abi_x86_64 -nls"
 
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
-    nls? ( nls )"
+    nls? ( -nls )"
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	=app-office/1c-enterprise83-server-${PV}:${SLOT}[${MULTILIB_USEDEP}]

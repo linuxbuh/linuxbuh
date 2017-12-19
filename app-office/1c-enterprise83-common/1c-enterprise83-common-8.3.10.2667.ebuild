@@ -21,9 +21,14 @@ SRC_URI="x86? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_i386.tar.gz )
 
 SLOT="0"
 LICENSE="1CEnterprise_en"
-KEYWORDS="amd64 x86"
+KEYWORDS="-* amd64 x86"
 RESTRICT="mirror strip"
-IUSE="-nls"
+
+IUSE="abi_x86_32 abi_x86_64 -nls"
+
+REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
+    nls? ( -nls )"
+
 
 RDEPEND=">=sys-libs/glibc-2.3[${MULTILIB_USEDEP}]
 	>=dev-libs/icu-3.8.1-r1[${MULTILIB_USEDEP}]

@@ -6,7 +6,7 @@ EAPI="6"
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 
-inherit eutils versionator multilib-minimal
+inherit eutils versionator multilib multilib-minimal
 
 DESCRIPTION="Native linux client of 1C ERP system"
 HOMEPAGE="http://v8.1c.ru/"
