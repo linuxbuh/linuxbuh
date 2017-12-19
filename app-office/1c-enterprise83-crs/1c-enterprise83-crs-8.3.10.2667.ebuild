@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils versionator
 
@@ -15,7 +15,7 @@ MY_PN="1c-enterprise83-crs"
 SRC_URI="x86? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_i386.tar.gz )"
 
 LICENSE="1CEnterprise_en"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 RESTRICT="mirror strip"
 
 SLOT="0"

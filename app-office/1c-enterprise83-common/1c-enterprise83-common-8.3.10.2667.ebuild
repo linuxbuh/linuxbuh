@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils multilib flag-o-matic versionator
 
@@ -26,7 +26,7 @@ SRC_URI="x86? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_i386.tar.gz
 
 SLOT="0"
 LICENSE="1CEnterprise_en"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror strip"
 IUSE="-nls"
 
