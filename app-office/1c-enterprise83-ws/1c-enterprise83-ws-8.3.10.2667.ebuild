@@ -28,8 +28,8 @@ SLOT="0"
 
 IUSE="nls"
 
-RDEPEND="=app-office/1c-enterprise83-ws-${PV}:${SLOT}[${MULTILIB_USEDEP}]
-	nls? ( =app-office/1c-enterprise83-client-nls-${PV}:${SLOT}[${MULTILIB_USEDEP}] )"
+RDEPEND="=app-office/1c-enterprise83-ws-${PV}:${SLOT}[${MULTILIB_USEDEP}]"
+#	nls? ( =app-office/1c-enterprise83-client-nls-${PV}:${SLOT}[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"

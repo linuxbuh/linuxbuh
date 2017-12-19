@@ -31,7 +31,7 @@ RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	fontconfig? ( gnome-extra/libgsf[${MULTILIB_USEDEP}]
 			app-text/ttf2pt1[${MULTILIB_USEDEP}]
 			media-gfx/imagemagick[corefonts,${MULTILIB_USEDEP}]
-			dev-db/unixODBC[${MULTILIB_USEDEP}] ) )"
+			dev-db/unixODBC[${MULTILIB_USEDEP}] )"
 #	nls? ( =app-office/1c-enterprise83-client-nls-${PV}:${SLOT}[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 

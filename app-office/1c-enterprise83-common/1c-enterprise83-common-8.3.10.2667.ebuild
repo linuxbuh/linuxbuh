@@ -28,7 +28,7 @@ RESTRICT="mirror strip"
 IUSE="nls"
 
 RDEPEND=">=sys-libs/glibc-2.3[${MULTILIB_USEDEP}]
-	>=dev-libs/icu-3.8.1-r1[${MULTILIB_USEDEP}] )"
+	>=dev-libs/icu-3.8.1-r1[${MULTILIB_USEDEP}]"
 #	nls? ( =app-office/1c-enterprise83-client-nls-${PV}:${SLOT}[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 
