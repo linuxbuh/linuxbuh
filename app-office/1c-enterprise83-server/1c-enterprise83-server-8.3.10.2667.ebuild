@@ -24,7 +24,7 @@ KEYWORDS="-* amd64 x86"
 RESTRICT="mirror strip"
 
 SLOT="0"
-IUSE="nls"
+IUSE="nls postgres fontconfig"
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	postgres? ( dev-db/postgresql-server[1c,pg_legacytimestamp,${MULTILIB_USEDEP}] )
