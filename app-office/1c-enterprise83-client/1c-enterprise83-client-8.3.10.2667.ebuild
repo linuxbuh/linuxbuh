@@ -24,7 +24,7 @@ RESTRICT="mirror strip"
 
 SLOT="0"
 
-IUSE=""
+IUSE="nls"
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	=app-office/1c-enterprise83-server-${PV}:${SLOT}[${MULTILIB_USEDEP}]
