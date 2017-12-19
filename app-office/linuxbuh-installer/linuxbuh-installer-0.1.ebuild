@@ -3,18 +3,17 @@
 # $Header: $
 
 
-EAPI=3
+EAPI=6
 
 inherit eutils
 
 DESCRIPTION="Linuxbuh Installer"
 HOMEPAGE="http://linuxbuh.ru"
-SRC_URI="https://github.com/downloads/zaharchuktv/linuxbuh/${P}.tar.gz"
-
+SRC_URI="http://ftp.linuxbuh.ru/linuxbuh/${P}.tar.gz"
 
 LICENSE="GPL"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 RESTRICT="mirror strip"
@@ -23,11 +22,6 @@ RDEPEND="x11-terms/xterm
 	x11-misc/xdialog
 	app-admin/sudo"
 
-
-src_unpack() {
-	    unpack ${A}
-	    
-}
 
 src_install() {
 cd ${WORKDIR}
