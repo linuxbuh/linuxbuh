@@ -12,10 +12,8 @@ DOWNLOADPAGE="http://ftp.linuxbuh.ru/1c83/client"
 
 MY_PV="$(replace_version_separator 3 '-' )"
 MY_PN="1c-enterprise83-client"
-SRC_URI="x86? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_i386.tar.gz
-	    nls? ( $DOWNLOADPAGE/${MY_PN}-nls_${MY_PV}_i386.tar.gz ) )
-	amd64? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_amd64.tar.gz
-	    nls? ( $DOWNLOADPAGE/${MY_PN}-nls_${MY_PV}_amd64.tar.gz ) )"
+SRC_URI="x86? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_i386.tar.gz )
+	amd64? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_amd64.tar.gz )"
 
 LICENSE="1CEnterprise_en"
 KEYWORDS="~amd64 ~x86"
@@ -24,7 +22,7 @@ RESTRICT="mirror strip"
 #SLOT=$(get_version_component_range 1-2)
 SLOT="0"
 
-IUSE="-nls"
+IUSE=""
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}
 	=app-office/1c-enterprise83-server-${PV}:${SLOT}
