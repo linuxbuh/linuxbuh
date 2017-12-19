@@ -20,7 +20,8 @@ RESTRICT="mirror strip"
 
 RDEPEND="x11-terms/xterm
 	x11-misc/xdialog
-	app-admin/sudo"
+	app-admin/sudo
+	net-misc/wput"
 
 
 src_install() {
