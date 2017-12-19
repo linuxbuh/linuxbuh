@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>ztime@yandex.ru</email>
+		<name>Linuxbuh.ru</name>
+	</maintainer>
+	<longdescription lang="ru">
+		Серверная часть ERP системы компании 1С
+	</longdescription>
+	<use>
+		<flag name='pax_kernel'>Make this package work on PAX kernels</flag>
+	</use>
+</pkgmetadata>
