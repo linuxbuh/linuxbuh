@@ -4,7 +4,9 @@
 
 EAPI="6"
 
-inherit eutils versionator
+MULTILIB_COMPAT=( abi_x86_{32,64} )
+
+inherit eutils versionator multilib-minimal
 
 DESCRIPTION="Configurations Storage component of 1C ERP system"
 HOMEPAGE="http://v8.1c.ru/"
@@ -15,14 +17,14 @@ MY_PN="1c-enterprise83-crs"
 SRC_URI="x86? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_i386.tar.gz )"
 
 LICENSE="1CEnterprise_en"
-KEYWORDS="~x86"
+KEYWORDS="-* ~x86"
 RESTRICT="mirror strip"
 
 SLOT="0"
 
 
-RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}
-	=app-office/1c-enterprise83-server-${PV}:${SLOT}"
+RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
+	=app-office/1c-enterprise83-server-${PV}:${SLOT}[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"

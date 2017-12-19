@@ -4,7 +4,9 @@
 
 EAPI="6"
 
-inherit eutils versionator
+MULTILIB_COMPAT=( abi_x86_{32,64} )
+
+inherit eutils versionator multilib-minimal
 
 DESCRIPTION="Native linux client of 1C ERP system"
 HOMEPAGE="http://v8.1c.ru/"
@@ -16,15 +18,14 @@ SRC_URI="x86? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_i386.tar.gz )
 	amd64? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_amd64.tar.gz )"
 
 LICENSE="1CEnterprise_en"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="mirror strip"
 
-#SLOT=$(get_version_component_range 1-2)
 SLOT="0"
 
 IUSE=""
 
-RDEPEND="=app-office/1c-enterprise83-client-${PV}:${SLOT}"
+RDEPEND="=app-office/1c-enterprise83-client-${PV}:${SLOT}[${MULTILIB_USEDEP}]"
 
 DEPEND="${RDEPEND}"
 
