@@ -28,7 +28,7 @@ SLOT="0"
 LICENSE="1CEnterprise_en"
 KEYWORDS="amd64 x86"
 RESTRICT="mirror strip"
-IUSE="nls"
+IUSE="-nls"
 
 RDEPEND=">=sys-libs/glibc-2.3
 	>=dev-libs/icu-3.8.1-r1"

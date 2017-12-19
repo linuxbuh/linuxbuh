@@ -24,7 +24,7 @@ RESTRICT="mirror strip"
 #SLOT=$(get_version_component_range 1-2)
 SLOT="0"
 
-IUSE="nls"
+IUSE="-nls"
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}
 	=app-office/1c-enterprise83-server-${PV}:${SLOT}
