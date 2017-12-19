@@ -18,7 +18,7 @@ SRC_URI="x86? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_i386.tar.gz )
 	amd64? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_amd64.tar.gz )"
 
 LICENSE="1CEnterprise_en"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="amd64 x86"
 RESTRICT="mirror strip"
 
 SLOT="0"
