@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
 <repositories xmlns="" version="1.0">
-<repo quality="testing" status="official">
-    <name>linuxbuh</name>
+  <repo priority="50" quality="experimental" status="unofficial">
+   <name>linuxbuh</name>
     <description>linuxbuh.ru Overlay</description>
     <homepage>http://www.linuxbuh.ru.ru</homepage>
 	<owner type="project">
