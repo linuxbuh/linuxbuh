@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="6"
+EAPI=6
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 
-inherit eutils versionator multilib-minimal
+inherit eutils versionator multilib multilib-minimal
 
 DESCRIPTION="Native linux thin client of 1C ERP system"
 HOMEPAGE="http://v8.1c.ru/"

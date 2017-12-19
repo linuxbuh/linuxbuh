@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="6"
+EAPI=6
 
-#MULTILIB_COMPAT=( abi_x86_{32,64} )
+MULTILIB_COMPAT=( abi_x86_{32,64} )
 
 inherit eutils versionator multilib multilib-minimal
+
 
 DESCRIPTION="Native linux client of 1C ERP system"
 HOMEPAGE="http://v8.1c.ru/"
@@ -23,10 +24,7 @@ RESTRICT="mirror strip"
 
 SLOT="0"
 
-IUSE="abi_x86_32 abi_x86_64 -nls"
-
-REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
-    nls? ( -nls )"
+IUSE=""
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	=app-office/1c-enterprise83-server-${PV}:${SLOT}[${MULTILIB_USEDEP}]

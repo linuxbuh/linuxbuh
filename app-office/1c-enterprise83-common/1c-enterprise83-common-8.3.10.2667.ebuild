@@ -2,11 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="6"
+EAPI=6
 
-#MULTILIB_COMPAT=( abi_x86_{32,64} )
+MULTILIB_COMPAT=( abi_x86_{32,64} )
 
-inherit eutils versionator multilib-minimal
+inherit eutils versionator multilib multilib-minimal
+
 
 DESCRIPTION="Base component of 1C ERP system"
 HOMEPAGE="http://v8.1c.ru/"
@@ -24,11 +25,7 @@ LICENSE="1CEnterprise_en"
 KEYWORDS="-* amd64 x86"
 RESTRICT="mirror strip"
 
-IUSE="abi_x86_32 abi_x86_64 -nls"
-
-REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
-    nls? ( -nls )"
-
+IUSE="nls"
 
 RDEPEND=">=sys-libs/glibc-2.3[${MULTILIB_USEDEP}]
 	>=dev-libs/icu-3.8.1-r1[${MULTILIB_USEDEP}]

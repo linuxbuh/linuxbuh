@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="6"
+EAPI=6
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 
