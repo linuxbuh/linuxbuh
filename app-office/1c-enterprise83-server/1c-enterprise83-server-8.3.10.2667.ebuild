@@ -60,9 +60,9 @@ S="${WORKDIR}"
 #	chown -R ":${MY_GROUP}" "/home/${MY_USER}"
 #}
 
-src_prepare() {
-	epatch "${FILESDIR}/init.d.patch"
-}
+#src_prepare() {
+#	epatch "${FILESDIR}/init.d.patch"
+#}
 
 #src_install() {
 #	if use pax_kernel; then
@@ -99,7 +99,7 @@ src_unpack() {
 src_install() {
 	dodir /opt
 	mv "${WORKDIR}"/opt/* "${D}"/opt
-	doinitd "${WORKDIR}/etc/init.d/srv1cv${MY_VERSION}"
+#	doinitd "${WORKDIR}/etc/init.d/srv1cv${MY_VERSION}"
 }
 
 
