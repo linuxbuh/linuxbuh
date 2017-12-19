@@ -32,7 +32,8 @@ MY_GROUP="grp1cv${MY_VERSION}"
 #    MY_LIBDIR="x86_64"
 #fi
 
-SLOT="$(get_version_component_range 1-2)"
+#SLOT="$(get_version_component_range 1-2)"
+SLOT="0"
 IUSE="postgres fontconfig nls pax_kernel"
 
 RDEPEND="app-office/1c-enterprise83-common-${PV}

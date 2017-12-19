@@ -21,7 +21,8 @@ LICENSE="1CEnterprise_en"
 KEYWORDS="amd64 x86"
 RESTRICT="mirror strip"
 
-SLOT=$(get_version_component_range 1-2)
+#SLOT=$(get_version_component_range 1-2)
+SLOT="0"
 
 IUSE="nls"
 

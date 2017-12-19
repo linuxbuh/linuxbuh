@@ -18,7 +18,7 @@ LICENSE="1CEnterprise_en"
 KEYWORDS="x86"
 RESTRICT="mirror strip"
 
-SLOT=$(get_version_component_range 1-2)
+SLOT="0"
 
 
 RDEPEND="app-office/1c-enterprise83-common-${PV}

@@ -23,8 +23,8 @@ LICENSE="1CEnterprise_en"
 KEYWORDS="amd64 x86"
 RESTRICT="mirror strip"
 
-SLOT="$(get_version_component_range 1-2)"
-
+#SLOT="$(get_version_component_range 1-2)"
+SLOT="0"
 
 IUSE="nls pax_kernel"
 
@@ -41,9 +41,9 @@ src_install() {
 pkg_postinst() {
 	elog "You need to configure fonts for the web compoment of 1C ERP system by exec"
 	if use x86 ; then
-	    elog "/opt/1C/v${SLOT}/i386/utils/config_server /usr/share/fonts/corefont"
+	    elog "/opt/1C/v83/i386/utils/config_server /usr/share/fonts/corefont"
 	elif use amd64 ; then
-	    elog "/opt/1C/v${SLOT}/x86_64/utils/config_server /usr/share/fonts/corefont"
+	    elog "/opt/1C/v83/x86_64/utils/config_server /usr/share/fonts/corefont"
 	fi
 	elog "or you may get an error \"Failed to initialize graphics subsystem!\""
 	if use pax_kernel ; then
