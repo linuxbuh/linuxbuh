@@ -25,8 +25,8 @@ SLOT=$(get_version_component_range 1-2)
 
 IUSE="nls"
 
-RDEPEND="~app-office/1c-enterprise83-common-${PV}:${SLOT}
-	~app-office/1c-enterprise83-server-${PV}:${SLOT}
+RDEPEND="app-office/1c-enterprise83-common-${PV}
+	app-office/1c-enterprise83-server-${PV}
 	>=dev-libs/icu-4.6
 	net-libs/webkit-gtk:2
 	app-crypt/mit-krb5

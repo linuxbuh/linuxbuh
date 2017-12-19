@@ -21,8 +21,8 @@ RESTRICT="mirror strip"
 SLOT=$(get_version_component_range 1-2)
 
 
-RDEPEND="~app-office/1c-enterprise83-common-${PV}:${SLOT}
-	~app-office/1c-enterprise83-server-${PV}:${SLOT}"
+RDEPEND="app-office/1c-enterprise83-common-${PV}
+	app-office/1c-enterprise83-server-${PV}"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"
