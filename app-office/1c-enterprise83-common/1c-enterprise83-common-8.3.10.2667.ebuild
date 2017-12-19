@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-MULTILIB_COMPAT=( abi_x86_{32,64} )
+#MULTILIB_COMPAT=( abi_x86_{32,64} )
 
 inherit eutils versionator multilib-minimal
 
@@ -23,7 +23,7 @@ SLOT="0"
 LICENSE="1CEnterprise_en"
 KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="mirror strip"
-IUSE="nls"
+IUSE="-nls"
 
 RDEPEND=">=sys-libs/glibc-2.3[${MULTILIB_USEDEP}]
 	>=dev-libs/icu-3.8.1-r1[${MULTILIB_USEDEP}]

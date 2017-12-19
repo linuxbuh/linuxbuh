@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-MULTILIB_COMPAT=( abi_x86_{32,64} )
+#MULTILIB_COMPAT=( abi_x86_{32,64} )
 
 inherit eutils versionator multilib-minimal
 
@@ -18,13 +18,12 @@ SRC_URI="x86? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_i386.tar.gz )
 	amd64? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_amd64.tar.gz )"
 
 
-#SLOT="0"
 LICENSE="1CEnterprise_en"
 KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="mirror strip"
 
 SLOT="0"
-IUSE="postgres fontconfig nls"
+IUSE="postgres fontconfig -nls"
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	postgres? ( dev-db/postgresql-server[1c,pg_legacytimestamp,${MULTILIB_USEDEP}] )

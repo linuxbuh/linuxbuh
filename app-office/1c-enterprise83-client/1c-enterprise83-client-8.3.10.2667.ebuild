@@ -4,7 +4,7 @@
 
 EAPI="6"
 
-MULTILIB_COMPAT=( abi_x86_{32,64} )
+#MULTILIB_COMPAT=( abi_x86_{32,64} )
 
 inherit eutils versionator multilib-minimal
 
@@ -23,7 +23,7 @@ RESTRICT="mirror strip"
 
 SLOT="0"
 
-IUSE="nls"
+IUSE="-nls"
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	=app-office/1c-enterprise83-server-${PV}:${SLOT}[${MULTILIB_USEDEP}]
