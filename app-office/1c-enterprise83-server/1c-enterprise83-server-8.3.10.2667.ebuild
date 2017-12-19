@@ -11,7 +11,7 @@ inherit eutils versionator multilib multilib-minimal
 
 DESCRIPTION="Server component of 1C ERP system"
 HOMEPAGE="http://v8.1c.ru/"
-DOWNLOADPAGE="http://ftp.linuxbuh.ru/1c83/server"
+DOWNLOADPAGE="http://ftp.linuxbuh.ru/buhsoft/1C/1c83/server"
 
 MY_PV="$(replace_version_separator 3 '-' )"
 MY_PN="1c-enterprise83-server"
