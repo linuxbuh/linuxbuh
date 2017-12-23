@@ -37,7 +37,7 @@ cp -r ${WORKDIR}/${P}/linuxbuh-installer-update.desktop ${D}/usr/share/applicati
 cp -r ${WORKDIR}/${P}/linuxbuh-installer.png ${D}/usr/share/pixmaps
 cp -r ${WORKDIR}/${P}/linuxbuh-installer-update ${D}/usr/bin
 cp -r ${WORKDIR}/${P}/linuxbuh-installer ${D}/usr/bin
-cp -r ${WORKDIR}/${P}/wgetlinuxbuhru ${D}/usr/bin
+cp -r ${WORKDIR}/${P}/wgetlinuxbuh ${D}/usr/bin
 cp -r ${WORKDIR}/${P}/txt ${D}/usr/share/linuxbuh-installer
 
 }
