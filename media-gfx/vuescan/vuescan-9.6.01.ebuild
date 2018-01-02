@@ -21,7 +21,7 @@ RESTRICT="mirror strip"
 
 S="${WORKDIR}/VueScan"
 
-#INSTALLDIR="/opt/${PN}"
+INSTALLDIR="/opt/VueScan"
 
 IUSE=""
 
@@ -43,7 +43,7 @@ src_install() {
 
 	doicon ${FILESDIR}/vuescan.svg
 
-	make_desktop_entry "${INSTALLDIR}/${PN}" vuescan vuescan.svg Graphics
+	make_desktop_entry vuescan vuescan.svg Graphics
 
 
 }
@@ -52,3 +52,4 @@ pkg_postinst() {
 	einfo "To use scanner with Vuescan under user you need add user into scanner group."
 	einfo "Just run under root: gpasswd -a username scanner"
 }
+
