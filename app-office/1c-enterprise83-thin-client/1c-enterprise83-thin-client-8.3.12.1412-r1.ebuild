@@ -8,18 +8,17 @@ MULTILIB_COMPAT=( abi_x86_{32,64} )
 
 inherit eutils versionator multilib multilib-minimal
 
-
-DESCRIPTION="Native linux client of 1C ERP system"
+DESCRIPTION="Native linux thin client of 1C ERP system"
 HOMEPAGE="http://v8.1c.ru/"
 DOWNLOADPAGE="http://ftp.linuxbuh.ru/buhsoft/1C/1c83/client_server"
 
 MY_PV="$(replace_version_separator 3 '-' )"
-MY_PN="1c-enterprise83-client"
-SRC_URI="abi_x86_32? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_i386.tar.gz )
-	abi_x86_64? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_amd64.tar.gz )"
+MY_PN="1c-enterprise83-thin-client"
+SRC_URI="x86? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_i386.tar.gz )
+	amd64? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_amd64.tar.gz )"
 
 LICENSE="1CEnterprise_en"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="mirror strip"
 
 SLOT="0"
@@ -29,7 +28,7 @@ IUSE="nls"
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	=app-office/1c-enterprise83-server-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	>=dev-libs/icu-4.6[${MULTILIB_USEDEP}]
-	net-libs/webkit-gtk:2[${MULTILIB_USEDEP}]
+	net-libs/webkit-gtk[${MULTILIB_USEDEP}]
 	app-crypt/mit-krb5[${MULTILIB_USEDEP}]
 	media-gfx/imagemagick[${MULTILIB_USEDEP}]
 	net-print/cups[${MULTILIB_USEDEP}]
@@ -52,17 +51,24 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}"
 
 
+src_unpack() {
+	    unpack ${A}
+	    
+}
+
+
 src_install() {
+	ln -s /usr/lib/libwebkit2gtk-4.0.so libwebkitgtk-3.0.so.0
 	dodir /opt /usr
 	mv "${WORKDIR}"/opt/* "${D}"/opt
 	local res
 	for res in 16 22 24 32 36 48 64 72 96 128 192 256; do
-		for icon in 1cestart 1cv8 1cv8c 1cv8s; do
+		for icon in 1cv8c; do
 			newicon -s ${res} "${WORKDIR}/usr/share/icons/hicolor/${res}x${res}/apps/${icon}.png" "${icon}.png"
 		done
 	done
 
 
-	domenu "${WORKDIR}"/usr/share/applications/{1cv8,1cv8c,1cestart}.desktop
+	domenu "${WORKDIR}"/usr/share/applications/{1cv8c}.desktop
 }
 
