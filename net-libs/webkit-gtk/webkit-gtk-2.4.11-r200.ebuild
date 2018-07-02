@@ -166,6 +166,8 @@ src_prepare() {
 }
 
 src_configure() {
+	#GCC 6.4 NULL pointer optiimization fix
+	append-cxxflags $(test-flags-CXX -fno-delete-null-pointer-checks)
 	# Respect CC, otherwise fails on prefix #395875
 	tc-export CC
 
