@@ -43,6 +43,5 @@ src_install() {
 #	dodir /opt
 #	mv "${WORKDIR}"/opt/* "${D}"/opt
 	cp -R "${WORKDIR}/opt" "${D}" || die "install failed!" 
-	cp -R "${WORKDIR}/usr" "${D}" || die "install failed!" 
 
 }
