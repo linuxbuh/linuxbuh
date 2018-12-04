@@ -6,18 +6,18 @@ EAPI=6
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 
-inherit eutils versionator multilib multilib-minimal
+inherit eutils versionator multilib multilib-minimal unpacker
 
 
 DESCRIPTION="Web component of 1C ERP system"
 HOMEPAGE="http://v8.1c.ru/"
 
-DOWNLOADPAGE="http://ftp.linuxbuh.ru/buhsoft/1C/1c83/client_server"
+DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/buhsoft/1C/1c83/client_server"
 
 MY_PV="$(replace_version_separator 3 '-' )"
 MY_PN="1c-enterprise83-ws"
-SRC_URI="x86? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_i386.tar.gz )
-	amd64? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_amd64.tar.gz )"
+SRC_URI="abi_x86_32? ( $DOWNLOADPAGE/1c-enterprise83-ws_8.3.12-1714_i386.deb )
+	abi_x86_64? ( $DOWNLOADPAGE/1c-enterprise83-ws_8.3.12-1714_amd64.deb )"
 
 
 LICENSE="1CEnterprise_en"
@@ -33,6 +33,10 @@ RDEPEND="=app-office/1c-enterprise83-ws-${PV}:${SLOT}[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"
+
+src_unpack(){
+        unpack_deb ${A}
+}
 
 src_install() {
 	dodir /opt

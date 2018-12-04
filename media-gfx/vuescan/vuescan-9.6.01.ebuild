@@ -10,7 +10,7 @@ inherit eutils versionator multilib multilib-minimal
 
 DESCRIPTION="A high-quality scanning and digital camera raw image processing software."
 HOMEPAGE="http://www.hamrick.com/"
-DOWNLOADPAGE="http://ftp.linuxbuh.ru/linuxbuh/vuescan"
+DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/linuxbuh/vuescan"
 SRC_URI="abi_x86_32? ( $DOWNLOADPAGE/vuex3296.tgz )
 	abi_x86_64? ( $DOWNLOADPAGE/vuex6496.tgz )"
 
