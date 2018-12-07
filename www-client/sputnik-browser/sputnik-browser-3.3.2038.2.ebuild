@@ -20,7 +20,7 @@ LICENSE="AGPL-3"
 IUSE=""
 
 
-NATIVE_DEPEND="
+NATIVE_DEPEND="gnome-base/gconf
 "
 RDEPEND="
     ${NATIVE_DEPEND}
