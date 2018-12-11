@@ -36,7 +36,7 @@ mkdir -p ${D}/usr/share/applications
 mkdir -p ${D}/usr/share/pixmaps
 
 cp -r ${WORKDIR}/${P}/balena-etcher-electron-1.4.8-x86_64.AppImage ${D}/opt/etcher
-cp -r ${FILESDIR}/desktopeditors.desktop ${D}/usr/share/applications/desktopeditors.desktop
+cp -r ${FILESDIR}/etcher.desktop ${D}/usr/share/applications/etcher.desktop
 cp -r ${FILESDIR}/*.svg ${D}/usr/share/pixmaps
 
 
