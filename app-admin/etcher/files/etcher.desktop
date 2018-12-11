@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Flash OS images to SD cards & USB drives, safely and easily.
+Name[ru]=Запись ISO образов на SD-карты и USB-накопители, безопасно и легко.
+Comment=Flash OS images to SD cards & USB drives, safely and easily.
+Comment[ru]=Запись ISO образов на SD-карты и USB-накопители, безопасно и легко.
+Icon=etcher.svg
+Exec=/opt/etcher/balena-etcher-electron-1.4.8-x86_64.AppImage
+StartupNotify=true
+Type=Application
+Categories=System;PackageManager;
+GenericName[en_CA]= Etcher
+GenericName= Etcher
+GenericName[it]= Etcher
+
