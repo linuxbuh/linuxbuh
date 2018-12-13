@@ -34,9 +34,11 @@ src_install() {
 mkdir -p ${D}/opt/onlyoffice
 mkdir -p ${D}/usr/share/applications
 mkdir -p ${D}/usr/share/pixmaps
+mkdir -p ${D}/usr/sbin
 
 cp -r ${WORKDIR}/${P}/DesktopEditors-x86_64.AppImage ${D}/opt/onlyoffice
 cp -r ${FILESDIR}/desktopeditors.desktop ${D}/usr/share/applications/desktopeditors.desktop
+cp -r ${FILESDIR}/onlyoffice.sh ${D}/usr/sbin/onlyoffice.sh
 cp -r ${FILESDIR}/*.png ${D}/usr/share/pixmaps
 
 
@@ -45,5 +47,6 @@ cp -r ${FILESDIR}/*.png ${D}/usr/share/pixmaps
 pkg_postinst() {
 
 chmod 0755 /opt/onlyoffice/DesktopEditors-x86_64.AppImage
+chmod 0755 /usr/sbin/onlyoffice.sh
 
 }
