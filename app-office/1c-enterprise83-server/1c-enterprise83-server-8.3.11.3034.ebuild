@@ -15,8 +15,8 @@ DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/buhsoft/1C/1c83/client_server"
 
 MY_PV="$(replace_version_separator 3 '-' )"
 MY_PN="1c-enterprise83-server"
-SRC_URI="abi_x86_32? ( $DOWNLOADPAGE/1c-enterprise83-server_8.3.11-3133_i386.deb )
-	abi_x86_64? ( $DOWNLOADPAGE/1c-enterprise83-server_8.3.11-3133_amd64.deb )"
+SRC_URI="abi_x86_32? ( $DOWNLOADPAGE/1c-enterprise83-server_8.3.11-3034_i386.deb )
+	abi_x86_64? ( $DOWNLOADPAGE/1c-enterprise83-server_8.3.11-3034_amd64.deb )"
 
 
 
