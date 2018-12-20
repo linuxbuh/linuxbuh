@@ -22,9 +22,9 @@ SLOT="$(get_version_component_range 1-2)"
 #SLOT=0
 
 #MY_PV=${PV/_/}
-S="${WORKDIR}/postgresql-pro-1c-9.6.11"
+S="${WORKDIR}/postgrespro-1c-10.5"
 
-SRC_URI="ftp://ftp.linuxbuh.ru/postgresql-pro-1c/postgresql-pro-1c-9.6_9.6.11.orig.tar.gz"
+SRC_URI="ftp://ftp.linuxbuh.ru/postgresql-pro-1c/postgrespro-1c-10_10.5.orig.tar.bz2"
 
 LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
