@@ -91,6 +91,7 @@ RDEPEND="${CDEPEND}
 !dev-db/postgresql-docs:${SLOT}
 !dev-db/postgresql-base:${SLOT}
 !dev-db/postgresql-server:${SLOT}
+!dev-db/postgresql
 selinux? ( sec-policy/selinux-postgresql )
 "
 
