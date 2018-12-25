@@ -7,11 +7,11 @@ EAPI=6
 
 inherit eutils
 
-DESCRIPTION="1C Enterprize Conf Trade Setup"
-HOMEPAGE="http://linuxbuh.ru"
+DESCRIPTION="1C:Проедприятие 8.3, Управление торговлей, установка"
+HOMEPAGE="http://1c.ru"
 SRC_URI="ftp://ftp.linuxbuh.ru/buhsoft/1C/1c83/Conf/trade/${P}.tar.gz"
 
-LICENSE="GPL"
+LICENSE="1CEnterprise_en"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
@@ -24,7 +24,7 @@ RDEPEND=""
 
 src_install() {
 cd ${WORKDIR}
-mkdir -p ${D}/opt/1C/1c-trade-setup
-cp -r ${WORKDIR}/${P}/* ${D}/opt/1C/1c-trade-setup
+mkdir -p ${D}/opt/1C/${PN}
+cp -r ${WORKDIR}/${P}/* ${D}/opt/1C/${PN}
 }
 

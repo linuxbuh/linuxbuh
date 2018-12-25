@@ -8,14 +8,14 @@ MULTILIB_COMPAT=( abi_x86_{32,64} )
 
 inherit eutils versionator multilib multilib-minimal unpacker
 
+DESCRIPTION="Хранилище конфигураций 1C:Проедприятие 8.3 для GNU\LINUX"
+HOMEPAGE="http://v8.1c.ru"
 
-DESCRIPTION="Configurations Storage component of 1C ERP system"
-HOMEPAGE="http://v8.1c.ru/"
 DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/buhsoft/1C/1c83/client_server"
 
 MY_PV="$(replace_version_separator 3 '-' )"
 MY_PN="1c-enterprise83-crs"
-SRC_URI="abi_x86_32? ( $DOWNLOADPAGE/1c-enterprise83-crs_8.3.9-2233_i386.deb )"
+SRC_URI="abi_x86_32? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_i386.deb )"
 
 
 LICENSE="1CEnterprise_en"

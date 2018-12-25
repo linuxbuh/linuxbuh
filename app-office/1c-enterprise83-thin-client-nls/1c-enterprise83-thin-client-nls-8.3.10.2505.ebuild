@@ -8,15 +8,15 @@ MULTILIB_COMPAT=( abi_x86_{32,64} )
 
 inherit eutils versionator multilib multilib-minimal unpacker
 
+DESCRIPTION="Языковой пакет для Тонкого Клиента 1C:Проедприятие 8.3 для GNU\LINUX"
+HOMEPAGE="http://v8.1c.ru"
 
-DESCRIPTION="Native linux thin client of 1C ERP system"
-HOMEPAGE="http://v8.1c.ru/"
 DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/buhsoft/1C/1c83/client_server"
 
 MY_PV="$(replace_version_separator 3 '-' )"
 MY_PN="1c-enterprise83-thin-client-nls"
-SRC_URI="abi_x86_32? ( $DOWNLOADPAGE/1c-enterprise83-thin-client-nls_8.3.10-2505_i386.deb )
-	abi_x86_64? ( $DOWNLOADPAGE/1c-enterprise83-thin-client-nls_8.3.10-2505_amd64.deb )"
+SRC_URI="abi_x86_32? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_i386.deb )
+	abi_x86_64? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_amd64.deb )"
 
 LICENSE="1CEnterprise_en"
 KEYWORDS="-* ~amd64 ~x86"
