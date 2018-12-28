@@ -80,6 +80,7 @@ DEPEND="${CDEPEND}
 !!<sys-apps/sandbox-2.0
 sys-devel/bison
 sys-devel/flex
+dev-libs/icu
 nls? ( sys-devel/gettext )
 xml? ( virtual/pkgconfig )
 "
@@ -274,6 +275,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	rc-update add postgresql-1c-pro-11 default
 	use server && use systemd && systemd_tmpfiles_create ${PN}-${SLOT}.conf
 	postgresql-config update
 

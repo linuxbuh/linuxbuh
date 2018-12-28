@@ -106,6 +106,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	cp ${FILESDIR}/copy_fetch.c ${S}/src/bin/pg_rewind
 	# Work around PPC{,64} compilation bug where bool is already defined
 	sed '/#ifndef __cplusplus/a #undef bool' -i src/include/c.h || die
 
@@ -313,6 +314,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	rc-update add postgresql-1c-pro-9.6 default
 	use server && use systemd && systemd_tmpfiles_create ${PN}-${SLOT}.conf
 	postgresql-config update
 

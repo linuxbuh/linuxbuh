@@ -34,6 +34,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 CDEPEND="
 >=app-eselect/eselect-postgresql-2.0
 sys-apps/less
+dev-python/psycopg-linuxbuh
 virtual/libintl
 kerberos? ( virtual/krb5 )
 ldap? ( net-nds/openldap )
@@ -78,6 +79,8 @@ DEPEND="${CDEPEND}
 !!<sys-apps/sandbox-2.0
 sys-devel/bison
 sys-devel/flex
+dev-libs/icu
+dev-python/psycopg
 nls? ( sys-devel/gettext )
 xml? ( virtual/pkgconfig )
 "
@@ -188,7 +191,7 @@ src_install() {
 	# manually install man pages.
 	# We use ${SLOT} instead of doman for postgresql.eselect
 	insinto /usr/share/postgresql-${SLOT}/man/
-	doins -r doc/src/sgml/man{1,3,7}
+	doins -r doc/src/xml/man{1,3,7}
 	if ! use server; then
 		# Remove man pages for non-existent binaries
 		serverman=(
@@ -246,7 +249,7 @@ src_install() {
 
 	if use doc ; then
 		docinto html
-		dodoc doc/src/sgml/html/*
+		dodoc doc/src/xml/html/*
 	fi
 
 	if use server; then
@@ -274,6 +277,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	rc-update add postgresql-1c-pro-10 default
 	use server && use systemd && systemd_tmpfiles_create ${PN}-${SLOT}.conf
 	postgresql-config update
 
@@ -461,3 +465,4 @@ src_test() {
 		ewarn 'Skipping.'
 	fi
 }
+
