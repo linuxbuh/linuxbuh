@@ -5,14 +5,12 @@
 EAPI=6
 inherit fdo-mime font gnome2-utils eutils multilib unpacker
 
-DESCRIPTION="onlyoffice is an office productivity suite"
+DESCRIPTION="Офисный пакет OnlyOffice - замена Microsoft Office"
 HOMEPAGE="http://www.onlyoffice.com/"
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
-SRC_URI="
-    amd64? ( ftp://ftp.linuxbuh.ru/linuxbuh/app-office/onlyoffice/onlyoffice-5.1.27.tar.gz )
-    "
+SRC_URI="amd64? ( ftp://ftp.linuxbuh.ru/linuxbuh/app-office/onlyoffice/onlyoffice-${PN}.tar.gz )"
 
 SLOT="0"
 RESTRICT="strip mirror"
