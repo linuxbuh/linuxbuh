@@ -83,6 +83,7 @@ DEPEND="${CDEPEND}
 !!<sys-apps/sandbox-2.0
 sys-devel/bison
 sys-devel/flex
+dev-libs/icu
 nls? ( sys-devel/gettext )
 xml? ( virtual/pkgconfig )
 "
