@@ -7,9 +7,9 @@ EAPI=6
 
 inherit eutils
 
-DESCRIPTION="1C:Проедприятие 8.3, Бухгалтерия предприятия 3.0, обновление, переход с Бухгалтерия предприятия 3.0 Базовая"
+DESCRIPTION="1C:Проедприятие 8.3, Зарплата и управленеие персоналом, редакция 3.1, файлы обновления конфигурации"
 HOMEPAGE="http://1c.ru"
-SRC_URI="ftp://ftp.linuxbuh.ru/buhsoft/1C/1c83/Conf/buh/${P}.tar.gz"
+SRC_URI="ftp://ftp.linuxbuh.ru/buhsoft/1C/1c83/Conf/zup/${P}.tar.gz"
 
 LICENSE="1CEnterprise_en"
 SLOT="0"
