@@ -40,18 +40,3 @@ src_install() {
 	mv "${WORKDIR}"/opt/* "${D}"/opt
 }
 
-pkg_postinst() {
-	elog "You need to configure fonts for the web compoment of 1C ERP system by exec"
-	if use x86 ; then
-	    elog "/opt/1C/v83/i386/utils/config_server /usr/share/fonts/corefont"
-	elif use amd64 ; then
-	    elog "/opt/1C/v83/x86_64/utils/config_server /usr/share/fonts/corefont"
-	fi
-	elog "or you may get an error \"Failed to initialize graphics subsystem!\""
-	if use pax_kernel ; then
-	    elog ""
-	    elog "You may have to disable MPROTECT for the /usr/sbin/apache2 binary"
-	    elog "Otherwise, the PAX-kernel will not allow the web-server to work"
-	    elog "with 1C web-component apache module."
-	fi
-}
