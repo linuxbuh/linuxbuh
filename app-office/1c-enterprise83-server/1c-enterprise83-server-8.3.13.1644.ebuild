@@ -26,7 +26,7 @@ SLOT="0"
 IUSE="nls postgres fontconfig server"
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
-	postgres? ( dev-db/postgresql-1c-pro[1c,pg_legacytimestamp,${MULTILIB_USEDEP}] )
+	postgres? ( dev-db/postgresql-1c-pro[pg_legacytimestamp,${MULTILIB_USEDEP}] )
 	server? ( app-office/1c-server-utils[${MULTILIB_USEDEP}] )
 	fontconfig? ( gnome-extra/libgsf[${MULTILIB_USEDEP}]
 			app-text/ttf2pt1[${MULTILIB_USEDEP}]
