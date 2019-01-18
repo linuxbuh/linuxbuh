@@ -22,6 +22,9 @@ RDEPEND="x11-misc/x11vnc
 	x11-misc/lightdm
 	!x11-misc/x11vnc-lightdm"
 
+DEPEND="${RDEPEND}"
+
+S="${WORKDIR}"
 
 
 src_install() {
