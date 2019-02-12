@@ -31,7 +31,7 @@ IUSE="nls"
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	=app-office/1c-enterprise83-server-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	>=dev-libs/icu-4.6[${MULTILIB_USEDEP}]
-	net-libs/webkit-gtk:3[${MULTILIB_USEDEP}]
+	net-libs/webkit-gtk-linuxbuh-bin:3[${MULTILIB_USEDEP}]
 	app-crypt/mit-krb5[${MULTILIB_USEDEP}]
 	media-gfx/imagemagick[${MULTILIB_USEDEP}]
 	net-print/cups[${MULTILIB_USEDEP}]
