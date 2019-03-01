@@ -107,7 +107,6 @@ DEPEND="${RDEPEND}
 		jit? ( sys-apps/paxctl ) )
 "
 src_unpack() {
-	einfo "Uncompressing distfile webkit-gtk-linuxbuh-bin-2.4.11-r1.${ARCH}.tar.gz"
 	mv ${DISTDIR}/webkit-gtk-linuxbuh-bin-2.4.11-r1.${ARCH}.tar.gz ${WORKDIR}/webkit-gtk-linuxbuh-bin-2.4.11.tar.gz || die
 	einfo "Unpacking new webkit-gtk-linuxbuh-bin-2.4.11.tar.gz"
 	unpack "./webkit-gtk-linuxbuh-bin-2.4.11.tar.gz"
@@ -117,5 +116,5 @@ src_unpack() {
 src_install() {
 cd ${WORKDIR}
 mkdir -p ${D}/usr
-cp -r ${WORKDIR}/${P}* ${D}/usr
+cp -r ${WORKDIR}/webkit-gtk-linuxbuh-bin-2.4.11/usr/* ${D}/usr
 }
