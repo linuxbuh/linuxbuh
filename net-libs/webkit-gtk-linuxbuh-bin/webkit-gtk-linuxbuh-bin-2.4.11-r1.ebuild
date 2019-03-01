@@ -12,10 +12,15 @@ inherit eutils versionator multilib multilib-minimal unpacker
 DESCRIPTION="Бинарный пакет ${P} для платформы 1С:Предприятие 8.3"
 HOMEPAGE="http://linuxbuh.ru"
 
-DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/linuxbuh/net-libs/webkit-gtk-linuxbuh-bin/2.4.11-r1"
+DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/linuxbuh/net-libs/webkit-gtk-linuxbuh-bin"
 
-SRC_URI="abi_x86_32? ( $DOWNLOADPAGE/i686/webkit-gtk-linuxbuh-bin-2.4.11.tar.gz )
-	abi_x86_64? ( $DOWNLOADPAGE/amd64/webkit-gtk-linuxbuh-bin-2.4.11.tar.gz )"
+SRC_URI_X86="$DOWNLOADPAGE/webkit-gtk-linuxbuh-bin-2.4.11-r1.i686.tar.gz"
+SRC_URI_AMD64="$DOWNLOADPAGE/webkit-gtk-linuxbuh-bin-2.4.11-r1.amd64.tar.gz"
+
+SRC_URI="
+	amd64? ( ${SRC_URI_AMD64} )
+	x86? ( ${SRC_URI_X86} )
+"
 
 
 
@@ -101,6 +106,13 @@ DEPEND="${RDEPEND}
 		x11-themes/hicolor-icon-theme
 		jit? ( sys-apps/paxctl ) )
 "
+src_unpack() {
+	einfo "Uncompressing distfile webkit-gtk-linuxbuh-bin-2.4.11-r1.${ARCH}.tar.gz"
+	mv ${DISTDIR}/webkit-gtk-linuxbuh-bin-2.4.11-r1.${ARCH}.tar.gz ${WORKDIR}/webkit-gtk-linuxbuh-bin-2.4.11.tar.gz || die
+	einfo "Unpacking new webkit-gtk-linuxbuh-bin-2.4.11.tar.gz"
+	unpack "./webkit-gtk-linuxbuh-bin-2.4.11.tar.gz"
+}
+
 
 src_install() {
 cd ${WORKDIR}
