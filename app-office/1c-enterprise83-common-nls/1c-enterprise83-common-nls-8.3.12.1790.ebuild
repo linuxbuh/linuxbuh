@@ -11,18 +11,17 @@ inherit eutils versionator multilib multilib-minimal unpacker
 DESCRIPTION="Языковой пакет для пакета Common 1C:Проедприятие 8.3 для GNU\LINUX"
 HOMEPAGE="http://v8.1c.ru"
 
-DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/buhsoft/1C/1c83/client_server"
-
 MY_PV="$(replace_version_separator 3 '-' )"
 MY_PN="1c-enterprise83-common-nls"
-SRC_URI="abi_x86_32? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_i386.deb )
-	abi_x86_64? ( $DOWNLOADPAGE/${MY_PN}_${MY_PV}_amd64.deb )"
+SRC_URI="abi_x86_32? ( ${MY_PN}_${MY_PV}_i386.tar.gz )
+	abi_x86_64? ( ${MY_PN}_${MY_PV}_amd64.tar.gz )"
 
+LICENSE="1CEnterprise_en"
+KEYWORDS="amd64 x86"
+RESTRICT="fetch"
 
 SLOT="0"
-LICENSE="1CEnterprise_en"
-KEYWORDS="-* ~amd64 ~x86"
-RESTRICT="mirror strip"
+
 IUSE=""
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]"
@@ -30,15 +29,15 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"
 
-
-src_unpack(){
-        unpack_deb ${A}
+pkg_nofetch() {
+    einfo "Внимание! Установите программу"
+    einfo "app-office/linuxbuh-1c-installer"
+    einfo "Скачайте дистрибутив платформы с помощью программы linuxbuh-1c-installer и установите."
 }
 
+
 src_install() {
-#	dodir /opt /usr
-#	mv "${WORKDIR}"/opt/* "${D}"/opt
-	cp -R "${WORKDIR}/opt" "${D}" || die "install failed!" 
-	cp -R "${WORKDIR}/usr" "${D}" || die "install failed!" 
+	cp -R "${WORKDIR}/opt" "${D}" || die "install failed!"
+	cp -R "${WORKDIR}/usr" "${D}" || die "install failed!"
 
 }

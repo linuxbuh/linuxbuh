@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=LinuxBuh 1C Installer
+Comment=LinuxBuh 1C Installer
+Exec=xterm -maximized linuxbuh-1c-installer
+Icon=linuxbuh-1c-installer.png
+Type=Application
+Categories=Office;
+
