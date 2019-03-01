@@ -12,10 +12,10 @@ inherit eutils versionator multilib multilib-minimal unpacker
 DESCRIPTION="Бинарный пакет ${P} для платформы 1С:Предприятие 8.3"
 HOMEPAGE="http://linuxbuh.ru"
 
-DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/linuxbuh/net-libs/webkit-gtk-linuxbuh-bin"
+DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/linuxbuh/net-libs/webkit-gtk-linuxbuh-bin/2.4.11-r1"
 
-SRC_URI="abi_x86_32? ( $DOWNLOADPAGE/webkit-gtk-linuxbuh-bin-2.4.11-r1.i686.tar.gz )
-	abi_x86_64? ( $DOWNLOADPAGE/webkit-gtk-linuxbuh-bin-2.4.11-r1.amd64.tar.gz )"
+SRC_URI="abi_x86_32? ( $DOWNLOADPAGE/i686/webkit-gtk-linuxbuh-bin-2.4.11.tar.gz )
+	abi_x86_64? ( $DOWNLOADPAGE/amd64/webkit-gtk-linuxbuh-bin-2.4.11.tar.gz )"
 
 
 
