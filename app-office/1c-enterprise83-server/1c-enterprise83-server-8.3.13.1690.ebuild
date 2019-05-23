@@ -24,23 +24,23 @@ SLOT="0"
 IUSE="nls postgres fontconfig server"
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
-	app-office/linuxbuh-1c-installer[${MULTILIB_USEDEP}]
+	Установите пакет linuxbuh-1c-installer[${MULTILIB_USEDEP}]
 	postgres? ( dev-db/postgresql-1c-pro[pg_legacytimestamp,${MULTILIB_USEDEP}] )
 	server? ( app-office/1c-server-utils[${MULTILIB_USEDEP}] )
 	fontconfig? ( gnome-extra/libgsf[${MULTILIB_USEDEP}]
 			app-text/ttf2pt1[${MULTILIB_USEDEP}]
 			media-gfx/imagemagick[corefonts,${MULTILIB_USEDEP}]
 			dev-db/unixODBC[${MULTILIB_USEDEP}] )
-	dev-db/unixODBC[${MULTILIB_USEDEP}]"
-#	nls? ( =app-office/1c-enterprise83-client-nls-${PV}:${SLOT}[${MULTILIB_USEDEP}] )"
+	dev-db/unixODBC[${MULTILIB_USEDEP}]
+	nls? ( =app-office/1c-enterprise83-client-nls-${PV}:${SLOT}[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"
 
 pkg_nofetch() {
-    einfo "Внимание! Установите программу"
-    einfo "app-office/linuxbuh-1c-installer"
-    einfo "Скачайте дистрибутив платформы с помощью программы linuxbuh-1c-installer и установите."
+    einfo "Внимание !!!"
+    einfo "Установите пакет linuxbuh-1c-installer"
+    einfo "Скачайте дистрибутив платформы 1С:Предприятие 8.3 с помощью программы linuxbuh-1c-get-platform-server-gentoo.sh и установите."
 }
 
 src_install() {

@@ -27,17 +27,17 @@ IUSE="nls"
 
 RDEPEND=">=sys-libs/glibc-2.3[${MULTILIB_USEDEP}]
 	>=dev-libs/icu-3.8.1-r1[${MULTILIB_USEDEP}]
-	app-office/linuxbuh-1c-installer[${MULTILIB_USEDEP}]"
-	#nls? ( =app-office/1c-enterprise83-common-nls-${PV}:${SLOT}[${MULTILIB_USEDEP}] )"
+	Установите пакет linuxbuh-1c-installer[${MULTILIB_USEDEP}]
+	nls? ( =app-office/1c-enterprise83-common-nls-${PV}:${SLOT}[${MULTILIB_USEDEP}] )"
 
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"
 
 pkg_nofetch() {
-    einfo "Внимание! Установите программу"
-    einfo "app-office/linuxbuh-1c-installer"
-    einfo "Скачайте дистрибутив платформы с помощью программы linuxbuh-1c-installer и установите."
+    einfo "Внимание !!!"
+    einfo "Установите пакет linuxbuh-1c-installer"
+    einfo "Скачайте дистрибутив платформы 1С:Предприятие 8.3 с помощью программы linuxbuh-1c-get-platform-client-gentoo.sh или linuxbuh-1c-get-platform-server-gentoo.sh и установите."
 }
 
 src_install() {

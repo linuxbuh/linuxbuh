@@ -25,7 +25,7 @@ SLOT="0"
 IUSE="nls"
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
-	app-office/linuxbuh-1c-installer[${MULTILIB_USEDEP}]
+	Установите пакет linuxbuh-1c-installer[${MULTILIB_USEDEP}]
 	=app-office/1c-enterprise83-server-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	>=dev-libs/icu-4.6[${MULTILIB_USEDEP}]
 	net-libs/webkit-gtk-linuxbuh-bin:3[${MULTILIB_USEDEP}]
@@ -43,17 +43,17 @@ RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	net-libs/libsoup:2.4[${MULTILIB_USEDEP}]
-	sys-libs/zlib[${MULTILIB_USEDEP}]"
-#	nls? ( =app-office/1c-enterprise83-client-nls-${PV}:${SLOT}[${MULTILIB_USEDEP}] )"
+	sys-libs/zlib[${MULTILIB_USEDEP}]
+	nls? ( =app-office/1c-enterprise83-client-nls-${PV}:${SLOT}[${MULTILIB_USEDEP}] )"
 
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"
 
 pkg_nofetch() {
-    einfo "Внимание! Установите программу"
-    einfo "app-office/linuxbuh-1c-installer"
-    einfo "Скачайте дистрибутив платформы с помощью программы linuxbuh-1c-installer и установите."
+    einfo "Внимание !!!"
+    einfo "Установите пакет linuxbuh-1c-installer"
+    einfo "Скачайте дистрибутив платформы 1С:Предприятие 8.3 с помощью программы linuxbuh-1c-get-platform-client-gentoo.sh и установите."
 }
 
 
