@@ -9,7 +9,7 @@ inherit eutils
 
 DESCRIPTION="Linuxbuh Installer"
 HOMEPAGE="http://linuxbuh.ru"
-SRC_URI="ftp://ftp.linuxbuh.ru/linuxbuh/${P}.tar.gz"
+SRC_URI="ftp://ftp.linuxbuh.ru/linuxbuh/sys-apps/linuxbuh-installer/${P}.tar.gz"
 
 LICENSE="GPL"
 SLOT="0"
