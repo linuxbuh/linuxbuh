@@ -20,4 +20,10 @@ RDEPEND="${DEPEND}"
 
 src_install() {
     dobin anydesk
+    mkdir -p ${D}/usr/share/applications
+    mkdir -p ${D}/usr/share/pixmaps
+
+    cp -r ${FILESDIR}/anydesk.desktop ${D}/usr/share/applications/anydesk.desktop
+    cp -r ${FILESDIR}/*.svg ${D}/usr/share/pixmaps
+
 }

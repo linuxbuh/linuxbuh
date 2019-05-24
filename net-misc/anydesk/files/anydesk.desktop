@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Anydesk
+GenericName=Anydesk
+Comment=Anydesk
+Exec=anydesk
+TryExec=anydesk
+Terminal=false
+Icon=anydesk-logo
+Type=Application
+Categories=Network;

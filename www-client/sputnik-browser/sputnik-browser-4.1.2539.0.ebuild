@@ -11,7 +11,7 @@ HOMEPAGE="https://browser.sputnik.ru/"
 KEYWORDS="~amd64"
 
 SRC_URI="
-    amd64? ( http://download.sputnik.ru/browser/ubuntu_sputnik-browser-stable_amd64.deb )
+    amd64? ( http://browser-deb.sputnik.ru/ubuntu/pool/main/s/sputnik-browser-stable/sputnik-browser-stable_4.1.2539.0-1_amd64.deb )
     "
 
 SLOT="0"
