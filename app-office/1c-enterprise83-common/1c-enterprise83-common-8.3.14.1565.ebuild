@@ -37,7 +37,7 @@ S="${WORKDIR}"
 pkg_nofetch() {
     einfo "Внимание !!!"
     einfo "Установите пакет linuxbuh-1c-installer"
-    einfo "Скачайте дистрибутив платформы 1С:Предприятие 8.3 с помощью программы linuxbuh-1c-get-platform-client-gentoo.sh или linuxbuh-1c-get-platform-server-gentoo.sh и установите."
+    einfo "Скачайте дистрибутив платформы 1С:Предприятие 8.3 с помощью программы linuxbuh-1c-get-platform-client-gentoo или linuxbuh-1c-get-platform-server-gentoo и установите."
 }
 
 src_install() {
