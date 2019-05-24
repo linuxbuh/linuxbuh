@@ -8,7 +8,7 @@ MULTILIB_COMPAT=( abi_x86_{32,64} )
 
 inherit eutils versionator multilib multilib-minimal unpacker
 
-DESCRIPTION="WEB Сервер 1C:Проедприятие 8.3 для GNU\LINUX"
+DESCRIPTION="Установщик лицензий 1C:Проедприятие 8.3 для GNU/LINUX"
 HOMEPAGE="http://v8.1c.ru"
 
 SRC_URI=" ${P}.tar.gz "

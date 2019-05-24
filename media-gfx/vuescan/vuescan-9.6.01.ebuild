@@ -41,9 +41,11 @@ src_install() {
 	exeinto /usr/bin
 	doexe ${FILESDIR}/vuescan
 
-	doicon ${FILESDIR}/vuescan.svg
+mkdir -p ${D}/usr/share/applications
+mkdir -p ${D}/usr/share/pixmaps
 
-	make_desktop_entry vuescan vuescan.svg Graphics
+cp -r ${FILESDIR}/vuescan.desktop ${D}/usr/share/applications/vuescan.desktop
+cp -r ${FILESDIR}/*.svg ${D}/usr/share/pixmaps
 
 
 }
