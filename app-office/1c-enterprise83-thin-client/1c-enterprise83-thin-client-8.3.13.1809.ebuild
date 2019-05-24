@@ -25,7 +25,7 @@ SLOT="0"
 IUSE="nls"
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
-	Установите пакет linuxbuh-1c-installer[${MULTILIB_USEDEP}]
+	app-office/linuxbuh-1c-installer[${MULTILIB_USEDEP}]
 	=app-office/1c-enterprise83-server-${PV}:${SLOT}[${MULTILIB_USEDEP}]
 	>=dev-libs/icu-4.6[${MULTILIB_USEDEP}]
 	net-libs/webkit-gtk-linuxbuh-bin:3[${MULTILIB_USEDEP}]

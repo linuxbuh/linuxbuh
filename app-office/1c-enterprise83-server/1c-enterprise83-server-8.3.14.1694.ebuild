@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="nls postgres fontconfig server"
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
-	Установите пакет linuxbuh-1c-installer[${MULTILIB_USEDEP}]
+	app-office/linuxbuh-1c-installer[${MULTILIB_USEDEP}]
 	postgres? ( dev-db/postgresql-1c-pro[pg_legacytimestamp,${MULTILIB_USEDEP}] )
 	server? ( app-office/1c-server-utils[${MULTILIB_USEDEP}] )
 	fontconfig? ( gnome-extra/libgsf[${MULTILIB_USEDEP}]
