@@ -12,7 +12,7 @@ inherit eutils versionator multilib multilib-minimal unpacker
 DESCRIPTION="Файлы настроек для подключения Calculate Linux к MS AD серверу"
 HOMEPAGE="http://linuxbuh.ru"
 
-DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/linuxbuh/sys-apps/ms-ad-calculate"
+DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/linuxbuh/sys-apps/ms-ad-linuxbuh"
 
 SRC_URI="$DOWNLOADPAGE/${P}.tar.gz"
 
