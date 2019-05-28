@@ -39,7 +39,9 @@ mkdir -p ${D}/usr
 mkdir -p ${D}/usr/bin
 mkdir -p ${D}/usr/share/applications
 mkdir -p ${D}/usr/share/pixmaps
-cp -r ${WORKDIR}/${P}/* ${D}/usr/bin
+cp -r ${WORKDIR}/${P}/linuxbuh-1c-installer ${D}/usr/bin
+cp -r ${WORKDIR}/${P}/linuxbuh-1c-get-platform-client-gentoo ${D}/usr/bin
+cp -r ${WORKDIR}/${P}/linuxbuh-1c-get-platform-server-gentoo ${D}/usr/bin
 cp -r ${FILESDIR}/linuxbuh-1c-installer.desktop ${D}/usr/share/applications/linuxbuh-1c-installer.desktop
 cp -r ${FILESDIR}/linuxbuh-1c-installer.png ${D}/usr/share/pixmaps
 }
