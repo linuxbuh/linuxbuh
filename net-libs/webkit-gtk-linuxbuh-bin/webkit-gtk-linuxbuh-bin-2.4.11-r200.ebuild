@@ -15,7 +15,7 @@ HOMEPAGE="http://linuxbuh.ru"
 
 DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/linuxbuh/net-libs/webkit-gtk-linuxbuh-bin"
 
-SRC_URI_X86="$DOWNLOADPAGE/webkit-gtk-linuxbuh-bin-2.4.11-r200.i686.tar.gz"
+SRC_URI_X86="$DOWNLOADPAGE/webkit-gtk-linuxbuh-bin-2.4.11-r200.x86.tar.gz"
 SRC_URI_AMD64="$DOWNLOADPAGE/webkit-gtk-linuxbuh-bin-2.4.11-r200.amd64.tar.gz"
 
 SRC_URI="
