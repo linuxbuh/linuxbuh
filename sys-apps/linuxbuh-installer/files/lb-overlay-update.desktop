@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=LinuxBuh Update Overlay
+Comment=LinuxBuh Update Overlay
+Exec=xterm -maximized lb-overlay-update
+Icon=linuxbuh-installer.png
+Type=Application
+Categories=Office;
+

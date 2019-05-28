@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=LinuxBuh Update Distrib
+Comment=LinuxBuh Update Distrib
+Exec=pkexec xterm -maximized lb-update
+Icon=linuxbuh-installer.png
+Type=Application
+Categories=Office;
+

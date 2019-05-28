@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Обновить LinuxBuh Installer
+Comment=Обновить LinuxBuh Installer
+Exec=xterm -maximized linuxbuh-installer-update
+Icon=linuxbuh-installer.png
+Type=Application
+Categories=Office;
+

@@ -32,11 +32,15 @@ mkdir -p ${D}/usr/share/applications
 mkdir -p ${D}/usr/share/pixmaps
 mkdir -p ${D}/usr/bin
 
-cp -r ${WORKDIR}/${P}/linuxbuh-installer.desktop ${D}/usr/share/applications/linuxbuh-installer.desktop
-cp -r ${WORKDIR}/${P}/linuxbuh-installer-update.desktop ${D}/usr/share/applications/linuxbuh-installer-update.desktop
-cp -r ${WORKDIR}/${P}/linuxbuh-installer.png ${D}/usr/share/pixmaps
-cp -r ${WORKDIR}/${P}/linuxbuh-installer-update ${D}/usr/bin
+cp -r ${FILESDIR}/lb-update.desktop ${D}/usr/share/applications/lb-update.desktop
+cp -r ${FILESDIR}/lb-overlay-update.desktop ${D}/usr/share/applications/lb-overlay-update.desktop
+cp -r ${FILESDIR}/linuxbuh-installer.desktop ${D}/usr/share/applications/linuxbuh-installer.desktop
+cp -r ${FILESDIR}/linuxbuh-installer-update.desktop ${D}/usr/share/applications/linuxbuh-installer-update.desktop
+cp -r ${FILESDIR}/linuxbuh-installer.png ${D}/usr/share/pixmaps
 cp -r ${WORKDIR}/${P}/linuxbuh-installer ${D}/usr/bin
+cp -r ${WORKDIR}/${P}/linuxbuh-installer-update ${D}/usr/bin
+cp -r ${WORKDIR}/${P}/lb-overlay-update ${D}/usr/bin
+cp -r ${WORKDIR}/${P}/lb-update ${D}/usr/bin
 cp -r ${WORKDIR}/${P}/wgetlinuxbuh ${D}/usr/bin
 cp -r ${WORKDIR}/${P}/txt ${D}/usr/share/linuxbuh-installer
 
