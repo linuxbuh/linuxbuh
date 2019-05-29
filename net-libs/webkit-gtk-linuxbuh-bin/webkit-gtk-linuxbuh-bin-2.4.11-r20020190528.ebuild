@@ -9,14 +9,14 @@ MULTILIB_COMPAT=( abi_x86_{32,64} )
 
 inherit eutils versionator multilib multilib-minimal unpacker
 
-
 DESCRIPTION="Бинарный пакет ${P} для платформы 1С:Предприятие 8.3"
 HOMEPAGE="http://linuxbuh.ru"
 
 DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/linuxbuh/net-libs/webkit-gtk-linuxbuh-bin"
 
-SRC_URI_X86="$DOWNLOADPAGE/${P}.${ARCH}.tar.gz"
-SRC_URI_AMD64="$DOWNLOADPAGE/${P}.${ARCH}.tar.gz"
+MY_P="${PF}"
+SRC_URI_X86="$DOWNLOADPAGE/${MY_P}.i686.tbz2"
+SRC_URI_AMD64="$DOWNLOADPAGE/${MY_P}.amd64.tbz2"
 
 SRC_URI="
 	amd64? ( ${SRC_URI_AMD64} )
@@ -24,24 +24,24 @@ SRC_URI="
 "
 
 
+
 LICENSE="GPL"
-SLOT="2"
+SLOT="3/25"
 KEYWORDS="x86 amd64"
 
 RESTRICT="mirror strip"
 
-IUSE="test aqua coverage debug +egl +geoloc gles2 gnome-keyring +gstreamer +introspection +jit +opengl spell +webgl +X"
+IUSE="test aqua coverage debug +egl +geolocation gles2 gnome-keyring +gstreamer +introspection +jit +opengl spell wayland +webgl +X"
 # bugs 372493, 416331
 REQUIRED_USE="
-	geoloc? ( introspection )
+	geolocation? ( introspection )
 	gles2? ( egl )
 	introspection? ( gstreamer )
 	webgl? ( ^^ ( gles2 opengl ) )
 	!webgl? ( ?? ( gles2 opengl ) )
-	|| ( aqua X )
+	|| ( aqua wayland X )
 "
 
-# use sqlite, svg by default
 RDEPEND="
 	dev-db/sqlite:3=
 	>=dev-libs/glib-2.36:2
@@ -55,14 +55,14 @@ RDEPEND="
 	media-libs/libwebp:=
 	>=net-libs/libsoup-2.42:2.4[introspection?]
 	virtual/jpeg:0=
-	>=x11-libs/cairo-1.10:=[X]
-	>=x11-libs/gtk+-2.24.10:2[aqua?,introspection?]
-	x11-libs/libXrender
-	x11-libs/libXt
+	>=x11-libs/cairo-1.10:=[X?]
+	>=x11-libs/gtk+-3.20.0:3[X?,aqua?,introspection?]
 	>=x11-libs/pango-1.30.0
 
+	>=x11-libs/gtk+-2.24.10:2
+
 	egl? ( media-libs/mesa[egl] )
-	geoloc? ( >=app-misc/geoclue-2.1.5:2.0 )
+	geolocation? ( >=app-misc/geoclue-2.1.5:2.0 )
 	gles2? ( media-libs/mesa[gles2] )
 	gnome-keyring? ( app-crypt/libsecret )
 	gstreamer? (
@@ -71,10 +71,15 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.32.0:= )
 	opengl? ( virtual/opengl )
 	spell? ( >=app-text/enchant-0.22:= )
+	wayland? ( >=x11-libs/gtk+-3.10:3[wayland] )
 	webgl? (
 		x11-libs/cairo[opengl]
 		x11-libs/libXcomposite
 		x11-libs/libXdamage )
+	X? (
+		x11-libs/libX11
+		x11-libs/libXrender
+		x11-libs/libXt )
 "
 
 # paxctl needed for bug #407085
@@ -83,6 +88,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	${RUBY_DEPS}
 	>=dev-lang/perl-5.10
+	>=app-accessibility/at-spi2-core-2.5.3
 	>=dev-libs/atk-2.8.0
 	>=dev-util/gtk-doc-am-1.10
 	>=dev-util/gperf-3.0.1
@@ -93,7 +99,7 @@ DEPEND="${RDEPEND}
 	>=sys-devel/make-3.82-r4
 	virtual/pkgconfig
 
-	geoloc? ( dev-util/gdbus-codegen )
+	geolocation? ( dev-util/gdbus-codegen )
 	introspection? ( jit? ( sys-apps/paxctl ) )
 	test? (
 		dev-lang/python:2.7
@@ -102,15 +108,19 @@ DEPEND="${RDEPEND}
 		jit? ( sys-apps/paxctl ) )
 "
 
+S="${WORKDIR}"
+
 src_unpack() {
-	mv ${DISTDIR}/${P}.${ARCH}.tar.gz ${WORKDIR}/${P}.tar.gz || die
-	einfo "Unpacking new ${P}.tar.gz"
-	unpack "./${P}.tar.gz"
+	mv ${DISTDIR}/${MY_P}.${ARCH}.tbz2 ${WORKDIR}/${MY_P}.tbz2 || die
+	einfo "Unpacking new ${MY_P}.tbz2"
+	unpack "./${MY_P}.tbz2"
 }
 
 
 src_install() {
+mkdir -p ${WORKDIR}/${PF}
 cd ${WORKDIR}
+
 mkdir -p ${D}/usr
-cp -r ${WORKDIR}/${P}/usr/* ${D}/usr
+cp -r ${WORKDIR}/${PF}/usr/* ${D}/usr
 }

@@ -14,8 +14,8 @@ HOMEPAGE="http://linuxbuh.ru"
 
 DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/linuxbuh/net-libs/webkit-gtk-linuxbuh-bin"
 
-SRC_URI_X86="$DOWNLOADPAGE/webkit-gtk-linuxbuh-bin-2.4.11-r1.x86.tar.gz"
-SRC_URI_AMD64="$DOWNLOADPAGE/webkit-gtk-linuxbuh-bin-2.4.11-r1.amd64.tar.gz"
+SRC_URI_X86="$DOWNLOADPAGE/${PF}.x86.tar.gz"
+SRC_URI_AMD64="$DOWNLOADPAGE/${PF}.amd64.tar.gz"
 
 SRC_URI="
 	amd64? ( ${SRC_URI_AMD64} )
@@ -107,14 +107,14 @@ DEPEND="${RDEPEND}
 		jit? ( sys-apps/paxctl ) )
 "
 src_unpack() {
-	mv ${DISTDIR}/webkit-gtk-linuxbuh-bin-2.4.11-r1.${ARCH}.tar.gz ${WORKDIR}/webkit-gtk-linuxbuh-bin-2.4.11.tar.gz || die
-	einfo "Unpacking new webkit-gtk-linuxbuh-bin-2.4.11.tar.gz"
-	unpack "./webkit-gtk-linuxbuh-bin-2.4.11.tar.gz"
+	mv ${DISTDIR}/${PF}.${ARCH}.tar.gz ${WORKDIR}/${PF}.tar.gz || die
+	einfo "Unpacking new ${PF}.tar.gz"
+	unpack "./${P}.tar.gz"
 }
 
 
 src_install() {
 cd ${WORKDIR}
 mkdir -p ${D}/usr
-cp -r ${WORKDIR}/webkit-gtk-linuxbuh-bin-2.4.11/usr/* ${D}/usr
+cp -r ${WORKDIR}/${P}/usr/* ${D}/usr
 }

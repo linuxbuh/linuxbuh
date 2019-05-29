@@ -14,8 +14,9 @@ HOMEPAGE="http://linuxbuh.ru"
 
 DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/linuxbuh/net-libs/webkit-gtk-linuxbuh-bin"
 
-SRC_URI_X86="$DOWNLOADPAGE/${P}.${ARCH}.tar.gz"
-SRC_URI_AMD64="$DOWNLOADPAGE/${P}.${ARCH}.tar.gz"
+MY_P="${PF}"
+SRC_URI_X86="$DOWNLOADPAGE/${MY_P}.i686.tbz2"
+SRC_URI_AMD64="$DOWNLOADPAGE/${MY_P}.amd64.tbz2"
 
 SRC_URI="
 	amd64? ( ${SRC_URI_AMD64} )
@@ -106,15 +107,20 @@ DEPEND="${RDEPEND}
 		x11-themes/hicolor-icon-theme
 		jit? ( sys-apps/paxctl ) )
 "
+
+S="${WORKDIR}"
+
 src_unpack() {
-	mv ${DISTDIR}/${P}.${ARCH}.tar.gz ${WORKDIR}/${P}.tar.gz || die
-	einfo "Unpacking new ${P}.tar.gz"
-	unpack "./${P}.tar.gz"
+	mv ${DISTDIR}/${MY_P}.${ARCH}.tbz2 ${WORKDIR}/${MY_P}.tbz2 || die
+	einfo "Unpacking new ${MY_P}.tbz2"
+	unpack "./${MY_P}.tbz2"
 }
 
 
 src_install() {
+mkdir -p ${WORKDIR}/${PF}
 cd ${WORKDIR}
+
 mkdir -p ${D}/usr
-cp -r ${WORKDIR}/${P}/usr/* ${D}/usr
+cp -r ${WORKDIR}/${PF}/usr/* ${D}/usr
 }
