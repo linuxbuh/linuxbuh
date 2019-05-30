@@ -26,7 +26,7 @@ SRC_URI="
 
 
 LICENSE="GPL"
-SLOT="3/25"
+SLOT="2"
 KEYWORDS="x86 amd64"
 
 RESTRICT="mirror strip"
@@ -118,9 +118,7 @@ src_unpack() {
 
 
 src_install() {
-mkdir -p ${WORKDIR}/${PF}
 cd ${WORKDIR}
-
 mkdir -p ${D}/usr
-cp -r ${WORKDIR}/${PF}/usr/* ${D}/usr
+cp -r ${WORKDIR}/usr/* ${D}/usr
 }
