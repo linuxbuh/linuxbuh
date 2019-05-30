@@ -26,7 +26,7 @@ SRC_URI="
 
 
 LICENSE="GPL"
-SLOT="3/25"
+SLOT="2"
 KEYWORDS="x86 amd64"
 
 RESTRICT="mirror strip"
