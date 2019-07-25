@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/usr/bin/x11vnc -ncache 0 -auth /var/run/lightdm/root/\:0 -dontdisconnect -display :0 -forever -shared -rfbauth /etc/x11vnc/passwd -o /var/log/x11vnc.log &

@@ -7,9 +7,8 @@ EAPI=6
 
 inherit eutils
 
-DESCRIPTION="x11vnc autostart"
+DESCRIPTION="x11vnc autostart LXDE"
 HOMEPAGE="http://linuxbuh.ru"
-#SRC_URI="ftp://ftp.linuxbuh.ru/linuxbuh/x11vnc/${P}.tar.gz"
 
 LICENSE="GPL"
 SLOT="0"
@@ -19,8 +18,7 @@ IUSE=""
 RESTRICT="mirror strip"
 
 RDEPEND="x11-misc/x11vnc
-	x11-misc/lightdm
-	!x11-misc/x11vnc-lightdm"
+	lxde-base/lxdm"
 
 DEPEND="${RDEPEND}"
 

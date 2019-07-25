@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/usr/bin/x11vnc -ncache 0 -dontdisconnect -display :0 -auth $(find /var/run/sddm/ -type f) -forever -shared -rfbauth /etc/x11vnc/passwd -o /var/log/x11vnc.log &
