@@ -18,7 +18,7 @@ LICENSE="AGPL-3"
 IUSE=""
 
 
-NATIVE_DEPEND="
+NATIVE_DEPEND="net-misk/curl[ssl,curl_ssl_gnutls,-curl_ssl_openssl]
 "
 RDEPEND="
     ${NATIVE_DEPEND}
@@ -44,7 +44,7 @@ cp -r ${FILESDIR}/*.png ${D}/usr/share/pixmaps
 
 pkg_postinst() {
 
-chmod 0755 /opt/onlyoffice/DesktopEditors-x86_64.AppImage
+chmod 0755 /opt/onlyoffice/desktopeditors/DesktopEditors-x86_64.AppImage
 chmod 0755 /usr/sbin/onlyoffice.sh
 
 }
