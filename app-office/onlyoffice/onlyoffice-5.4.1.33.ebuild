@@ -10,7 +10,7 @@ HOMEPAGE="http://www.onlyoffice.com/"
 
 KEYWORDS="amd64"
 
-SRC_URI="amd64? ( ftp://ftp.linuxbuh.ru/linuxbuh/app-office/onlyoffice/onlyoffice-${PV}.tar.gz )"
+SRC_URI="amd64? ( http://download.onlyoffice.com/install/desktop/editors/linux/DesktopEditors-x86_64.AppImage )"
 
 SLOT="0"
 RESTRICT="strip mirror"
