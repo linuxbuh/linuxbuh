@@ -18,7 +18,7 @@ LICENSE="AGPL-3"
 IUSE=""
 
 
-NATIVE_DEPEND="net-misk/curl[ssl,curl_ssl_gnutls,-curl_ssl_openssl]
+NATIVE_DEPEND="net-misc/curl[ssl,curl_ssl_gnutls,-curl_ssl_openssl]
 "
 RDEPEND="
     ${NATIVE_DEPEND}
