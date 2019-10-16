@@ -50,11 +50,9 @@ echo "#!/bin/bash
 
 MACHINE_TYPE=`uname -m`
 if [ \$MACHINE_TYPE == x86_64 ]; then
-sudo su
 /opt/etcher/balenaEtcher-${PV}-x64.AppImage
 fi
 if [ \$MACHINE_TYPE == 32 ]; then
-sudo su
 /opt/etcher/balenaEtcher-${PV}-ai32.AppImage
 fi" > /usr/sbin/etcher
 
