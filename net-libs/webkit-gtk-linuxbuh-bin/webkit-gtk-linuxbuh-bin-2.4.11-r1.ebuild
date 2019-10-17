@@ -109,7 +109,7 @@ DEPEND="${RDEPEND}
 src_unpack() {
 	mv ${DISTDIR}/${PF}.${ARCH}.tar.gz ${WORKDIR}/${PF}.tar.gz || die
 	einfo "Unpacking new ${PF}.tar.gz"
-	unpack "./${P}.tar.gz"
+	unpack "./${PF}.tar.gz"
 }
 
 
