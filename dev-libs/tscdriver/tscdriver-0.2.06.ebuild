@@ -36,5 +36,9 @@ cp -r ${WORKDIR}/${P}/* ${D}/opt/tscdriver-0.2.06
 }
 
 pkg_postinst() {
-echo "Запустите /opt/tscdriver-0.2.06/install-driver для установки драйверов"
+echo "
+
+Запустите /opt/tscdriver-0.2.06/install-driver для установки драйверов
+
+"
 }
