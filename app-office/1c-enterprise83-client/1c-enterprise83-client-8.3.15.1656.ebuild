@@ -68,6 +68,8 @@ pkg_postinst() {
 
 ln -s /usr/lib/libicui18n.so.64 /usr/lib/libicui18n.so.63
 ln -s /usr/lib/libicuuc.so.64 /usr/lib/libicuuc.so.63
+ln -s /usr/lib64/libicui18n.so.64 /usr/lib64/libicui18n.so.63
+ln -s /usr/lib64/libicuuc.so.64 /usr/lib64/libicuuc.so.63
 
 }
 
