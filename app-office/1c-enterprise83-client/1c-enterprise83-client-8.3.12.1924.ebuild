@@ -66,10 +66,15 @@ src_install() {
 
 pkg_postinst() {
 
-ln -s /usr/lib/libicui18n.so.64 /usr/lib/libicui18n.so.63
-ln -s /usr/lib/libicuuc.so.64 /usr/lib/libicuuc.so.63
-ln -s /usr/lib64/libicui18n.so.64 /usr/lib64/libicui18n.so.63
-ln -s /usr/lib64/libicuuc.so.64 /usr/lib64/libicuuc.so.63
+rm /usr/lib/libicui18n.so.63
+rm /usr/lib/libicuuc.so.63
+rm /usr/lib64/libicui18n.so.63
+rm /usr/lib64/libicuuc.so.63
+
+ln -s /usr/lib/libicui18n.so.65 /usr/lib/libicui18n.so.63
+ln -s /usr/lib/libicuuc.so.65 /usr/lib/libicuuc.so.63
+ln -s /usr/lib64/libicui18n.so.65 /usr/lib64/libicui18n.so.63
+ln -s /usr/lib64/libicuuc.so.65 /usr/lib64/libicuuc.so.63
 
 }
 
