@@ -10,8 +10,8 @@ HOMEPAGE="https://www.balena.io/etcher//"
 
 KEYWORDS="x86 amd64"
 
-SRC_URI="x86? ( https://github.com/balena-io/etcher/releases/download/v1.5.59/balena-etcher-electron-1.5.59-linux-ia32.zip )
-    amd64? ( https://github.com/balena-io/etcher/releases/download/v1.5.59/balena-etcher-electron-1.5.59-linux-x64.zip )
+SRC_URI="x86? ( https://github.com/balena-io/etcher/releases/download/v1.5.70/balena-etcher-electron-1.5.70-linux-ia32.zip )
+    amd64? ( https://github.com/balena-io/etcher/releases/download/v1.5.70/balena-etcher-electron-1.5.70-linux-x64.zip )
     "
 
 SLOT="0"
