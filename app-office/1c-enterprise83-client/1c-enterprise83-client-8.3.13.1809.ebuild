@@ -4,9 +4,7 @@
 
 EAPI=6
 
-MULTILIB_COMPAT=( abi_x86_{32,64} )
-
-inherit eutils versionator multilib multilib-minimal unpacker
+inherit eutils versionator multilib unpacker
 
 
 DESCRIPTION="Клиент 1C:Проедприятие 8.3 для GNU\LINUX"
@@ -14,38 +12,38 @@ HOMEPAGE="http://v8.1c.ru"
 
 MY_PV="$(replace_version_separator 3 '-' )"
 MY_PN="1c-enterprise83-client"
-SRC_URI="abi_x86_32? ( ${MY_PN}_${MY_PV}_i386.tar.gz )
-	abi_x86_64? ( ${MY_PN}_${MY_PV}_amd64.tar.gz )"
+
+SRC_URI="abi_x86_64? ( ${MY_PN}_${MY_PV}_amd64.tar.gz )"
 
 
 LICENSE="1CEnterprise_en"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64"
 RESTRICT="fetch"
 
 SLOT="0"
 
 IUSE="nls"
 
-RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}[${MULTILIB_USEDEP}]
-	=app-office/1c-enterprise83-server-${PV}:${SLOT}[${MULTILIB_USEDEP}]
-	>=dev-libs/icu-4.6[${MULTILIB_USEDEP}]
-	net-libs/webkit-gtk-linuxbuh-bin:3[${MULTILIB_USEDEP}]
-	app-crypt/mit-krb5[${MULTILIB_USEDEP}]
-	media-gfx/imagemagick[${MULTILIB_USEDEP}]
-	net-print/cups[${MULTILIB_USEDEP}]
-	x11-libs/libSM[${MULTILIB_USEDEP}]
-	dev-libs/atk[${MULTILIB_USEDEP}]
-	x11-libs/libXxf86vm[${MULTILIB_USEDEP}]
-	>=sys-libs/e2fsprogs-libs-1.41[${MULTILIB_USEDEP}]
-	>=x11-libs/cairo-1.0[${MULTILIB_USEDEP}]
-	sys-libs/glibc:2.2[${MULTILIB_USEDEP}]
-	>=sys-devel/gcc-3.4[${MULTILIB_USEDEP}]
-	x11-libs/gtk+:2[${MULTILIB_USEDEP}]
-	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
-	dev-libs/glib:2[${MULTILIB_USEDEP}]
-	net-libs/libsoup:2.4[${MULTILIB_USEDEP}]
-	sys-libs/zlib[${MULTILIB_USEDEP}]
-	app-office/linuxbuh-1c-installer[${MULTILIB_USEDEP}]"
+RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}
+	=app-office/1c-enterprise83-server-${PV}:${SLOT}
+	>=dev-libs/icu-4.6
+	net-libs/webkit-gtk-linuxbuh-bin:3
+	app-crypt/mit-krb5
+	media-gfx/imagemagick
+	net-print/cups
+	x11-libs/libSM
+	dev-libs/atk
+	x11-libs/libXxf86vm
+	>=sys-libs/e2fsprogs-libs-1.41
+	>=x11-libs/cairo-1.0
+	sys-libs/glibc:2.2
+	>=sys-devel/gcc-3.4
+	x11-libs/gtk+:2
+	x11-libs/gdk-pixbuf:2
+	dev-libs/glib:2
+	net-libs/libsoup:2.4
+	sys-libs/zlib
+	app-office/linuxbuh-1c-installer"
 
 DEPEND="${RDEPEND}"
 
