@@ -4,8 +4,6 @@
 
 EAPI=6
 
-MULTILIB_COMPAT=( abi_x86_{32,64} )
-
 inherit eutils versionator multilib multilib-minimal unpacker
 
 
@@ -14,20 +12,19 @@ HOMEPAGE="http://v8.1c.ru"
 
 MY_PV="$(replace_version_separator 3 '-' )"
 MY_PN="1c-enterprise83-common"
-SRC_URI="abi_x86_32? ( ${MY_PN}_${MY_PV}_i386.tar.gz )
-	abi_x86_64? ( ${MY_PN}_${MY_PV}_amd64.tar.gz )"
+SRC_URI="abi_x86_64? ( ${MY_PN}_${MY_PV}_amd64.tar.gz )"
 
 LICENSE="1CEnterprise_en"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64"
 RESTRICT="fetch"
 
 SLOT="0"
 
 IUSE="nls"
 
-RDEPEND=">=sys-libs/glibc-2.3[${MULTILIB_USEDEP}]
-	>=dev-libs/icu-3.8.1-r1[${MULTILIB_USEDEP}]
-	app-office/linuxbuh-1c-installer[${MULTILIB_USEDEP}]"
+RDEPEND=">=sys-libs/glibc-2.3
+	>=dev-libs/icu-3.8.1-r1
+	app-office/linuxbuh-1c-installer"
 
 DEPEND="${RDEPEND}"
 

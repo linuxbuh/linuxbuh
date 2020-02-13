@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils versionator multilib unpacker
+inherit eutils versionator multilib multilib-minimal unpacker
 
 
 DESCRIPTION="Клиент 1C:Проедприятие 8.3 для GNU\LINUX"
@@ -12,7 +12,6 @@ HOMEPAGE="http://v8.1c.ru"
 
 MY_PV="$(replace_version_separator 3 '-' )"
 MY_PN="1c-enterprise83-client"
-
 SRC_URI="abi_x86_64? ( ${MY_PN}_${MY_PV}_amd64.tar.gz )"
 
 
