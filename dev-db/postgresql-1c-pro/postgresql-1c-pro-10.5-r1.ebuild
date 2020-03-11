@@ -6,7 +6,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 PLOCALES="af cs de en es fa fr hr hu it ko nb pl pt_BR ro ru sk sl sv tr zh_CN
-		  zh_TW"
+		 zh_TW"
 
 inherit flag-o-matic l10n linux-info multilib pam prefix python-single-r1 \
 		systemd user versionator
@@ -15,42 +15,38 @@ KEYWORDS="amd64 x86"
 
 RESTRICT="mirror strip"
 
-#MY_PV="$(replace_version_separator 3 '-' )"
-#MY_PN="postgresql-pro-1c"
+S="${WORKDIR}/postgrespro-1c-10.5"
 
-SLOT="$(get_version_component_range 1-2)"
-#SLOT=0
+SRC_URI="ftp://ftp.linuxbuh.ru/postgresql-pro-1c/postgrespro-1c-10_10.5.orig.tar.bz2"
 
-#MY_PV=${PV/_/}
-S="${WORKDIR}/postgresql-pro-1c-9.6.5"
 
-SRC_URI="ftp://ftp.linuxbuh.ru/postgresql-pro-1c/postgresql-pro-1c-9.6_9.6.5.orig.tar.gz"
+SLOT=$(get_major_version)
 
 LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
-IUSE="doc kerberos kernel_linux ldap libressl nls pam perl -pg_legacytimestamp
-	  python +readline selinux +server systemd ssl static-libs tcl threads uuid
-	  xml zlib"
+IUSE="doc kerberos kernel_linux ldap libressl nls pam perl python +readline
+	  selinux +server systemd ssl static-libs tcl threads uuid xml zlib"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="
 >=app-eselect/eselect-postgresql-2.0
 sys-apps/less
+dev-python/psycopg-linuxbuh
 virtual/libintl
 kerberos? ( virtual/krb5 )
 ldap? ( net-nds/openldap )
-pam? ( virtual/pam )
+pam? ( sys-libs/pam )
 perl? ( >=dev-lang/perl-5.8:= )
 python? ( ${PYTHON_DEPS} )
 readline? ( sys-libs/readline:0= )
+server? ( systemd? ( sys-apps/systemd ) )
 ssl? (
 	!libressl? ( >=dev-libs/openssl-0.9.6-r1:0= )
 	libressl? ( dev-libs/libressl:= )
 )
-server? ( systemd? ( sys-apps/systemd ) )
 tcl? ( >=dev-lang/tcl-8:0= )
 xml? ( dev-libs/libxml2 dev-libs/libxslt )
 zlib? ( sys-libs/zlib )
@@ -84,6 +80,7 @@ DEPEND="${CDEPEND}
 sys-devel/bison
 sys-devel/flex
 dev-libs/icu
+dev-python/psycopg
 nls? ( sys-devel/gettext )
 xml? ( virtual/pkgconfig )
 "
@@ -106,7 +103,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cp ${FILESDIR}/copy_fetch.c ${S}/src/bin/pg_rewind
 	# Work around PPC{,64} compilation bug where bool is already defined
 	sed '/#ifndef __cplusplus/a #undef bool' -i src/include/c.h || die
 
@@ -119,7 +115,7 @@ src_prepare() {
 	# hardened and non-hardened environments. (Bug #528786)
 	sed 's/@install_bin@/install -c/' -i src/Makefile.global.in || die
 
-	use server || eapply "${FILESDIR}/${PN}-${SLOT}.3-no-server.patch"
+	use server || eapply "${FILESDIR}/${PN}-10.2-no-server.patch"
 
 	if use pam ; then
 		sed -e "s/\(#define PGSQL_PAM_SERVICE \"postgresql\)/\1-${SLOT}/" \
@@ -162,7 +158,6 @@ src_configure() {
 		--sysconfdir="${PO}/etc/postgresql-${SLOT}" \
 		--with-system-tzdata="${PO}/usr/share/zoneinfo" \
 		$(use_enable !alpha spinlocks) \
-		$(use_enable !pg_legacytimestamp integer-datetimes) \
 		$(use_enable threads thread-safety) \
 		$(use_with kerberos gssapi) \
 		$(use_with ldap) \
@@ -196,10 +191,16 @@ src_install() {
 	# manually install man pages.
 	# We use ${SLOT} instead of doman for postgresql.eselect
 	insinto /usr/share/postgresql-${SLOT}/man/
-	doins -r doc/src/sgml/man{1,3,7}
+	doins -r doc/src/xml/man{1,3,7}
 	if ! use server; then
 		# Remove man pages for non-existent binaries
-		for m in {initdb,pg_{controldata,ctl,resetxlog},post{gres,master}}; do
+		serverman=(
+			initdb
+			pg_{archivecleanup,controldata,ctl,resetwal,rewind,standby}
+			pg_{test_{fsync,timing},upgrade,waldump}
+			post{gres,master}
+		)
+		for m in ${serverman[@]} ; do
 			rm "${ED}/usr/share/postgresql-${SLOT}/man/man1/${m}.1"
 		done
 	fi
@@ -215,7 +216,7 @@ src_install() {
 
 		for f in "${ED}/usr/share/postgresql-${SLOT}/man/man${mansec}"/* ; do
 			bn=$(basename "${f}")
-			slotted_name=${bn%.${mansec}}${SLOT/.}.${mansec}
+			slotted_name=${bn%.${mansec}}${SLOT}.${mansec}
 			case ${bn} in
 				TABLE.7|WITH.7)
 					echo ".so ${rel_manpath}/SELECT.7" > ${slotted_name}
@@ -243,15 +244,12 @@ src_install() {
 		# issue. This is only necessary for 9.7 and earlier. 10 never
 		# had this issue.
 		dosym "../$(get_libdir)/postgresql-${SLOT}/bin/${bn}" \
-			  "/usr/bin/${bn}${SLOT/.}tmp"
+			  "/usr/bin/${bn}${SLOT/.}"
 	done
 
 	if use doc ; then
 		docinto html
-		dodoc doc/src/sgml/html/*
-
-		docinto sgml
-		dodoc doc/src/sgml/*.{sgml,dsl}
+		dodoc doc/src/xml/html/*
 	fi
 
 	if use server; then
@@ -265,10 +263,9 @@ src_install() {
 			sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
 				"${FILESDIR}/${PN}.service-9.6-r1" | \
 				systemd_newunit - ${PN}-${SLOT}.service
+			newbin "${FILESDIR}"/${PN}-check-db-dir ${PN}-${SLOT}-check-db-dir
 			systemd_newtmpfilesd "${FILESDIR}"/${PN}.tmpfiles ${PN}-${SLOT}.conf
 		fi
-
-		newbin "${FILESDIR}"/${PN}-check-db-dir ${PN}-${SLOT}-check-db-dir
 
 		use pam && pamd_mimic system-auth ${PN}-${SLOT} auth account session
 
@@ -279,42 +276,8 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	# Find all of the slot-specific symlinks, if any, in /usr/bin (e.g.,
-	# /usr/bin/psql96). They may have been created by the
-	# postgresql.eselect module, but they're handled within this ebuild
-	# now. It's alright if we momentarily delete /usr/bin/psql as it
-	# will be recreated by the eselect module in pkg_ppostinst(). This
-	# is only necessary for 9.7 and earlier. 10 and later were never
-	# handled in this manner.
-	local canonicalise
-	if type -p realpath > /dev/null; then
-		canonicalise=realpath
-	elif type -p readlink > /dev/null; then
-		canonicalise='readlink -f'
-	else
-		# can't die, subshell
-		die "No readlink nor realpath found, cannot canonicalise"
-	fi
-
-	local l
-	# First remove any symlinks in /usr/bin that may have been created
-	# by the old eselect
-	for l in $(find "${ROOT%/}/usr/bin" -mindepth 1 -maxdepth 1 -type l) ; do
-		if [[ $(${canonicalise} "${l}") == *postgresql-${SLOT}* ]] ; then
-			rm "${l}" || ewarn "Couldn't remove ${l}"
-		fi
-	done
-
-	# Then move the symlinks created by the ebuild to their proper place.
-	for l in "${ED}"/usr/bin/*tmp ; do
-		mv "${l}" "${l%tmp}" \
-			|| ewarn "Couldn't rename $(basename ${l}) to $(basename ${l%tmp})"
-	done
-}
-
 pkg_postinst() {
-	rc-update add postgresql-1c-pro-9.6 default
+	rc-update add postgresql-1c-pro-10 default
 	use server && use systemd && systemd_tmpfiles_create ${PN}-${SLOT}.conf
 	postgresql-config update
 
@@ -339,6 +302,14 @@ pkg_postinst() {
 		elog "Then, execute the following command to setup the initial database"
 		elog "environment:"
 		elog "    emerge --config =${CATEGORY}/${PF}"
+
+		if [[ -n ${REPLACING_VERSIONS} ]] ; then
+			ewarn "If your system is using 'pg_stat_statements' and you are running a"
+			ewarn "version of PostgreSQL ${SLOT}, we advise that you execute"
+			ewarn "the following command after upgrading:"
+			ewarn
+			ewarn "ALTER EXTENSION pg_stat_statements UPDATE;"
+		fi
 	fi
 }
 
@@ -494,3 +465,4 @@ src_test() {
 		ewarn 'Skipping.'
 	fi
 }
+
