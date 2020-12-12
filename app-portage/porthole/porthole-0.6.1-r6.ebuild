@@ -1,14 +1,12 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/porthole/porthole-0.6.1-r1.ebuild,v 1.11 2013/02/12 19:32:43 ago Exp $
 
-EAPI="2"
-PYTHON_DEPEND="2"
-SUPPORT_PYTHON_ABIS="1"
-PYTHON_USE_WITH="xml threads"
-RESTRICT_PYTHON_ABIS="3.* 2.7-pypy-* *-jython"
+EAPI="5"
 
-inherit distutils eutils
+PYTHON_COMPAT=(python3_6)
+PYTHON_REQ_USE="threads(+),xml(+)"
+
+inherit distutils-r1 eutils
 
 DESCRIPTION="A GTK+-based frontend to Portage"
 HOMEPAGE="http://porthole.sourceforge.net"
@@ -16,23 +14,28 @@ SRC_URI="mirror://sourceforge/porthole/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ~sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ppc ~ppc64 sparc x86 ~x86-fbsd"
 IUSE="nls"
 LANGS="de pl ru vi it fr tr"
-for X in $LANGS; do IUSE="${IUSE} linguas_${X}"; done
 
-RDEPEND=">=sys-apps/portage-2.1
-	dev-python/pygtk:2
+RDEPEND="
+	|| (
+		>=sys-apps/portage-2.1[${PYTHON_USEDEP}]
+		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
+	)
+	dev-python/pygtk:2[${PYTHON_USEDEP}]
 	gnome-base/libglade:2.0
-	dev-python/pygtksourceview:2
+	dev-python/pygtksourceview:2[${PYTHON_USEDEP}]
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.14 )"
-RESTRICT_PYTHON_ABIS="3.*"
 
-src_prepare() {
-	epatch "${FILESDIR}/${P}-masking_status.patch" # bug 307037
-}
+PATCHES=(
+	"${FILESDIR}/${P}-masking_status.patch" # bug 307037
+	"${FILESDIR}/${P}-missing_import.patch" # bug 323179
+	"${FILESDIR}/${P}-missing-attribute.patch" #bug 323179
+	"${FILESDIR}/${P}-missing_portdir.patch"
+)
 
 src_compile(){
 	# Compile localizations if necessary
@@ -42,8 +45,8 @@ src_compile(){
 	fi
 }
 
-src_install() {
-	distutils_src_install
+python_install_all() {
+	distutils-r1_python_install_all
 
 	dodoc TODO README NEWS AUTHORS
 

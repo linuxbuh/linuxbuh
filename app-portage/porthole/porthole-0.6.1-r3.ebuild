@@ -2,13 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-portage/porthole/porthole-0.6.1-r3.ebuild,v 1.2 2013/01/11 19:21:12 zerochaos Exp $
 
-EAPI="2"
+EAPI="7"
+
+PYTHON_COMPAT=(python3_6)
 PYTHON_DEPEND="2"
 SUPPORT_PYTHON_ABIS="1"
 PYTHON_USE_WITH="xml threads"
 RESTRICT_PYTHON_ABIS="3.* *-jython 2.7-pypy-*"
 
-inherit distutils eutils
+inherit distutils-r1 eutils
 
 DESCRIPTION="A GTK+-based frontend to Portage"
 HOMEPAGE="http://porthole.sourceforge.net"
@@ -44,7 +46,7 @@ src_compile(){
 }
 
 src_install() {
-	distutils_src_install
+	distutils-r1_python_install
 
 	dodoc TODO README NEWS AUTHORS
 
