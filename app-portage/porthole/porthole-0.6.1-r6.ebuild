@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=(python2_7)
 PYTHON_REQ_USE="threads(+),xml(+)"
-PYTHON_DEPEND="3"
+PYTHON_DEPEND="2"
 SUPPORT_PYTHON_ABIS="1"
 RESTRICT_PYTHON_ABIS="3.* *-jython 2.7-pypy-*"
 
@@ -24,12 +24,12 @@ LANGS="de pl ru vi it fr tr"
 
 RDEPEND="
 	|| (
-		>=sys-apps/portage-2.1[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
+		>=sys-apps/portage-2.1
+		sys-apps/portage-mgorny
 	)
-	dev-python/pygtk:2[${PYTHON_USEDEP}]
+	dev-python/pygtk:2
 	gnome-base/libglade:2.0
-	dev-python/pygtksourceview:2[${PYTHON_USEDEP}]
+	dev-python/pygtksourceview:2
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.14 )"
