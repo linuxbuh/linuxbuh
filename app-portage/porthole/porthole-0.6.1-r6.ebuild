@@ -1,11 +1,12 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/porthole/porthole-0.6.0.ebuild,v 1.1 2009/10/27 14:25:48 idl0r Exp $
 
-EAPI="7"
+EAPI="5"
 
-PYTHON_COMPAT=( python3_{6,7,8} pypy3  )
-inherit distutils-r1
+PYTHON_COMPAT=(python2_7)
+PYTHON_REQ_USE="threads(+),xml(+)"
+
+inherit distutils-r1 eutils
 
 DESCRIPTION="A GTK+-based frontend to Portage"
 HOMEPAGE="http://porthole.sourceforge.net"
@@ -13,19 +14,39 @@ SRC_URI="mirror://sourceforge/porthole/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ppc ~ppc64 sparc x86 ~x86-fbsd"
 IUSE="nls"
+LANGS="de pl ru vi it fr tr"
 
-RDEPEND=">=dev-lang/python-2.4[xml,threads]
-	>=sys-apps/portage-2.1
-	>=dev-python/pygtk-2.4.0
-	>=gnome-base/libglade-2.5.0
+RDEPEND="
+	|| (
+		>=sys-apps/portage-2.1[${PYTHON_USEDEP}]
+		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
+	)
+	dev-python/pygtk:2[${PYTHON_USEDEP}]
+	gnome-base/libglade:2.0
+	dev-python/pygtksourceview:2[${PYTHON_USEDEP}]
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.14 )"
 
-src_install() {
-	distutils-r1_python_install
+PATCHES=(
+	"${FILESDIR}/${P}-masking_status.patch" # bug 307037
+	"${FILESDIR}/${P}-missing_import.patch" # bug 323179
+	"${FILESDIR}/${P}-missing-attribute.patch" #bug 323179
+	"${FILESDIR}/${P}-missing_portdir.patch"
+)
+
+src_compile(){
+	# Compile localizations if necessary
+	if use nls ; then
+		cd scripts
+		./pocompile.sh -emerge ${LINGUAS} || die "pocompile failed"
+	fi
+}
+
+python_install_all() {
+	distutils-r1_python_install_all
 
 	dodoc TODO README NEWS AUTHORS
 
@@ -34,15 +55,11 @@ src_install() {
 	keepdir /var/db/porthole
 	fperms g+w /var/db/porthole
 
-	# Compile localizations if necessary
-	if use nls ; then
-		cd "${D}/usr/share/${PN}"
-		./pocompile.sh || die "pocompile.sh failed"
-	else
-		rm -rf "${D}/usr/share/${PN}/i18n"
+	# nls
+	if use nls; then
+		# mo directory doesn't exists with nls enabled and unsupported LINGUAS
+		[[ -d porthole/i18n/mo ]] && domo porthole/i18n/mo/*
 	fi
-
-	rm -rf "${D}/usr/share/${PN}"/{pocompile,dopot}.sh
 }
 
 pkg_preinst() {
