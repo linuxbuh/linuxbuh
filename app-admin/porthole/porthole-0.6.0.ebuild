@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.14 )"
 
 src_install() {
-	distutils_src_install
+	distutils-r1_pythom_install
 
 	dodoc TODO README NEWS AUTHORS
 
