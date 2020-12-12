@@ -3,8 +3,12 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=(python3_6)
+PYTHON_COMPAT=(python2_7)
 PYTHON_REQ_USE="threads(+),xml(+)"
+PYTHON_DEPEND="2"
+SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="3.* *-jython 2.7-pypy-*"
+
 
 inherit distutils-r1 eutils
 
