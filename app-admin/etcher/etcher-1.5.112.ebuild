@@ -8,10 +8,9 @@ inherit fdo-mime font gnome2-utils eutils multilib unpacker
 DESCRIPTION="Flash OS images to SD cards & USB drives, safely and easily."
 HOMEPAGE="https://www.balena.io/etcher//"
 
-KEYWORDS="x86 amd64"
+KEYWORDS="amd64"
 
-SRC_URI="x86? ( https://github.com/balena-io/etcher/releases/download/v1.5.70/balena-etcher-electron-1.5.70-linux-ia32.zip )
-    amd64? ( https://github.com/balena-io/etcher/releases/download/v1.5.70/balena-etcher-electron-1.5.70-linux-x64.zip )
+SRC_URI="amd64? ( https://github.com/balena-io/etcher/releases/download/v1.5.112/balena-etcher-electron-1.5.112-linux-x64.zip )
     "
 
 SLOT="0"
