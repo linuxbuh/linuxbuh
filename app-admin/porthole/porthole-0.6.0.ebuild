@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/app-portage/porthole/porthole-0.6.0.ebuild,v 1.1 2009/10/27 14:25:48 idl0r Exp $
 
-EAPI="6"
+EAPI="7"
 
-#inherit distutils
-inherit eutils multilib
+PYTHON_COMPAT=( python3_{6,7,8} pypy3  )
+inherit distutils-r1
 
 DESCRIPTION="A GTK+-based frontend to Portage"
 HOMEPAGE="http://porthole.sourceforge.net"
