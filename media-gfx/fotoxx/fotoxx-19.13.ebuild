@@ -7,6 +7,7 @@ EAPI=6
 
 inherit eutils toolchain-funcs fdo-mime
 
+
 DESCRIPTION="Program for improving image files made with a digital camera"
 HOMEPAGE="https://www.kornelix.net/fotoxx/fotoxx.html"
 SRC_URI="https://www.kornelix.net/downloads/downloads/${P}.tar.gz"

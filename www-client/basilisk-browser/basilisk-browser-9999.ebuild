@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=6
+
 inherit fdo-mime font eutils
 
 DESCRIPTION="basilisk webrowser"

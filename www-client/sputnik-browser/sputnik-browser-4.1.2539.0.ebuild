@@ -3,6 +3,7 @@
 # $Id$
 
 EAPI=6
+
 inherit fdo-mime font gnome2-utils eutils multilib unpacker
 
 DESCRIPTION="sputnik webrowser"
