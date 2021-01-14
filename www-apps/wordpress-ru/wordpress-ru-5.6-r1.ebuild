@@ -13,6 +13,7 @@ LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="virtual/httpd-php
+	dev-db/mariadb
 	|| ( dev-lang/php[mysql] dev-lang/php[mysqli] dev-lang/php[-postges] dev-lang/php[apache2] )"
 
 S=${WORKDIR}/${PN}
