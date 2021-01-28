@@ -7,7 +7,7 @@ inherit rpm
 
 DESCRIPTION="Cryptopro package"
 HOMEPAGE="http://www.cryptopro.ru"
-SRC_URI="cprocsp-${PV}-amd64.tar.gz"
+SRC_URI="linux-amd64.tgz"
 
 LICENSE="Cryptopro"
 SLOT="0"
@@ -21,12 +21,12 @@ RESTRICT="fetch strip"
 src_unpack () {
     unpack ${A}
 	cd ${WORKDIR}
-	mv linux_amd64/* ${DISTDIR}
+	mv linux-amd64/* ${DISTDIR}
 	rm -rf *
 	mkdir ${S}
 	cd ${S}
     SUFF="-64-${PV}-5.x86_64.rpm"
-    rpm_unpack lsb-cprocsp-base-${PV}-5.noarch.rpm
+    rpm_unpack lsb-cprocsp-base-5.0.11455-5.noarch.rpm
     rpm_unpack lsb-cprocsp-rdr${SUFF}
 	rpm_unpack lsb-cprocsp-capilite${SUFF} 
 	rpm_unpack lsb-cprocsp-kc1${SUFF} 
