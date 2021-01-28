@@ -39,20 +39,29 @@ src_unpack () {
 	rpm_unpack cprocsp-rdr-rutoken${SUFF}
 	rpm_unpack cprocsp-compat-altlinux-64-1.0.0-1.noarch.rpm
 	rpm_unpack cprocsp-cpopenssl${SUFF}
+	rpm_unpack cprocsp-cpopenssl-110${SUFF}
+	rpm_unpack cprocsp-cpopenssl-110-base-${PV}-5.noarch.rpm
+	rpm_unpack cprocsp-cpopenssl-110-devel-${PV}-5.noarch.rpm
+	rpm_unpack cprocsp-cpopenssl-110-gost${SUFF}
 	rpm_unpack cprocsp-cpopenssl-base-${PV}-5.noarch.rpm
 	rpm_unpack cprocsp-cpopenssl-devel-${PV}-5.noarch.rpm
 	rpm_unpack cprocsp-cpopenssl-gost${SUFF}
+	rpm_unpack cprocsp-cptools-gtk${SUFF}
 	rpm_unpack cprocsp-curl${SUFF}
 	rpm_unpack cprocsp-drv-devel-${PV}-5.noarch.rpm
 	rpm_unpack cprocsp-ipsec-devel-${PV}-5.noarch.rpm
 	rpm_unpack cprocsp-ipsec-genpsk${SUFF}
 	rpm_unpack cprocsp-ipsec-ike${SUFF}
+	rpm_unpack cprocsp-rdr-cloud${SUFF}
+	rpm_unpack cprocsp-rdr-cloud-gtk${SUFF}
+	rpm_unpack cprocsp-rdr-cpfkc${SUFF}
 	rpm_unpack cprocsp-rdr-emv${SUFF}
 	rpm_unpack cprocsp-rdr-esmart${SUFF}
-	rpm_unpack cprocsp-rdr-gui${SUFF}
 	rpm_unpack cprocsp-rdr-gui-gtk${SUFF}
+	rpm_unpack cprocsp-rdr-infocrypt${SUFF}
 	rpm_unpack cprocsp-rdr-inpaspot${SUFF}
-	rpm_unpack cprocsp-rdr-jacarta-64-3.6.408.683-4.x86_64.rpm
+	rpm_unpack cprocsp-rdr-jacarta-64-5.0.0.1148-4.x86_64.rpm
+	rpm_unpack cprocsp-rdr-kst${SUFF}
 	rpm_unpack cprocsp-rdr-mskey${SUFF}
 	rpm_unpack cprocsp-rdr-novacard${SUFF}
 	rpm_unpack cprocsp-rdr-pcsc${SUFF}
@@ -71,6 +80,8 @@ src_unpack () {
 	rpm_unpack lsb-cprocsp-pkcs11${SUFF}
 	rpm_unpack lsb-cprocsp-rdr${SUFF}
 	rpm_unpack lsb-cprocsp-rdr-accord${SUFF}
+	rpm_unpack lsb-cprocsp-rdr-ancud${SUFF}
+	rpm_unpack lsb-cprocsp-rdr-crypton${SUFF}
 	rpm_unpack lsb-cprocsp-rdr-maxim${SUFF}
 	rpm_unpack lsb-cprocsp-rdr-sobol${SUFF}
 }

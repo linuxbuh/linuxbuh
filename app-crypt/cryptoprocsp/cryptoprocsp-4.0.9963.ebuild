@@ -51,8 +51,9 @@ src_unpack () {
 	rpm_unpack cprocsp-rdr-esmart${SUFF}
 	rpm_unpack cprocsp-rdr-gui${SUFF}
 	rpm_unpack cprocsp-rdr-gui-gtk${SUFF}
+	rpm_unpack cprocsp-rdr-infocrypt${SUFF}
 	rpm_unpack cprocsp-rdr-inpaspot${SUFF}
-	rpm_unpack cprocsp-rdr-jacarta-64-3.6.408.683-4.x86_64.rpm
+	rpm_unpack cprocsp-rdr-jacarta-64-3.6.408.695-4.x86_64.rpm
 	rpm_unpack cprocsp-rdr-mskey${SUFF}
 	rpm_unpack cprocsp-rdr-novacard${SUFF}
 	rpm_unpack cprocsp-rdr-pcsc${SUFF}
@@ -71,6 +72,8 @@ src_unpack () {
 	rpm_unpack lsb-cprocsp-pkcs11${SUFF}
 	rpm_unpack lsb-cprocsp-rdr${SUFF}
 	rpm_unpack lsb-cprocsp-rdr-accord${SUFF}
+	rpm_unpack lsb-cprocsp-rdr-ancud${SUFF}
+	rpm_unpack lsb-cprocsp-rdr-crypton${SUFF}
 	rpm_unpack lsb-cprocsp-rdr-maxim${SUFF}
 	rpm_unpack lsb-cprocsp-rdr-sobol${SUFF}
 }
