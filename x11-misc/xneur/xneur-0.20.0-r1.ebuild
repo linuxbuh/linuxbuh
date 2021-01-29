@@ -30,7 +30,7 @@ COMMON_DEPEND=">=dev-libs/libpcre-5.0
 			gtk3? ( x11-libs/gtk+:3 )
 			!gtk3? ( x11-libs/gtk+:2 ) )
 		>=x11-libs/libnotify-0.4.0 )
-	spell? ( app-text/enchant )
+	spell? ( app-text/enchant:0 )
 	xosd? ( x11-libs/xosd )"
 RDEPEND="${COMMON_DEPEND}
 	gstreamer? ( media-libs/gst-plugins-good
