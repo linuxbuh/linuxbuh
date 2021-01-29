@@ -18,6 +18,7 @@ IUSE=""
 
 DEPEND=" sys-apps/pcsc-tools
 	sys-apps/pcsc-lite
+	sys-apps/lsb-release
 	app-crypt/ccid"
 RDEPEND="${DEPEND}"
 RESTRICT="mirror strip"
