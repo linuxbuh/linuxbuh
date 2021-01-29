@@ -91,6 +91,8 @@ src_unpack () {
 
 src_install() {
     cp -vR ${S}/* ${D}/
+    rm ${D}/etc/init.d/cprocsp
+    cp ${FILESDIR}/cprocsp-5.0.11455 ${D}/etc/init.d/cprocsp
 }
 
 #pkg_config() {
@@ -98,3 +100,9 @@ src_install() {
 #	certmgr -inst -file ${DISTDIR}/uec2.cer -store=Root
 #	/opt/cprocsp/sbin/amd64/configure_base_prov.sh kc1
 #}
+
+pkg_postinst() {
+chmod -R 777 /var/opt/cprocsp
+touch /etc/debian_version
+echo "jessie/sid" > /etc/debian_version
+}
