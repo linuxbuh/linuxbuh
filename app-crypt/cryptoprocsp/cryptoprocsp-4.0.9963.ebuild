@@ -16,7 +16,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND=""
+DEPEND=" sys-apps/pcsc-tools
+	sys-apps/pcsc-lite
+	app-crypt/ccid"
 RDEPEND="${DEPEND}"
 RESTRICT="mirror strip"
 
