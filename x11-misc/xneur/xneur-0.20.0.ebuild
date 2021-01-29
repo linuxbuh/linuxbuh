@@ -34,7 +34,7 @@ COMMON_DEPEND=">=dev-libs/libpcre-5.0
 	xosd? ( x11-libs/xosd )"
 RDEPEND="${COMMON_DEPEND}
 	gstreamer? ( media-libs/gst-plugins-good
-		media-plugins/gst-plugins-alsa )
+		media-plugins/gst-plugins-meta )
 	nls? ( virtual/libintl )
 	gtk3? ( !x11-misc/gxneur )"
 DEPEND="${COMMON_DEPEND}
