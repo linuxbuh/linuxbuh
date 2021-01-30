@@ -33,10 +33,7 @@ src_unpack () {
     SUFF="-64-${PV}-5.x86_64.rpm"
 
 
-	rpm_unpack lsb-cprocsp-capilite${SUFF} 
-	rpm_unpack lsb-cprocsp-kc1${SUFF} 
-	rpm_unpack lsb-cprocsp-pkcs11${SUFF} 
-	rpm_unpack cprocsp-rdr-pcsc${SUFF} 
+	rpm_unpack cprocsp-rdr-pcsc${SUFF}
 	rpm_unpack cprocsp-rdr-gui-gtk${SUFF}
 	rpm_unpack cprocsp-stunnel${SUFF}
 	rpm_unpack cprocsp-rdr-rutoken${SUFF}
@@ -60,18 +57,14 @@ src_unpack () {
 	rpm_unpack cprocsp-rdr-cpfkc${SUFF}
 	rpm_unpack cprocsp-rdr-emv${SUFF}
 	rpm_unpack cprocsp-rdr-esmart${SUFF}
-	rpm_unpack cprocsp-rdr-gui-gtk${SUFF}
 	rpm_unpack cprocsp-rdr-infocrypt${SUFF}
 	rpm_unpack cprocsp-rdr-inpaspot${SUFF}
 	rpm_unpack cprocsp-rdr-jacarta-64-5.0.0.1148-4.x86_64.rpm
 	rpm_unpack cprocsp-rdr-kst${SUFF}
 	rpm_unpack cprocsp-rdr-mskey${SUFF}
 	rpm_unpack cprocsp-rdr-novacard${SUFF}
-	rpm_unpack cprocsp-rdr-pcsc${SUFF}
 	rpm_unpack cprocsp-rdr-rosan${SUFF}
-	rpm_unpack cprocsp-rdr-rutoken${SUFF}
 	rpm_unpack cprocsp-rsa${SUFF}
-	rpm_unpack cprocsp-stunnel${SUFF}
 	rpm_unpack cprocsp-xer2print-${PV}-5.noarch.rpm
 	rpm_unpack ifd-rutokens-1.0.1-1.x86_64.rpm
 	rpm_unpack lsb-cprocsp-base-${PV}-5.noarch.rpm
