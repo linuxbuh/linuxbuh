@@ -33,10 +33,7 @@ src_unpack () {
     SUFF="-64-${PV}-5.x86_64.rpm"
 
 
-	rpm_unpack lsb-cprocsp-capilite${SUFF} 
-	rpm_unpack lsb-cprocsp-kc1${SUFF} 
-	rpm_unpack lsb-cprocsp-pkcs11${SUFF} 
-	rpm_unpack cprocsp-rdr-pcsc${SUFF} 
+	rpm_unpack cprocsp-rdr-pcsc${SUFF}
 	rpm_unpack cprocsp-rdr-gui-gtk${SUFF}
 	rpm_unpack cprocsp-stunnel${SUFF}
 	rpm_unpack cprocsp-rdr-rutoken${SUFF}
