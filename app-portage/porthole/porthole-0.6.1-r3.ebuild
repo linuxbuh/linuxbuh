@@ -10,7 +10,7 @@ SUPPORT_PYTHON_ABIS="1"
 PYTHON_USE_WITH="xml threads"
 RESTRICT_PYTHON_ABIS="3.* *-jython 2.7-pypy-*"
 
-inherit distutils-r1 eutils
+inherit distutils-r1 eutils python-r1
 
 DESCRIPTION="A GTK+-based frontend to Portage"
 HOMEPAGE="http://porthole.sourceforge.net"
