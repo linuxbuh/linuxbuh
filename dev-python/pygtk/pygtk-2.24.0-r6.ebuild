@@ -4,7 +4,9 @@
 EAPI=6
 
 GNOME_TARBALL_SUFFIX="bz2"
-PYTHON_COMPAT=( python2_7 )
+
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7,8,9} )
+
 inherit autotools flag-o-matic gnome2 python-r1 virtualx
 
 DESCRIPTION="GTK+2 bindings for Python"

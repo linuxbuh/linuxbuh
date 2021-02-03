@@ -17,11 +17,11 @@ SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -
 	https://dev.gentoo.org/~candrews/kodi-18-libmicrohttpd-0.9.71.patch"
 
 if [[ ${PV} == *9999 ]] ; then
-	PYTHON_COMPAT=( python2_7 python3_{8,9} )
+	PYTHON_COMPAT=( python2_7 python3_{4,5,6,7,8,9} )
 	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
 	inherit git-r3
 else
-	PYTHON_COMPAT=( python2_7 )
+	PYTHON_COMPAT=( python2_7 python3_{4,5,6,7,8,9} )
 	MY_PV=${PV/_p/_r}
 	MY_PV=${MY_PV/_alpha/a}
 	MY_PV=${MY_PV/_beta/b}
