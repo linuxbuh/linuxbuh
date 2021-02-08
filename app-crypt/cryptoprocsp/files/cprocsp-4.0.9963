@@ -38,7 +38,7 @@ lsb_sanity_check()
 #      test -f /usr/lib/lsb/install_initd || return 1
 #      test -f /usr/lib/lsb/remove_initd || return 1
 #    fi
-    test -f test -r /etc/debian_version || return 1
+    test -f /etc/debian_version || return 1
     return 0
 }
 

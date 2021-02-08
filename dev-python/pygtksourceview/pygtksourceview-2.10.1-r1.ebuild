@@ -2,11 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/dev-python/pygtksourceview/pygtksourceview-2.10.1-r1.ebuild,v 1.11 2014/04/19 17:43:52 ago Exp $
 
-EAPI="5"
+EAPI="6"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
 GNOME_TARBALL_SUFFIX="bz2"
-PYTHON_COMPAT=( python2_{6,7} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7,8,9} )
 
 inherit gnome2 python-r1
 
