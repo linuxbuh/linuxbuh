@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=6
+EAPI=7
 inherit fdo-mime font gnome2-utils eutils multilib unpacker
 
 DESCRIPTION="Офисный пакет OnlyOffice - замена Microsoft Office"
