@@ -174,3 +174,7 @@ src_install() {
 	doins -r opt
 	fperms +x /opt/onlyoffice/desktopeditors/{DesktopEditors,editors_helper,converter/x2t}
 }
+
+pkg_postinst() {
+cp -r /opt/onlyoffice/desktopeditors/asc-de-256.png /usr/share/pixmaps/onlyoffice-desktopeditors.png
+}
