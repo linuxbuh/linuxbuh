@@ -4,7 +4,7 @@
 
 EAPI=7
 
-inherit eutils versionator
+inherit eutils
 
 DESCRIPTION="A high-quality scanning and digital camera raw image processing software."
 HOMEPAGE="http://www.hamrick.com/"
@@ -22,8 +22,8 @@ INSTALLDIR="/opt/VueScan"
 
 IUSE=""
 
-RDEPEND=">=x11-libs/gtk+-2.0[${MULTILIB_USEDEP}]
-	media-gfx/sane-backends[${MULTILIB_USEDEP}]"
+RDEPEND=">=x11-libs/gtk+-2.0
+	media-gfx/sane-backends"
 
 DEPEND="${RDEPEND}"
 
