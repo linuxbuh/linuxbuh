@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=7
+EAPI=6
 
-inherit eutils
+inherit eutils toolchain-funcs fdo-mime
 
 DESCRIPTION="A high-quality scanning and digital camera raw image processing software."
 HOMEPAGE="http://www.hamrick.com/"
