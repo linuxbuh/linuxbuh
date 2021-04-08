@@ -52,7 +52,7 @@ pkg_postinst() {
 
 echo "#!/bin/sh
 exec /opt/Rambox/rambox
-" > /usr/sbin/rambox
+" > /usr/bin/rambox
 
 chmod 0755 /usr/bin/rambox
 
