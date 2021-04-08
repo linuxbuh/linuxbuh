@@ -32,4 +32,11 @@ src_install() {
 	cp -R "${WORKDIR}/opt" "${D}" || die "install failed!"
 	cp -R "${WORKDIR}/usr" "${D}" || die "install failed!"
 
+	mkdir -p ${D}/usr/share/applications
+	mkdir -p ${D}/usr/share/pixmaps
+	mkdir -p ${D}/usr/bin
+	cp -r ${FILESDIR}/onlyoffice.desktop ${D}/usr/share/applications/onlyoffice.desktop
+	cp -r ${FILESDIR}/onlyoffice.png ${D}/usr/share/pixmaps
+	cp -r ${FILESDIR}/onlyoffice ${D}/usr/bin
+
 }
