@@ -8,8 +8,7 @@ inherit eutils
 
 DESCRIPTION="A high-quality scanning and digital camera raw image processing software."
 HOMEPAGE="http://www.hamrick.com/"
-DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/linuxbuh/vuescan"
-SRC_URI="abi_x86_64? ( $DOWNLOADPAGE/vuex6497.tgz )"
+SRC_URI="abi_x86_64? ( https://www.hamrick.com/files/vuex6497.tgz )"
 
 LICENSE="vuescan"
 SLOT="0"
