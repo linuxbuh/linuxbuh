@@ -49,9 +49,18 @@ pkg_preinst() {
 pkg_postinst() {
 	gnome2_icon_cache_update
 	xdg_pkg_postinst
+
+echo "#!/bin/sh
+exec /opt/Rambox/rambox
+" > /usr/sbin/rambox
+
+chmod 0755 /usr/bin/rambox
+
 }
 
 pkg_postrm() {
 	gnome2_icon_cache_update
 	xdg_pkg_postrm
+
+rm /usr/bin/rambox
 }
