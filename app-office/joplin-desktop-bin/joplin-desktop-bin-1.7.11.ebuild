@@ -34,7 +34,7 @@ mkdir -p ${D}/opt/Joplin
 mkdir -p ${D}/usr/share/applications
 mkdir -p ${D}/usr/share/pixmaps
 
-cp -r /var/calculate/remote/distfiles/Joplin-${PV}.AppImage ${D}/opt/Joplin/Joplin.AppImage
+
 cp -r ${FILESDIR}/*.desktop ${D}/usr/share/applications/*.desktop
 cp -r ${FILESDIR}/*.png ${D}/usr/share/pixmaps
 
@@ -43,6 +43,7 @@ cp -r ${FILESDIR}/*.png ${D}/usr/share/pixmaps
 
 pkg_postinst() {
 
+cp -r /var/calculate/remote/distfiles/Joplin-*.AppImage /opt/Joplin/Joplin.AppImage
 chmod 0755 /opt/Joplin/*.AppImage
 
 echo "#!/bin/bash
