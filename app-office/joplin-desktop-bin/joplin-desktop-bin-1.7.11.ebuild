@@ -8,10 +8,9 @@ inherit eutils
 DESCRIPTION="Joplin is a free, open source note taking and to-do application, which can handle a large number of notes organised into notebooks. The notes are searchable, can be copied, tagged and modified either from the applications directly or from your own text editor."
 HOMEPAGE="https://https://joplinapp.org//"
 
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
-SRC_URI="amd64? ( https://github.com/laurent22/joplin/releases/download/v${PV}/Joplin-${PV}.AppImage )
-    "
+SRC_URI="https://github.com/laurent22/joplin/releases/download/v${PV}/Joplin-${PV}.AppImage"
 
 SLOT="0"
 RESTRICT="mirror strip"
