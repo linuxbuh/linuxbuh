@@ -43,7 +43,7 @@ cp -r ${FILESDIR}/*.png ${D}/usr/share/pixmaps
 
 pkg_postinst() {
 
-cp -f /var/calculate/remote/distfiles/Joplin-1.7.11.AppImage /opt/Joplin/Joplin.AppImage
+cp -r /var/calculate/distfiles/Joplin-${PV}.AppImage /opt/Joplin/Joplin.AppImage
 chmod 0755 /opt/Joplin/*.AppImage
 
 echo "#!/bin/bash
