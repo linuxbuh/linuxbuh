@@ -23,6 +23,7 @@ INSTALLDIR="/opt/VueScan"
 IUSE=""
 
 RDEPEND=">=x11-libs/gtk+-2.0
+	virtual/libusb:0
 	media-gfx/sane-backends"
 
 DEPEND="${RDEPEND}"
