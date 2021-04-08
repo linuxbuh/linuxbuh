@@ -33,4 +33,11 @@ src_install() {
 	cp -R "${WORKDIR}/opt" "${D}" || die "install failed!"
 	cp -R "${WORKDIR}/usr" "${D}" || die "install failed!"
 
+	mkdir -p ${D}/usr/share/applications
+	mkdir -p ${D}/usr/share/pixmaps
+	mkdir -p ${D}/usr/bin
+	cp -r ${FILESDIR}/chromium-gost.desktop ${D}/usr/share/applications/chromium-gost.desktop
+	cp -r ${FILESDIR}/chromium-gost.png ${D}/usr/share/pixmaps
+	cp -r ${FILESDIR}/chromium-gost ${D}/usr/bin
+
 }
