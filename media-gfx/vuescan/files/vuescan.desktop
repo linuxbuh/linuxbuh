@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Vuescan
-Comment=Vuescan.
+Comment=Vuescan
 Comment[ru]=Vuescan
 Icon=vuescan
 Exec=/usr/bin/vuescan
-TryExec=/usr/sbin/etcher
+TryExec=/usr/bin/vuescan
 Type=Application
 Categories=Grapchics;

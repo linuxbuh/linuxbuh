@@ -2,21 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=6
+EAPI=7
 
-MULTILIB_COMPAT=( abi_x86_{32,64} )
-
-inherit eutils versionator multilib multilib-minimal
+inherit eutils versionator
 
 DESCRIPTION="A high-quality scanning and digital camera raw image processing software."
 HOMEPAGE="http://www.hamrick.com/"
 DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/linuxbuh/vuescan"
-SRC_URI="abi_x86_32? ( $DOWNLOADPAGE/vuex3296.tgz )
-	abi_x86_64? ( $DOWNLOADPAGE/vuex6496.tgz )"
+SRC_URI="abi_x86_64? ( $DOWNLOADPAGE/vuex6497.tgz )"
 
 LICENSE="vuescan"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="amd64"
 RESTRICT="mirror strip"
 
 S="${WORKDIR}/VueScan"
