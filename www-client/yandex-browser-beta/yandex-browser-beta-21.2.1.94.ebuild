@@ -14,8 +14,7 @@ HOMEPAGE="https://browser.yandex.ru/beta/"
 LICENSE="Yandex-EULA"
 SLOT="0"
 SRC_URI="
-	amd64? ( https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-beta/yandex-browser-beta_${MY_PV}_amd64.deb -> ${P}.deb )
-	amd64? ( http://gpo.ws54.tk/gentoo-distfiles/${P}.deb -> ${P}.deb )
+	amd64? ( https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-beta/yandex-browser-beta_21.2.1.94-1_amd64.deb -> ${P}.deb )
 "
 KEYWORDS="~amd64"
 IUSE="ffmpeg-codecs"
