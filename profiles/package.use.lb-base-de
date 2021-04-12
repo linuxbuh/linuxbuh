@@ -1,2 +1,2 @@
-#Добавляем в /etc/portage/package.use флаги сборки для sys-apps/#calculate-utils
+#Добавляем в /etc/portage/package.use флаги сборки для sys-apps/calculate-utils
 sys-apps/calculate-utils backup client console dbus desktop gpg install qt5
