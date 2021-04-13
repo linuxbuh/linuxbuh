@@ -4,13 +4,13 @@
   <repo priority="50" quality="experimental" status="unofficial">
    <name>linuxbuh</name>
     <description>linuxbuh.ru Overlay</description>
-    <homepage>http://www.linuxbuh.ru.ru</homepage>
+    <homepage>http://www.linuxbuh.ru.</homepage>
 	<owner type="project">
       <email>zime@yandex.ru</email>
       <name>Gentoo linuxbuh.ru Project</name>
     </owner>
-    <source type="git">https://github.com/linuxbuh/linuxbuh.ru.git</source>
-    <source type="git">git://github.com/linuxbuh/linuxbuh.ru.git</source>
+    <source type="git">https://github.com/linuxbuh/linuxbuh.git</source>
+    <source type="git">git@github.com:linuxbuh/linuxbuh.git</source>
   </repo>
 </repositories>
 
