@@ -16,7 +16,6 @@ dev-util/dialog
 app-text/wgetpaste
 app-vim/colorschemes
 dev-python/gst-python
-games-misc/games-envd
 media-fonts/noto-emoji
 media-gfx/utsushi
 net-analyzer/nmap
@@ -108,7 +107,6 @@ net-vpn/networkmanager-openconnect
 net-vpn/networkmanager-openvpn
 net-vpn/networkmanager-pptp
 net-vpn/networkmanager-sstp
-net-vpn/networkmanager-strongswan
 net-vpn/networkmanager-vpnc
 net-vpn/networkmanager-wireguard
 gnome-extra/nm-applet
