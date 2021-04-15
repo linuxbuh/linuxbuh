@@ -10,7 +10,7 @@ inherit eutils unpacker
 DESCRIPTION="Файл для persistence mode Calculate Linux"
 HOMEPAGE="http://linuxbuh.ru"
 
-SRC_URI="https://github.com/linuxbuh/linuxbuh-persistence-mode/archive/refs/tags/2021.04.15.tar.gz"
+SRC_URI="https://github.com/linuxbuh/linuxbuh-persistence-mode/archive/refs/tags/2021.04.15.tar.gz -> linuxbuh-persistence-mode-2021.04.15.tar.gz "
 
 LICENSE="linuxbuh"
 SLOT="0"
