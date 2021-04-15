@@ -1,0 +1,229 @@
+#!/sbin/openrc-run
+# Copyright 1999-2013 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+
+depend() {
+	after x-setup
+	before xdm
+}
+
+start() {
+
+	if ! get_bootparam "persistence"; then return 0;fi
+
+	if ! get_bootparam "persistence_mb"; then
+#		case $(</proc/cmdline) in
+#			persistence_mb=*)
+#				persistence_img_mb="${cmd_line#*=}"
+#		esac
+
+#ztime start
+		eval "kernel_args=( $(cat /proc/cmdline) )"
+		for arg in "${kernel_args[@]}" ; do
+		    case "${arg}" in
+	            persistence_mb=*)
+	            persistence_img_mb="${arg#persistence_mb=}"
+    	        ;;
+	        esac
+		done;
+#ztime end
+
+	fi
+
+
+	
+	# switch to verbose mode
+	splash_manager -c set -t livecd-12.0 -m v &> /dev/null
+	reset
+	chvt 1
+	
+	# Persistent Mode enabled
+	ewarn "Enabling Persistence Mode (logfile: /tmp/persistence.log)..."
+	ebegin "Please plug-in your removable device now (10 seconds)..."
+	sleep 9
+	einfo "Waiting for device to settle"
+	sleep 7
+	einfo "Scanning..."
+	sleep 1
+
+	do_break=false
+	persistence_found=false
+
+	for device in /sys/block/*/device; do
+
+		$do_break && break
+
+		is_floppy=$(echo $device | grep "fd[0-99]")
+		is_sr=$(echo $device | grep "sr[0-99]")
+		if [ -n "$is_floppy" ] || [ -n "$is_sr" ]; then
+			continue
+		fi
+
+		# if it's not a floppy or an external recorder, scrub it
+		device=$(echo $device | cut -d/ -f4)
+
+		#if [ -e /sys/block/$device/removable ]; then
+		#	is_removable=$(cat /sys/block/$device/removable)
+		#	((is_removable==1)) && continue
+		#fi
+
+		# Counting partitions...
+		partitions_list=( /dev/$device[1-9] )
+
+		for partition in ${partitions_list[@]}; do
+
+			# Mount them and verify the correct operation
+			mkdir -p /mnt/persistence &> /dev/null
+			if ! mount $partition /mnt/persistence &> /dev/null; then
+				ewarn "Tried to mount "$partition" without luck" >> /tmp/persistence.log
+				continue
+			fi
+
+			echo "Mounted "$partition" for test" >> /tmp/persistence.log
+
+			# Look for "persistence-mode" file (case insensitive)
+			file_found=$(find /mnt/persistence -maxdepth 1 -nowarn -iname persistence-mode)
+
+			if [ -z "$file_found" ];then
+				echo "persistence-mode not found on "$partition >> /tmp/persistence.log
+				umount /mnt/persistence -f &> /dev/null
+				rmdir /mnt/persistence &> /dev/null
+				continue
+			fi
+
+			# test r/w capabilities
+			touch /mnt/persistence/.touch-test &> /dev/null
+			if (($? != 0)) || [ ! -f "/mnt/persistence/.touch-test" ]; then
+				echo "No read-write capabilities for " $partition >> /tmp/persistence.log
+				umount /mnt/persistence -f &> /dev/null
+				rmdir /mnt/persistence /&> /dev/null
+				continue
+			fi
+
+			rm /mnt/persistence/.touch-test
+			# Look for existing image
+			if [ -e /mnt/persistence/gentoo-persistence.ext4 ]; then
+				echo "/mnt/persistence/gentoo-persistence.ext4 on "$partition " exists" >> /tmp/persistence.log
+				
+				# found it! now mount it
+				if mount -o loop /mnt/persistence/gentoo-persistence.ext4 /home &> /dev/null; then
+					echo "/mnt/persistence/gentoo-persistence.ext4 mounted using "$partition >> /tmp/persistence.log
+					einfo "Found Persistence on "$partition". Mounted and fully working."
+					do_break=true
+					persistence_found=true
+					break
+				else
+					echo "/mnt/persistence/gentoo-persistence.ext4 cannot be mounted  using " $partition >> /tmp/persistence.log
+					umount -l /mnt/persistence &> /dev/null
+					rmdir /mnt/persistence &> /dev/null
+					ewarn  "Found Persistence on "$partition". But the image does not work."
+					continue
+				fi
+			fi
+
+			echo "/mnt/persistence/gentoo-persistence.ext4 on "$partition "does not exist" >> /tmp/persistence.log
+			# create disk image and test available space
+			# need to find another way to get avaiable space
+			
+			# output
+			ebegin  "Trying to create the image on "$partition" ..."
+			#dd if=/dev/zero of=/mnt/persistence/gentoo-persistence.ext4 count=${persistence_img_mb:-256} bs=1024k &> /dev/null
+			dd if=/dev/zero of=/mnt/persistence/gentoo-persistence.ext4 count=${persistence_img_mb} bs=1G &> /dev/null
+#			echo
+#			read -i "" -p "Введите размер файла для директории /home в гигабайтах (например 2) : " -e HOMEFILE
+#			echo
+#			if [[ -z "$HOMEFILE" ]];then
+#		    	    echo
+#			        echo "Размер не задан"
+#			        echo
+#			        exit 1
+#			fi
+#				echo
+#				echo "Создаем раздел /home размером $HOMEFILE GB"
+#				echo
+
+#				dd if=/dev/zero of=/mnt/persistence/gentoo-persistence.ext4 bs=1G count=$HOMEFILE
+
+#				echo "Создан раздел /home размером $HOMEFILE GB"
+
+
+			lofine=false
+			for lodev in {1..7}; do
+				loopdevice=${lodev}
+				losetup /dev/loop${lodev} /mnt/persistence/gentoo-persistence.ext4
+				(($? == 0)) && { lofine=true; break; }
+			done
+
+			if ! ${lofine}; then
+				ewarn "Sorry, no free loopback device"
+				echo "No free loopback device for "$partition >> /tmp/persistence.log
+				continue
+			fi
+
+			# loopback ok, formatting...
+			if ! mkfs.ext4 -L Gentoo11-persistance-partition /dev/loop$loopdevice &> /dev/null; then
+				ewarn "Sorry, unable to format" $persistence_img_mb
+				echo "Cannot format the image on " $partition  >> /tmp/persistence.log
+				rm -rf /mnt/persistence/gentoo-persistence.ext4 &> /dev/null
+				continue
+			fi
+
+			ebegin "Image formatted and ready to get filled " $partition "using loopback" $loopdevice >> /tmp/persistence.log
+			mkdir /mnt/loopbacktemp
+			if ! mount -o loop /mnt/persistence/gentoo-persistence.ext4 /mnt/loopbacktemp; then
+				ewarn "Sorry, cannot mount the image"
+				echo "Image not mounted" $partition "using loopback" $loopdevice >> /tmp/persistence.log
+				continue
+			fi
+
+			ebegin "Image formatted and ready to get filled " $partition "using loopback" $loopdevice >> /tmp/persistence.log
+			cp -a /home/* /mnt/loopbacktemp/
+			if ! mount --move /mnt/loopbacktemp/ /home/; then
+				ewarn "Sorry, cannot move mount point"
+				echo "Cannot move mount point for" $partition "and loopback" $loopdevice  >> /tmp/persistence.log
+				continue
+			fi
+
+			einfo "Image created and mounted !"
+			echo "Image created and mounted using" $word "and loopback" $loopdevice >> /tmp/persistence.log
+			do_break=true
+			persistence_found=true
+			break
+		done
+	done
+
+	if $persistence_found; then 
+		# switch to silent mode
+		splash_manager -c set -t livecd-12.0 -m s &> /dev/null
+		chvt 1
+		eend 0 "Persistence mode started"
+	else
+		eend 1 "Persistence is not enabled or no devices found."
+	fi
+}
+
+stop() {
+
+	if get_bootparam "persistence"; then
+		ebegin "Stopping persistence mode"
+		sync
+		# umount every possible mounted filesystem (/home and /mnt/persistence)
+		mnt_xsistence_img_mounted=$(grep "/mnt/persistence/gentoo-persistence.ext4" /etc/mtab)
+		if [ -n "$mnt_xsistence_img_mounted" ]; then
+			mozilla_cache=$(find /home/*/.mozilla -nowarn -name Cache)
+			for folder in $mozilla_cache; do
+				rm -rf $folder
+			done
+			sync
+			sleep 1
+			umount -l -r -d /mnt/persistence/gentoo-persistence.ext4
+		fi
+		mnt_xsistence_mounted=$(grep "/mnt/persistence" /etc/mtab)
+		if [ -n "$mnt_xsistence_mounted" ]; then
+			umount -l -r /mnt/persistence
+		fi
+
+	fi
+
+}
