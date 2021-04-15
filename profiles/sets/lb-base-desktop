@@ -111,3 +111,4 @@ net-vpn/networkmanager-vpnc
 net-vpn/networkmanager-wireguard
 gnome-extra/nm-applet
 app-backup/timeshift
+linuxbuh-persistence-mode
