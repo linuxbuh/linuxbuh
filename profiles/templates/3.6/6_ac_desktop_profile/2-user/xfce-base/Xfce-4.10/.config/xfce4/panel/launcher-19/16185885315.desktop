@@ -1,0 +1,30 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Midori
+Name[ru]=Midori (лёгкий браузер)
+GenericName=Web Browser
+GenericName[ru]=Веб-браузер
+X-GNOME-Fullname=Midori Web Browser
+X-GNOME-Fullname[ru]=Веб-браузер Midori
+Comment=Browse the Web
+Comment[ru]=Работа в Интернете
+X-GNOME-Keywords=Internet;WWW;Explorer
+X-GNOME-Keywords[ru]=Internet;Explorer;Интернет;браузер;обозреватель;www
+X-AppInstall-Keywords=Internet;WWW;Explorer
+X-AppInstall-Keywords[ru]=Internet;Explorer;Интернет;браузер;обозреватель;www
+Categories=GTK;Network;WebBrowser;
+MimeType=text/html;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/geo;image/svg+xml;
+Exec=midori %U
+Icon=org.midori_browser.Midori
+Terminal=false
+StartupNotify=true
+X-GNOME-UsesNotifications=true
+Actions=Private;
+Path=
+X-XFCE-Source=file:///home/guest/.local/share/applications/org.midori_browser.Midori.desktop
+
+[Desktop Action Private]
+Name=New Private Browsing Window
+Name[ru]=Новое приватное окно
+Exec=midori --private

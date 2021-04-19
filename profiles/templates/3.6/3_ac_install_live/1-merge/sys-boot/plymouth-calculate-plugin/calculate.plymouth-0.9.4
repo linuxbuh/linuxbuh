@@ -1,0 +1,12 @@
+# Calculate format=kde path=/usr/share/plymouth/themes/calculate pkg(sys-boot/plymouth-calculate-plugin)<0.9.5 name=calculate.plymouth
+[calculate]
+#?os_install_locale_lang==ru_RU#
+ShutdownText=З а в е р ш е н и е   р а б о т ы
+#os_install_locale_lang#
+#?os_install_locale_lang==fr_FR#
+ShutdownText=A r r ê t   e n   c o u r s
+#os_install_locale_lang#
+#?os_install_locale_lang!=ru_RU&&os_install_locale_lang!=fr_FR#
+ShutdownText=S h u t t i n g   d o w n
+#os_install_locale_lang#
+ShutdownFont=DroidSans #-sum(yres,,#-cut(1,x,#-list(cl_resolutions,0)-#)-#)-##-sum(km,yres*20/1080,km)-#

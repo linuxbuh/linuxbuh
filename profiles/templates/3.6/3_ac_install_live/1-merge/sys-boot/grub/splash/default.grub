@@ -1,0 +1,49 @@
+# Calculate format=openrc path=/etc/default name=grub
+#?pkg(media-gfx/splashutils)!=#
+#?ini(theme.splash-silent-background)!=&&exists(#-ini(theme.splash-silent-background)-#)!=#
+GRUB_CMDLINE_LINUX="video=#-os_install_fb_resolution-# #-os_install_kernel_resume-# #-os_install_kernel_attr-# calculate=video:#-os_install_x11_video_drv-# splash=silent,theme:calculate console=tty1 quiet"
+#ini#
+#?ini(theme.splash-verbose-background)!=&&exists(#-ini(theme.splash-verbose-background)-#)!=&&ini(theme.splash-silent-background)==||ini(theme.splash-verbose-background)!=&&exists(#-ini(theme.splash-verbose-background)-#)!=&&exists(#-ini(theme.splash-silent-background)-#)==#
+GRUB_CMDLINE_LINUX="video=#-os_install_fb_resolution-# #-os_install_kernel_resume-# #-os_install_kernel_attr-# calculate=video:#-os_install_x11_video_drv-# splash=verbose,theme:calculate console=tty1 quiet"
+#ini#
+#?ini(theme.splash-silent-background)==&&ini(theme.splash-verbose-background)==||ini(theme.splash-silent-background)==&&exists(#-ini(theme.splash-verbose-background)-#)==||ini(theme.splash-verbose-background)==&&exists(#-ini(theme.splash-silent-background)-#)==||exists(#-ini(theme.splash-verbose-background)-#)==&&exists(#-ini(theme.splash-silent-background)-#)==#
+GRUB_CMDLINE_LINUX="video=#-os_install_fb_resolution-# #-os_install_kernel_resume-# #-os_install_kernel_attr-# calculate=video:#-os_install_x11_video_drv-# splash=off console=tty1 quiet"
+#ini#
+#pkg#
+
+#?pkg(media-gfx/splashutils)==&&pkg(sys-boot/plymouth)!=#
+#?ini(theme.splash-silent-picture)!=&&exists(#-ini(theme.splash-silent-picture)-#)!=&&ini(theme.splash-shutdown-picture)!=&&exists(#-ini(theme.splash-shutdown-picture)-#)!=#
+GRUB_CMDLINE_LINUX="video=#-os_install_fb_resolution-# #-os_install_kernel_resume-# #-os_install_kernel_attr-# calculate=video:#-os_install_x11_video_drv-# splash quiet"
+#ini#
+#?ini(theme.splash-shutdown-picture)!=&&exists(#-ini(theme.splash-shutdown-picture)-#)!=&&ini(theme.splash-silent-picture)==||ini(theme.splash-shutdown-picture)!=&&exists(#-ini(theme.splash-shutdown-picture)-#)!=&&ini(theme.splash-silent-picture)!=&&exists(#-ini(theme.splash-silent-picture)-#)==#
+GRUB_CMDLINE_LINUX="video=#-os_install_fb_resolution-# #-os_install_kernel_resume-# #-os_install_kernel_attr-# calculate=video:#-os_install_x11_video_drv-# splash=shutdown rd.plymouth=0 quiet"
+#ini#
+#?ini(theme.splash-silent-picture)!=&&exists(#-ini(theme.splash-silent-picture)-#)!=&&ini(theme.splash-shutdown-picture)==||ini(theme.splash-silent-picture)!=&&exists(#-ini(theme.splash-silent-picture)-#)!=&&ini(theme.splash-shutdown-picture)!=&&exists(#-ini(theme.splash-shutdown-picture)-#)==#
+GRUB_CMDLINE_LINUX="video=#-os_install_fb_resolution-# #-os_install_kernel_resume-# #-os_install_kernel_attr-# calculate=video:#-os_install_x11_video_drv-# splash=silent quiet"
+#ini#
+#?ini(theme.splash-silent-picture)==&&ini(theme.splash-shutdown-picture)==||ini(theme.splash-silent-picture)!=&&exists(#-ini(theme.splash-silent-picture)-#)==&&ini(theme.splash-shutdown-picture)==||ini(theme.splash-silent-picture)==&&ini(theme.splash-shutdown-picture)!=&&exists(#-ini(theme.splash-shutdown-picture)-#)==||ini(theme.splash-silent-picture)!=&&exists(#-ini(theme.splash-silent-picture)-#)==&&ini(theme.splash-shutdown-picture)!=&&exists(#-ini(theme.splash-shutdown-picture)-#)==#
+GRUB_CMDLINE_LINUX="video=#-os_install_fb_resolution-# #-os_install_kernel_resume-# #-os_install_kernel_attr-# calculate=video:#-os_install_x11_video_drv-# rd.plymouth=0 quiet"
+#ini#
+#pkg#
+
+#?pkg(media-gfx/splashutils)==&&pkg(sys-boot/plymouth)==#
+GRUB_CMDLINE_LINUX="video=#-os_install_fb_resolution-# #-os_install_kernel_resume-# #-os_install_kernel_attr-# calculate=video:#-os_install_x11_video_drv-# rd.plymouth=0 splash=off console=tty1 quiet"
+#pkg#
+GRUB_GFXMODE="#-os_install_fb_resolution-#"
+
+#?os_install_linux_subname==#
+GRUB_DISTRIBUTOR="#-os_install_linux_name-#"
+#!os_install_linux_subname#
+GRUB_DISTRIBUTOR="#-os_install_linux_name-# #-os_install_linux_subname-#"
+#os_install_linux_subname#
+
+#?os_install_grub_terminal==console#
+GRUB_TERMINAL=console
+#!os_install_grub_terminal#
+!GRUB_TERMINAL=
+#os_install_grub_terminal#
+#?kernel(fb_vesa)!=&&os_install_fb_resolution!=#
+GRUB_GFXPAYLOAD_LINUX="#-os_install_fb_resolution-#x24,#-os_install_fb_resolution-##?os_install_fb_resolution!=1024x768#,1024x768#os_install_fb_resolution#"
+#!kernel#
+GRUB_GFXPAYLOAD_LINUX="text"
+#kernel#

@@ -1,0 +1,72 @@
+**** НАЧАЛО ВХОЖДЕНИЯ НА Sun Apr 18 21:23:23 2021
+
+апр 18 21:23:23 *	*** Looking up your hostname...
+апр 18 21:23:23 *	*** Checking Ident
+апр 18 21:23:23 *	*** Found your hostname
+апр 18 21:23:32 *	*** No Ident response
+апр 18 21:23:32 *	Capabilities supported: account-notify away-notify cap-notify chghost extended-join identify-msg multi-prefix sasl tls
+апр 18 21:23:32 *	Capabilities requested: account-notify away-notify cap-notify chghost extended-join identify-msg multi-prefix 
+апр 18 21:23:33 *	Capabilities acknowledged: account-notify away-notify cap-notify chghost extended-join identify-msg multi-prefix 
+**** ЗАКАНЧИВАЕТСЯ ВХОЖДЕНИЕ НА Sun Apr 18 21:23:33 2021
+
+**** НАЧАЛО ВХОЖДЕНИЯ НА Sun Apr 18 21:23:33 2021
+
+апр 18 21:23:33 *	Welcome to the freenode Internet Relay Chat Network GuestVB-ru
+апр 18 21:23:33 *	Your host is rothfuss.freenode.net[84.17.44.180/6667], running version ircd-seven-1.1.9
+апр 18 21:23:33 *	This server was created Thu Aug 20 2020 at 18:11:04 UTC
+апр 18 21:23:33 *	rothfuss.freenode.net ircd-seven-1.1.9 DOQRSZaghilopsuwz CFILMPQSbcefgijklmnopqrstuvz bkloveqjfI
+апр 18 21:23:33 *	CHANTYPES=# EXCEPTS INVEX CHANMODES=eIbq,k,flj,CFLMPQScgimnprstuz CHANLIMIT=#:120 PREFIX=(ov)@+ MAXLIST=bqeI:100 MODES=4 NETWORK=freenode STATUSMSG=@+ CALLERID=g CASEMAPPING=rfc1459 :are supported by this server
+апр 18 21:23:33 *	CHARSET=ascii NICKLEN=16 CHANNELLEN=50 TOPICLEN=390 DEAF=D FNC TARGMAX=NAMES:1,LIST:1,KICK:1,WHOIS:1,PRIVMSG:4,NOTICE:4,ACCEPT:,MONITOR: EXTBAN=$,ajrxz CLIENTVER=3.0 KNOCK WHOX SAFELIST :are supported by this server
+апр 18 21:23:33 *	ELIST=CTU ETRACE CPRIVMSG CNOTICE MONITOR=100 :are supported by this server
+апр 18 21:23:33 *	There are 104 users and 77206 invisible on 31 servers
+апр 18 21:23:33 *	31 :IRC Operators online
+апр 18 21:23:33 *	19 :unknown connection(s)
+апр 18 21:23:33 *	41703 :channels formed
+апр 18 21:23:33 *	I have 2940 clients and 1 servers
+апр 18 21:23:33 *	2940 3782 :Current local users 2940, max 3782
+апр 18 21:23:33 *	77310 83476 :Current global users 77310, max 83476
+апр 18 21:23:33 *	Highest connection count: 3783 (3782 clients) (144086 connections received)
+апр 18 21:23:33 *	- rothfuss.freenode.net Message of the Day - 
+апр 18 21:23:33 *	- Welcome to freenode - supporting the free and open source
+апр 18 21:23:33 *	- software communities since 1998.
+апр 18 21:23:33 *	-  
+апр 18 21:23:33 *	- By connecting to freenode you indicate that you have read and
+апр 18 21:23:33 *	- accept our policies and guidelines as set out on https://freenode.net
+апр 18 21:23:33 *	-  
+апр 18 21:23:33 *	- In the event that you observe behaviour that contravenes our policies,
+апр 18 21:23:33 *	- please notify a volunteer staff member via private message, or send us an
+апр 18 21:23:33 *	- e-mail to complaints@freenode.net -- we will do our best to address the
+апр 18 21:23:33 *	- situation within a reasonable period of time, and we may request further
+апр 18 21:23:33 *	- information or, as appropriate, involve other parties such as channel operators 
+апр 18 21:23:33 *	- Group Contacts representing an on-topic group.
+апр 18 21:23:33 *	-  
+апр 18 21:23:33 *	- freenode runs an open proxy scanner.
+апр 18 21:23:33 *	-  
+апр 18 21:23:33 *	- If you are looking for assistance, you may be able to find a list of 
+апр 18 21:23:33 *	- volunteer staff on '/stats p' (shows only on-call staff) or by joining 
+апр 18 21:23:33 *	- #freenode and using the '/who freenode/staff/*' command. You may message
+апр 18 21:23:33 *	- any of us at any time. Please note that freenode predominantly provides 
+апр 18 21:23:33 *	- assistance via private message, and while we have a network channel the 
+апр 18 21:23:33 *	- primary venue for support requests is via private message to a member 
+апр 18 21:23:33 *	- of the volunteer staff team.
+апр 18 21:23:33 *	-  
+апр 18 21:23:33 *	- From time to time, volunteer staff may send server-wide notices relating to
+апр 18 21:23:33 *	- the project, or the communities that we host. The majority of such notices
+апр 18 21:23:33 *	- will be sent as wallops, and you can '/mode <yournick> +w' to ensure that you
+апр 18 21:23:33 *	- do not miss them. Important messages relating to the freenode project, including
+апр 18 21:23:33 *	- notices of upcoming maintenance and other scheduled downtime will be issued as
+апр 18 21:23:33 *	- global notices.
+апр 18 21:23:33 *	-  
+апр 18 21:23:33 *	- Representing an on-topic project? Don't forget to register, more information
+апр 18 21:23:33 *	- can be found on the https://freenode.net website under "Group Registration".
+апр 18 21:23:33 *	-  
+апр 18 21:23:33 *	- Thank you also to our server sponsors for the sustained support in keeping the
+апр 18 21:23:33 *	- network going for close to two decades.
+апр 18 21:23:33 *	-  
+апр 18 21:23:33 *	- Thank you for using freenode!
+апр 18 21:23:33 *	End of /MOTD command.
+апр 18 21:23:33 *	GuestVB-ru установил режим +i для GuestVB-ru
+апр 18 21:23:33 -freenode-connect-	Welcome to freenode. To protect the network all new connections will be scanned for vulnerabilities. This will not harm your computer, and vulnerable hosts will be notified.
+апр 18 21:23:34 *	Received a CTCP VERSION from freenode-connect
+**** ЗАКАНЧИВАЕТСЯ ВХОЖДЕНИЕ НА Sun Apr 18 21:23:39 2021
+

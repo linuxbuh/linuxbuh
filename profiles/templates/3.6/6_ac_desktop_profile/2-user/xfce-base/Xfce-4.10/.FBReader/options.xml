@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <group name="Format">
+    <option name="DefaultLanguageS" value="ru"/>
+  </group>
+  <group name="Options">
+    <option name="BookPath" value="~/FBooks:~/Books:/home/guest/Документы"/>
+    <option name="ScanSubdirs" value="true"/>
+  </group>
+  <group name="TapScrolling">
+    <option name="Enabled" value="false"/>
+  </group>
+  <group name="Web Browser">
+    <option name="Name" value="браузере"/>
+  </group>
+</config>

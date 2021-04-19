@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="file:///opt/chromium-gost/chromium-gost" added="2021-04-16T15:42:56.462116Z" modified="2021-04-16T15:42:56.462130Z" visited="2021-04-16T15:42:56.462117Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="xfce4-mime-helper" exec="&apos;xfce4-mime-helper %u&apos;" modified="2021-04-16T15:42:56.462122Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>

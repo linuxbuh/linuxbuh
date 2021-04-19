@@ -1,0 +1,11 @@
+#------------------------------------------------------------------------------
+# Modified Calculate Utilities 3.6.9.10
+# Processed template files:
+# /var/db/repos/calculate/profiles/templates/3.6/6_ac_desktop_profile/2-user/dev-vcs/git-1.7.0/.gitconfig
+#------------------------------------------------------------------------------
+
+[color]
+	diff = auto
+	branch = auto
+	interactive = auto
+	status = auto

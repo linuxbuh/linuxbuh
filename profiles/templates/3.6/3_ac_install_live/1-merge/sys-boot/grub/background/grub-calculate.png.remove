@@ -1,0 +1,1 @@
+# Calculate append=remove path=/boot/grub name=grub-calculate.png cl_ver<3.5.2.22 ini(theme.grub-background)==||exists(#-ini(theme.grub-background)-#)==||pkg(media-gfx/imagemagick)==&&pkg(media-gfx/graphicsmagick)==

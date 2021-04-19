@@ -1,0 +1,12 @@
+# Calculate chmod=755 format=kde env(client.os_remote_auth)!=&&ur_domain_set==on
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Name=Share
+Comment=Browser Share
+Categories=Application;
+Exec=thunar /home/#-ur_login-#/Share
+Icon=folder-remote
+Terminal=false
+StartupNotify=false

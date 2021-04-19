@@ -1,0 +1,16 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Name[bg]=Ръководство за инсталиране
+Name[ru]=Руководство пользователя
+Name=Installation Guide
+Comment=
+Categories=Application;
+Exec=xdg-open /usr/share/calculate/doc/handbook-ru.html
+Icon=help-contents
+Terminal=false
+StartupNotify=false
+Path=

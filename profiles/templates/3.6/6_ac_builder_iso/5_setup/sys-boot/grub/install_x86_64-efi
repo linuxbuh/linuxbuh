@@ -1,0 +1,4 @@
+# Calculate run=/bin/bash
+
+cp -Rp --no-preserve=mode,ownership #-cl_chroot_path-#/usr/lib/grub/x86_64-efi #-cl_chroot_path-#/#-cl_root_path-#/boot/grub/ 
+exit 0

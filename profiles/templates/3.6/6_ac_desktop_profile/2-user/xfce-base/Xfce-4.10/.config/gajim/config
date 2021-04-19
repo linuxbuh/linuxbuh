@@ -1,0 +1,40 @@
+#------------------------------------------------------------------------------
+# Modified Calculate Utilities 3.6.9.11
+# Processed template files:
+# /var/db/repos/calculate/profiles/templates/3.6/6_ac_desktop_profile/2-user/net-im/gajim-0.16/config
+#------------------------------------------------------------------------------
+
+avatar_position_in_roster = left
+chat_avatar_height = 64
+chat_avatar_width = 64
+displayed_chat_state_notifications = composing_only
+emoticons_theme = noto-emoticons
+msgwin-height = 700
+msgwin-width = 650
+muc_restore_lines = -1
+muc_restore_timeout = -1
+notify_on_signin = False
+one_message_window = always_with_roster
+plugins.plugin_installer.active = False
+remote_commands = True
+remote_control = True
+restored_messages_small = False
+restore_lines = 300
+restore_timeout = 480
+roster_avatar_height = 32
+roster_avatar_width = 32
+roster_hpaned_position = 300
+roster_width = 340
+send_on_ctrl_enter = True
+show_ascii_formatting_chars = False
+show_contacts_number = False
+show_roster_on_startup = never
+show_self_contact = never
+show_unread_tab_icon = True
+soundevents.contact_connected.enabled = False
+soundevents.contact_disconnected.enabled = False
+soundevents.next_message_received_focused.enabled = False
+soundplayer = aplay
+speller_language = ru_RU
+tabs_position = top
+use_speller = True

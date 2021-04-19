@@ -1,0 +1,11 @@
+[Desktop Entry]
+NoDisplay=true
+Version=1.0
+Encoding=UTF-8
+Type=X-XFCE-Helper
+X-XFCE-Category=MailReader
+X-XFCE-CommandsWithParameter=/opt/Rambox/rambox %U "%s"
+Icon=rambox
+Name=rambox
+X-XFCE-Commands=/opt/Rambox/rambox %U
+

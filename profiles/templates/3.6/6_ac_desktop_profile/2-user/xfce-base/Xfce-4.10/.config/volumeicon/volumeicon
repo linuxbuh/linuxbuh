@@ -1,0 +1,19 @@
+#------------------------------------------------------------------------------
+# Modified Calculate Utilities 3.6.9.10
+# Processed template files:
+# /var/db/repos/calculate/profiles/templates/3.6/6_ac_desktop_profile/2-user/media-sound/volumeicon-0.5/volumeicon
+#------------------------------------------------------------------------------
+
+[Notification]
+show_notification=true
+notification_type=1
+
+[StatusIcon]
+onclick=changemixer
+lmb_slider=true
+use_panel_specific_icons=true
+
+[Hotkeys]
+up_enabled=true
+down_enabled=true
+mute_enabled=true

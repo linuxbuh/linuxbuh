@@ -1,0 +1,3 @@
+# Calculate format=patch path=/etc/default name=grub in(os_install_x11_video_drv,other,default)!=
+<reg> calculate=video:\S+</reg>
+<text></text>

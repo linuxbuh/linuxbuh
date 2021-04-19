@@ -1,0 +1,3 @@
+# Calculate format=patch name=menu.cfg cl_builder_flash_uuid!=&&cl_builder_action==menu
+<reg>LABEL=\S+</reg>
+<text>UUID=#-cl_builder_flash_uuid-#</text>

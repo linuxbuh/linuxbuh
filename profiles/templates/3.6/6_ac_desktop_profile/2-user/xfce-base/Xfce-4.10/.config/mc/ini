@@ -1,0 +1,11 @@
+#------------------------------------------------------------------------------
+# Modified Calculate Utilities 3.6.9.11
+# Processed template files:
+# /var/db/repos/calculate/profiles/templates/3.6/6_ac_desktop_profile/2-user/app-misc/mc-4.8/ini
+#------------------------------------------------------------------------------
+
+[Midnight-Commander]
+skin=/home/guest/.config/mc/skins/modarcon16-defbg.ini
+
+[Layout]
+menubar_visible=0

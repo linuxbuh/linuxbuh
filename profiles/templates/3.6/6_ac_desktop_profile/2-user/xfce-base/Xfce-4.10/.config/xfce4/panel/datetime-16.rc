@@ -1,0 +1,6 @@
+layout=3
+date_font=Liberation Sans 9
+time_font=Sans Bold 14
+date_format=%d/%m/%Y
+time_format=%H:%M
+

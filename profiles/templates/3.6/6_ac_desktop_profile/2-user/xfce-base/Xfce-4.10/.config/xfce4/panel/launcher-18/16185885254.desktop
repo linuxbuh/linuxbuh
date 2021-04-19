@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Tor Browser (анонимный браузер)
+GenericName=Tor browser
+Comment=Tor Browser (анонимный браузер)
+Exec=torbrowser-launcher %u
+Terminal=false
+Type=Application
+Icon=torbrowser
+Categories=Network;WebBrowser;
+StartupWMClass=Tor Browser
+Path=
+StartupNotify=false
+X-XFCE-Source=file:///home/guest/.local/share/applications/torbrowser.desktop

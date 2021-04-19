@@ -1,0 +1,13 @@
+# Calculate exec=/bin/bash os_install_root_type!=livecd&&pkg(sys-boot/grub)<2.00_p5000 exists(/sbin/grub-mkconfig,root)!=||exists(/usr/sbin/grub-mkconfig,root)!=
+
+echo "Configuring the grub"
+#?exists(/sbin/grub-mkdevicemap,root)!=#
+/sbin/grub-mkdevicemap
+/sbin/grub-mkdevicemap -m #-cl_chroot_path-#/boot/grub/device.map
+#exists#
+#?exists(/usr/sbin/grub-mkconfig,root)!=#
+CHROOT_PATH=#-cl_chroot_grub-# /usr/sbin/grub-mkconfig -o #-cl_chroot_path-#/boot/grub/grub.cfg 2>/dev/null
+#exists#
+#?exists(/sbin/grub-mkconfig,root)!=#
+CHROOT_PATH=#-cl_chroot_grub-# /sbin/grub-mkconfig -o #-cl_chroot_path-#/boot/grub/grub.cfg 2>/dev/null
+#exists#

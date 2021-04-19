@@ -1,0 +1,3 @@
+T 1618770218 19*	Теперь может вести беседу на 22#calculate-ru
+T 1618770218 22*	Тема канала 22#calculate-ru: Calculate Linux Support. It is intended for Russian speakers. For off topic #calculate-talk-ru
+T 1618770218 22*	Топик для 22#calculate-ru изменён пользователем 26rasdark!~dark@unaffiliated/rasdark (24Tue Jan 12 10:12:51 2021)

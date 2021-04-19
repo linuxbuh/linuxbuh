@@ -1,0 +1,31 @@
+[xfdesktop-version-4.10.3+-rcfile_format]
+4.10.3+=true
+
+[~/Рабочий стол/calculate-install.desktop]
+row=1
+col=0
+
+[~/Рабочий стол/gparted.desktop]
+row=1
+col=1
+
+[~/Рабочий стол/README.desktop]
+row=2
+col=0
+
+[~/Рабочий стол/calculate-community.desktop]
+row=2
+col=1
+
+[~]
+row=0
+col=0
+
+[Корзина]
+row=3
+col=0
+
+[/]
+row=4
+col=0
+

@@ -1,0 +1,6 @@
+#------------------------------------------------------------------------------
+# Modified Calculate Utilities 3.6.9.10
+# Processed template files:
+# /var/db/repos/calculate/profiles/templates/3.6/6_ac_desktop_profile/2-user/xfce-base/Xfce-4.10/.config/xfce4/xfce4-screenshooter
+#------------------------------------------------------------------------------
+screenshot_dir=file:~/Картинки

@@ -1,0 +1,22 @@
+#------------------------------------------------------------------------------
+# Modified Calculate Utilities 3.6.9.10
+# Processed template files:
+# /var/db/repos/calculate/profiles/templates/3.6/6_ac_desktop_profile/2-user/xfce-base/Xfce-4.10/Desktop/calculate-install.desktop
+#------------------------------------------------------------------------------
+
+[Desktop Entry]
+Name=Install Windows 2021
+Name[ru]=Установка Windows 2021
+Name[fr]=Installer Windows 2021
+Name[es]=Instalar Windows 2021
+Name[de]=Windows 2021installieren
+Name[ua]=Установка Windows 2021
+Comment=Установка Windows 2021
+Exec=cl-console-gui-install
+Icon=console-gui-install
+Terminal=false
+Type=Application
+Categories=System;
+StartupNotify=true
+NoDisplay=false
+Path=

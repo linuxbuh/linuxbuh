@@ -1,0 +1,35 @@
+# Calculate name=system.config pkg(media-gfx/gfxboot-themes-calculate)!=
+HEADER
+
+#-livemenu(submenu)-#
+
+cl;
+#?os_builder_linux_subname!=#
+#-os_builder_linux_name-# #-os_builder_linux_ver-# #-os_builder_linux_subname-# Live#-cl_builder_cdname-#;
+#!os_builder_linux_subname#
+#-os_builder_linux_name-# #-os_builder_linux_ver-# Live#-cl_builder_cdname-#;
+#os_builder_linux_subname#
+/boot/vmlinuz;
+#?pkg(sys-kernel/dracut)==#root=/dev/ram0#!pkg#root=#-cl_builder_root_param-##pkg#;
+/boot/initrd;
+#?pkg(media-gfx/splashutils)!=#
+#-load(/bootmenu/bootparam.config)-# splash=silent,theme:calculate console=tty1;
+#pkg#
+#?pkg(media-gfx/splashutils)==&&pkg(sys-boot/plymouth)!=#
+#?ini(theme.splash-silent-picture)!=&&exists(#-cl_chroot_path-#/#-ini(theme.splash-silent-picture)-#,root)!=&&ini(theme.splash-shutdown-picture)!=&&exists(#-cl_chroot_path-#/#-ini(theme.splash-shutdown-picture)-#,root)!=#
+#-load(/bootmenu/bootparam.config)-# splash;
+#ini#
+#?ini(theme.splash-silent-picture)!=&&exists(#-cl_chroot_path-#/#-ini(theme.splash-silent-picture)-#,root)!=&&ini(theme.splash-shutdown-picture)==||ini(theme.splash-silent-picture)!=&&exists(#-cl_chroot_path-#/#-ini(theme.splash-silent-picture)-#,root)!=&&exists(#-cl_chroot_path-#/#-ini(theme.splash-shutdown-picture)-#,root)==#
+#-load(/bootmenu/bootparam.config)-# splash=silent;
+#ini#
+#?ini(theme.splash-shutdown-picture)!=&&exists(#-cl_chroot_path-#/#-ini(theme.splash-shutdown-picture)-#,root)!=&&ini(theme.splash-silent-picture)==||ini(theme.splash-shutdown-picture)!=&&exists(#-cl_chroot_path-#/#-ini(theme.splash-shutdown-picture)-#,root)!=&&exists(#-cl_chroot_path-#/#-ini(theme.splash-silent-picture)-#,root)==#
+#-load(/bootmenu/bootparam.config)-# splash=shutdown rd.plymouth=0;
+#ini#
+#?ini(theme.splash-silent-picture)!=&&exists(#-cl_chroot_path-#/#-ini(theme.splash-silent-picture)-#,root)!=||ini(theme.splash-shutdown-picture)!=&&exists(#-cl_chroot_path-#/#-ini(theme.splash-shutdown-picture)-#,root)!=##!ini#
+#-load(/bootmenu/bootparam.config)-# verbose rd.plymouth=0;
+#ini#
+#pkg#
+#?pkg(media-gfx/splashutils)==&&pkg(sys-boot/plymouth)==#
+#-load(/bootmenu/bootparam.config)-# verbose rd.plymouth=0;
+#pkg#
+FOOTER

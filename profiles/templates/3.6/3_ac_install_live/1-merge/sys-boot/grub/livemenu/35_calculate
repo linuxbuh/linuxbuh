@@ -1,0 +1,25 @@
+# Calculate chmod=0755 protected builder.cl_builder_livemenu_path!=
+prefix="/usr"
+exec_prefix="/usr"
+datarootdir="/usr/share"
+livepath="#-builder.cl_builder_livemenu_path-#"
+
+. "/usr/share/grub/grub-mkconfig_lib"
+
+
+if [[ -d $livepath ]]; then
+	livedevice=$(grub-probe "$livepath" -t device)
+	liverelpath=$(grub-mkrelpath "$livepath")
+
+	cat <<EOF
+$(prepare_grub_to_access_device $livedevice)
+
+if [ -f ${liverelpath}/grub.cfg ]; then
+	menuentry 'Live HDD ...'  {
+$(prepare_grub_to_access_device $livedevice | grub_add_tab | grub_add_tab)
+		configfile ${liverelpath}/grub.cfg
+	}
+fi
+
+EOF
+fi

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Установка 1C:Предприятие 8,3
+Comment=Установка 1C:Предприятие 8,3
+Exec=xterm -maximized linuxbuh-1c-installer
+Icon=1c-logo
+Type=Application
+Categories=Office;
+Path=
+Terminal=false
+StartupNotify=false
+X-XFCE-Source=file:///home/guest/.local/share/applications/linuxbuh-1c-installer.desktop

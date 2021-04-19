@@ -1,0 +1,18 @@
+# Calculate run=/bin/bash path=/
+
+IMAGE_DIR=#-cl_chroot_path-#
+CDROOT_DIR=#-cl_chroot_path-#/#-cl_root_path-#
+GRUB_BOOT_DIR_PREFIX=/boot/grub
+x86_64_EFI_DIR_PREFIX="/usr/lib/grub/x86_64-efi"
+x86_64_EFI_DIR="${IMAGE_DIR}${x86_64_EFI_DIR_PREFIX}"
+
+grub-mkimage \
+		-p "${GRUB_BOOT_DIR_PREFIX}" \
+		-d "${x86_64_EFI_DIR_PREFIX}" \
+		-o "${CDROOT_DIR}/efi/boot/bootx64.efi" \
+		-O x86_64-efi gzio ext2 fat lvm part_msdos \
+			part_gpt hfsplus bsd search_fs_uuid normal \
+			chain iso9660 configfile loadenv \
+			reboot cat
+
+exit 0

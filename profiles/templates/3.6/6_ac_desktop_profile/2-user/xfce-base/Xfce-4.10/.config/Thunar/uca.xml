@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Открыть терминал</name>
+	<unique-id>1618585928982349-1</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>Пример особого действия</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>edit-find</icon>
+	<name>Поиск</name>
+	<unique-id>1618585928982369-2</unique-id>
+	<command>catfish %f</command>
+	<description>найти файлы и папки</description>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+</actions>

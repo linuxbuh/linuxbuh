@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <group name="/usr/share/calculate/doc/handbook-ru.html">
+    <option name="BreakType" value="6"/>
+    <option name="Initialized" value="true"/>
+  </group>
+</config>

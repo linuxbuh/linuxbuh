@@ -1,0 +1,2 @@
+# Calculate pkg()>=2&&os_builder_arch_machine==x86_64 path=/boot
+

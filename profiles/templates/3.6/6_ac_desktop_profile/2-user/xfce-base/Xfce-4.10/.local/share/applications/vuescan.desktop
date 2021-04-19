@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Сканирование документов
+Comment=Vuescan
+Comment[ru]=Сканирование документов
+Icon=vuescan
+Exec=/usr/bin/vuescan
+TryExec=/usr/bin/vuescan
+Type=Application
+Categories=Grapchics;
+Path=
+Terminal=false
+StartupNotify=false

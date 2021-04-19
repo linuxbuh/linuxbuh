@@ -1,0 +1,91 @@
+[xfdesktop-version-4.10.3+-rcfile_format]
+4.10.3+=true
+
+[/home/guest/Рабочий стол/anydesk.desktop]
+row=4
+col=1
+
+[/home/guest/Рабочий стол/org.midori_browser.Midori.desktop]
+row=3
+col=2
+
+[/home/guest/Рабочий стол/xfce4-mail-reader.desktop]
+row=8
+col=1
+
+[/home/guest/Рабочий стол/joplin.desktop]
+row=7
+col=0
+
+[/home/guest/Рабочий стол/README.desktop]
+row=5
+col=1
+
+[/home/guest/Рабочий стол/calculate-community.desktop]
+row=3
+col=1
+
+[/home/guest/Рабочий стол/calculate-install.desktop]
+row=2
+col=1
+
+[/home/guest/Рабочий стол/rambox.desktop]
+row=2
+col=2
+
+[/home/guest/Рабочий стол/onlyoffice-desktopeditors.desktop]
+row=5
+col=0
+
+[/home/guest/Рабочий стол/thunar.desktop]
+row=1
+col=2
+
+[/home/guest/Рабочий стол/xfce4-terminal-emulator.desktop]
+row=7
+col=1
+
+[/home/guest/Рабочий стол/gparted.desktop]
+row=1
+col=1
+
+[/home/guest/Рабочий стол/xfce4-web-browser.desktop]
+row=6
+col=1
+
+[/home/guest/Рабочий стол/torbrowser.desktop]
+row=0
+col=2
+
+[/home/guest/Рабочий стол/linuxbuh-1c-installer.desktop]
+row=6
+col=0
+
+[/home/guest/Рабочий стол/cptools64.desktop]
+row=8
+col=0
+
+[/home/guest/Рабочий стол/chromium-gost.desktop]
+row=0
+col=1
+
+[80AA8683AA867586]
+row=1
+col=0
+
+[2808889308886224]
+row=0
+col=0
+
+[Корзина]
+row=2
+col=0
+
+[/]
+row=3
+col=0
+
+[/home/guest]
+row=4
+col=0
+
