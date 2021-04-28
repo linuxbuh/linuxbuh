@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		A perl based batch renamer file files and directories.
+	</longdescription>
+	<use>
+		<flag name="nautilus-actions">
+			Compile with support for Nautilus through "Nautilus-Actions"
+		</flag>
+	</use>
+</pkgmetadata>
