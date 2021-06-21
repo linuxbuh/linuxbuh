@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.linuxbuh.ru/linuxbuh/sys-apps/linuxbuh-installer/${P}.tar.gz"
 
 LICENSE="GPL"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="amd64"
 IUSE=""
 
 RESTRICT="mirror strip"
