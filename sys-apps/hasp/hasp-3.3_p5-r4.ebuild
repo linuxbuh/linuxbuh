@@ -20,7 +20,8 @@ MODNAME="aksparlnx"
 [[ ${ARCH} == "x86" ]] && MY_ARCH="i386"
 
 REQUIRED_USE="lpt? ( kernel_linux )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+        app-arch/rpm2targz"
 
 QA_PREBUILT="usr/sbin/aksusbd usr/sbin/haspdemo usr/sbin/winehasp
 usr/sbin/hasplm usr/sbin/hasplmd usr/sbin/nethaspdemo"

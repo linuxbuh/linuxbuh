@@ -2,7 +2,7 @@
 # License: GPL v3+
 # NO WARRANTY
 
-EAPI=6
+EAPI=7
 inherit toolchain-funcs
 
 KEYWORDS="~amd64 ~arm ~arm64"

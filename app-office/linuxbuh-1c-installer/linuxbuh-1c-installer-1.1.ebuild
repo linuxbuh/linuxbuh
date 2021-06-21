@@ -3,7 +3,7 @@
 # $Header: $
 
 
-EAPI=6
+EAPI=7
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 

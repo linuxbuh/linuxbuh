@@ -3,7 +3,7 @@
 
 # First cut for 19.13, with some QA issues still (sakaki)
 
-EAPI=6
+EAPI=7
 
 inherit eutils toolchain-funcs fdo-mime
 

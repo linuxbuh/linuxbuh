@@ -3,7 +3,7 @@
 # $Header: $
 
 
-EAPI=6
+EAPI=7
 
 inherit eutils
 

@@ -2,7 +2,7 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit unpacker eutils
 
 DESCRIPTION="A simple & beautiful desktop client for WhatsApp Web"

@@ -1,5 +1,5 @@
 
-EAPI=6 
+EAPI=7
 
 inherit perl-module 
 
