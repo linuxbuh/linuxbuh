@@ -5,28 +5,25 @@
 
 EAPI=7
 
-MULTILIB_COMPAT=( abi_x86_{32,64} )
 
-inherit eutils versionator multilib multilib-minimal unpacker
+inherit eutils versionator unpacker
 
 DESCRIPTION="Бинарный пакет ${P} для платформы 1С:Предприятие 8.3"
 HOMEPAGE="http://linuxbuh.ru"
 
 DOWNLOADPAGE="ftp://ftp.linuxbuh.ru/linuxbuh/net-libs/webkit-gtk-linuxbuh-bin"
 
-SRC_URI_X86="$DOWNLOADPAGE/${PF}.x86.tar.gz"
 SRC_URI_AMD64="$DOWNLOADPAGE/${PF}.amd64.tar.gz"
 
 SRC_URI="
 	amd64? ( ${SRC_URI_AMD64} )
-	x86? ( ${SRC_URI_X86} )
 "
 
 
 
 LICENSE="GPL"
 SLOT="3/25"
-KEYWORDS="x86 amd64"
+KEYWORDS="amd64"
 
 RESTRICT="mirror strip"
 
