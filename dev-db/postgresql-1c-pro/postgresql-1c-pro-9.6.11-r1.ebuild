@@ -9,9 +9,9 @@ PLOCALES="af cs de en es fa fr hr hu it ko nb pl pt_BR ro ru sk sl sv tr zh_CN
 		  zh_TW"
 
 inherit flag-o-matic l10n linux-info multilib pam prefix python-single-r1 \
-		systemd user versionator
+		systemd user
 
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64"
 
 RESTRICT="mirror strip"
 
