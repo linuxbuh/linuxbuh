@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 USE_RUBY="ruby20 ruby21 ruby22 ruby24"
 
-inherit autotools check-reqs flag-o-matic gnome2 pax-utils python-any-r1 ruby-single toolchain-funcs versionator virtualx
+inherit autotools check-reqs flag-o-matic gnome2 pax-utils python-any-r1 ruby-single toolchain-funcs virtualx
 
 MY_P="webkitgtk-${PV}"
 DESCRIPTION="Open source web browser engine"
