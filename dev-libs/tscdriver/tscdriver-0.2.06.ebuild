@@ -7,7 +7,7 @@ EAPI=7
 
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 
-inherit eutils versionator multilib multilib-minimal unpacker
+inherit eutils multilib multilib-minimal unpacker
 
 DESCRIPTION="Драйвер принтера этикеток TSC TDP-225, TDP-324"
 HOMEPAGE="https://www.tscprinters.com/PYCC/support/support_download/TDP-225_Series#"

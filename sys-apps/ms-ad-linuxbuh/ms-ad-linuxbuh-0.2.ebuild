@@ -5,9 +5,10 @@
 
 EAPI=7
 
-MULTILIB_COMPAT=( abi_x86_{32,64} )
+#MULTILIB_COMPAT=( abi_x86_{32,64} )
 
-inherit eutils versionator multilib multilib-minimal unpacker
+#inherit eutils versionator multilib multilib-minimal unpacker
+inherit eutils unpacker
 
 DESCRIPTION="Файлы настроек для подключения Calculate Linux к MS AD серверу"
 HOMEPAGE="http://linuxbuh.ru"
@@ -18,7 +19,7 @@ SRC_URI="$DOWNLOADPAGE/${P}.tar.gz"
 
 LICENSE="linuxbuh"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64"
 IUSE=""
 
 RESTRICT="mirror"

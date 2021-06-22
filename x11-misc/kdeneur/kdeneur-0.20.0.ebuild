@@ -4,7 +4,7 @@
 
 EAPI=7
 
-inherit autotools eutils versionator
+inherit autotools eutils
 
 DESCRIPTION="GTK+ based GUI for xneur"
 HOMEPAGE="http://www.xneur.ru/"
