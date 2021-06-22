@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop gnome2-utils unpacker multilib xdg
+inherit desktop gnome2-utils unpacker xdg
 
 MY_P="ONLYOFFICE-DesktopEditors-"${PV}""
 

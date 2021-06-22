@@ -5,9 +5,7 @@
 
 EAPI=7
 
-MULTILIB_COMPAT=( abi_x86_{32,64} )
-
-inherit eutils versionator multilib multilib-minimal unpacker
+inherit eutils unpacker
 
 DESCRIPTION="Библиотеки x86 bit для платформы 1C:Проедприятие 8.3 32 bit установленной на x86_64 операционную систему"
 HOMEPAGE="http://linuxbuh.ru"
