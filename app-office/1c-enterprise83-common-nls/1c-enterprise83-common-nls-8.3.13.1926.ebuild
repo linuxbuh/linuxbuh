@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils unpacker
+inherit eutils versionator unpacker
 
 DESCRIPTION="Языковой пакет для пакета Common 1C:Проедприятие 8.3 для GNU\LINUX"
 HOMEPAGE="http://v8.1c.ru"

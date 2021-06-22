@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils unpacker
+inherit eutils versionator unpacker
 
 
 DESCRIPTION="Клиент 1C:Проедприятие 8.3 для GNU\LINUX"
