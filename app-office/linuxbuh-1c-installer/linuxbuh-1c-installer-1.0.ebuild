@@ -5,9 +5,7 @@
 
 EAPI=7
 
-MULTILIB_COMPAT=( abi_x86_{32,64} )
-
-inherit eutils versionator multilib multilib-minimal unpacker
+inherit eutils versionator unpacker
 
 DESCRIPTION="Инсталлятор для платформы и конфигураций 1C:Проедприятие 8.3"
 HOMEPAGE="http://linuxbuh.ru"
@@ -18,7 +16,7 @@ SRC_URI="$DOWNLOADPAGE/${P}.tar.gz"
 
 LICENSE="linuxbuh"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64"
 IUSE=""
 
 RESTRICT="mirror"

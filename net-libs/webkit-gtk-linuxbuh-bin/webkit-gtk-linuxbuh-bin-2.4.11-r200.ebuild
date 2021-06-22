@@ -5,7 +5,7 @@
 
 EAPI=7
 
-inherit eutils versionator unpacker
+inherit eutils unpacker
 
 
 DESCRIPTION="Бинарный пакет ${P} для платформы 1С:Предприятие 8.3"
