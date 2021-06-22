@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=6
+EAPI=7
 
-inherit eutils versionator multilib multilib-minimal unpacker
+inherit eutils unpacker
 
 DESCRIPTION="Тонкий Клиент 1C:Проедприятие 8.3 для GNU\LINUX"
 HOMEPAGE="http://v8.1c.ru"
