@@ -1,8 +1,8 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-#inherit versionator
+EAPI=6
+inherit versionator
 
 MY_PV="$(replace_all_version_separators '-')"
 DESCRIPTION="Spellchecker wrapping library"
