@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 COMMON_DEPEND=">=sys-devel/gettext-0.16.1
-	>=x11-misc/xneur-$(get_version_component_range 1-2)
+	>=x11-misc/xneur-$(ver_cut 1-2)
 	!x11-misc/xneur[gtk3]
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4

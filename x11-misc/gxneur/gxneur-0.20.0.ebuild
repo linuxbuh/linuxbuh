@@ -17,7 +17,7 @@ IUSE="appindicator +gconf nls"
 COMMON_DEPEND="gnome-base/libglade:2.0
 	>=sys-devel/gettext-0.16.1
 	>=x11-libs/gtk+-2.18:2
-	>=x11-misc/xneur-$(get_version_component_range 1-2)
+	>=x11-misc/xneur-$(ver_cut 1-2)
 	appindicator? ( dev-libs/libappindicator:2 )
 	gconf? ( gnome-base/gconf:2 )
 	!x11-misc/xneur[gtk3]"
