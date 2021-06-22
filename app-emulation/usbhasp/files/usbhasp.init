@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 1999-2021 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/run/usbhasp.pid"
+command="/usr/bin/usbhasp"
+command_args="${USBHASP_KEYS}"
+command_background="true"
+
+depend() {
+	after modules
+}
+
+start_pre() {
+	for mod in usb_vhci_hcd usb_vhci_iocifc ; do
+		if ! grep -qs ${mod} /proc/modules ; then
+			einfo "Loading ${mod} kernel module"
+			modprobe ${mod} &>/dev/null} \
+				|| ewarn "Failed to load module ${mod}"
+		fi
+	done
+}

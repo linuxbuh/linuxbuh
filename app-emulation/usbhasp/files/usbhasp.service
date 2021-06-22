@@ -1,0 +1,11 @@
+[Unit]
+Description=Usbhasp daemon
+
+[Service]
+Type=simple
+ExecStartPre=/sbin/modprobe usb_vhci_hcd
+ExecStartPre=/sbin/modprobe usb_vhci_iocifc
+ExecStart=/usr/bin/usbhasp /etc/usbhasp/*.json
+
+[Install]
+WantedBy=multi-user.target
