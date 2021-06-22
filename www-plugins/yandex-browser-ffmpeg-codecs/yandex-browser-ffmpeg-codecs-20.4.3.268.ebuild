@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 MY_PV="81.0.4044.138"
-inherit check-reqs chromium-2 eutils unpacker flag-o-matic ninja-utils python-any-r1 toolchain-funcs versionator
+inherit check-reqs chromium-2 eutils unpacker flag-o-matic ninja-utils python-any-r1 toolchain-funcs
 
 RESTRICT="bindist mirror"
 DESCRIPTION="Multi-threaded ffmpeg codecs needed for the HTML5 <audio> and <video> tags"
