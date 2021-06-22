@@ -20,7 +20,9 @@ S="${WORKDIR}/postgrespro-1c-11.1"
 
 SRC_URI="ftp://ftp.linuxbuh.ru/postgresql-pro-1c/postgrespro-1c-11_11.1.orig.tar.bz2"
 
-SLOT=$(get_major_version)
+#SLOT=$(get_major_version)
+
+SLOT=$(ver_cut 1)
 
 LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"

@@ -18,8 +18,9 @@ RESTRICT="mirror strip"
 #MY_PV="$(replace_version_separator 3 '-' )"
 #MY_PN="postgresql-pro-1c"
 
-SLOT="$(get_version_component_range 1-2)"
+#SLOT="$(get_version_component_range 1-2)"
 #SLOT=0
+SLOT=$(ver_cut 1-2)
 
 #MY_PV=${PV/_/}
 S="${WORKDIR}/postgresql-pro-1c-9.6.5"
@@ -85,7 +86,7 @@ sys-devel/bison
 sys-devel/flex
 dev-libs/icu
 nls? ( sys-devel/gettext )
-xml? ( virtual/pkgconfig )
+xml? ( dev-libs/libxml2 dev-libs/libxslt )
 "
 
 RDEPEND="${CDEPEND}
