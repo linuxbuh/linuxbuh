@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=6
+EAPI=7
 
-inherit eutils versionator unpacker
+inherit eutils unpacker
 
 
 DESCRIPTION="Клиент 1C:Проедприятие 8.3 для GNU\LINUX"
 HOMEPAGE="http://v8.1c.ru"
 
-MY_PV="$(replace_version_separator 3 '-' )"
+MY_PV="$(ver_rs 3 '-' )"
 MY_PN="1c-enterprise83-client"
 SRC_URI="abi_x86_64? ( ${MY_PN}_${MY_PV}_amd64.tar.gz )"
 
