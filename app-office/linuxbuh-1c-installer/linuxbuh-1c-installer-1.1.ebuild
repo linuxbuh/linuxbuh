@@ -5,7 +5,7 @@
 
 EAPI=7
 
-inherit eutils versionator unpacker
+inherit eutils unpacker
 
 DESCRIPTION="Инсталлятор для платформы и конфигураций 1C:Проедприятие 8.3"
 HOMEPAGE="http://linuxbuh.ru"
