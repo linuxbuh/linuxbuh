@@ -1,0 +1,11 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-lang/perl sys-devel/gettext dev-perl/Gtk3 dev-perl/glib-perl dev-perl/Locale-gettext dev-perl/libintl-perl
+DESCRIPTION=GPRename is a complete batch renamer for files and directories
+EAPI=7
+HOMEPAGE=http://gprename.sourceforge.net/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-lang/perl sys-devel/gettext dev-perl/Gtk3 dev-perl/glib-perl dev-perl/Locale-gettext dev-perl/libintl-perl
+SLOT=0
+SRC_URI=mirror://sourceforge/gprename/gprename-20210328.tar.bz2
+_md5_=1fd824ea85f9008b511bb5af9d798ca0

@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst test unpack
+DESCRIPTION=Драйвер принтера этикеток TSC TDP-225, TDP-324
+EAPI=7
+HOMEPAGE=https://www.tscprinters.com/PYCC/support/support_download/TDP-225_Series#
+IUSE=abi_x86_32 abi_x86_64
+KEYWORDS=x86
+LICENSE=linuxbuh
+REQUIRED_USE=|| ( abi_x86_32 abi_x86_64 )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=ftp://ftp.linuxbuh.ru/linuxbuh/dev-libs/tscdriver/tscdriver-0.2.06.tar.gz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	dab5d8ec471d025b79c9e6906bcf3bff	multibuild	05a584848db4901c97fcd94ae7cc3a97	multilib	4b66d835ec72e021e359bb81eacfe988	multilib-build	19ec165e9adcaa4c132b9e3fe3e7f556	multilib-minimal	be5919734a8448dddd49c2b26db45091	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa	unpacker	928e1f35ef78ba9fc2b214e29c2b55a4	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=f8da6192f636df6f62be2bea7019e691

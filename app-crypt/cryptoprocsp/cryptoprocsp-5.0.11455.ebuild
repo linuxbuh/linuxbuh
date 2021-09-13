@@ -30,6 +30,7 @@ src_unpack () {
 	rm -rf *
 	mkdir ${S}
 	cd ${S}
+
     SUFF="-64-${PV}-5.x86_64.rpm"
 
 
@@ -80,9 +81,12 @@ src_unpack () {
 	rpm_unpack lsb-cprocsp-rdr-crypton${SUFF}
 	rpm_unpack lsb-cprocsp-rdr-maxim${SUFF}
 	rpm_unpack lsb-cprocsp-rdr-sobol${SUFF}
+
+	rm ${S}/lib64/ld-lsb-x86-64.so.3
 }
 
 src_install() {
+
     cp -vR ${S}/* ${D}/
     rm ${D}/etc/init.d/cprocsp
     cp ${FILESDIR}/cprocsp-5.0.11455 ${D}/etc/init.d/cprocsp

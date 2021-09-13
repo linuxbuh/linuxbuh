@@ -1,0 +1,16 @@
+BDEPEND=python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_8(-)?,python_targets_python3_9(-)?] >=dev-python/setuptools-42.0.2[python_targets_python3_8(-)?,python_targets_python3_9(-)?]
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-python/setuptools[python_targets_python3_8(-)?,python_targets_python3_9(-)?] python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_8(-)?,python_targets_python3_9(-)?]
+DESCRIPTION=Generate secure multiword passwords/passphrases, inspired by XKCD 936
+EAPI=7
+HOMEPAGE=https://github.com/redacted/XKCD-password-generator
+IUSE=python_targets_python3_8 python_targets_python3_9
+KEYWORDS=~amd64 ~arm64 ~x86
+LICENSE=BSD CC-BY-3.0
+RDEPEND=python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_8(-)?,python_targets_python3_9(-)?] python_targets_python3_8? ( dev-lang/python:3.8 ) python_targets_python3_9? ( dev-lang/python:3.9 ) >=dev-lang/python-exec-2:=[python_targets_python3_8(-)?,python_targets_python3_9(-)?]
+REQUIRED_USE=|| ( python_targets_python3_8 python_targets_python3_9 )
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://github.com/redacted/XKCD-password-generator/archive/xkcdpass-1.17.3.tar.gz
+_eclasses_=distutils-r1	6088739b8548699015d46289639d660c	eapi8-dosym	cd7d420bb5be5ee079f27239ce76b8f5	multibuild	05a584848db4901c97fcd94ae7cc3a97	multilib	4b66d835ec72e021e359bb81eacfe988	multiprocessing	61c959fc55c15c00bbb1079d6a71370b	python-r1	e574a3642f886323f18f867ecc4d91c4	python-utils-r1	08d890890f70fe0096093016e55438d5	toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa
+_md5_=411bde9a8e930f10bd43fedd952737de
