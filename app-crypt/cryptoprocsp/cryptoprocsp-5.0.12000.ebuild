@@ -34,16 +34,16 @@ src_unpack () {
     SUFF="-64-${PV}-5.x86_64.rpm"
 
 
-	rpm_unpack accord_random-1-0.src.rpm
+#	rpm_unpack accord_random-1-0.src.rpm
 	rpm_unpack cprocsp-apache-modssl-64-5.0.12000-6.x86_64.rpm
 	rpm_unpack cprocsp-compat-altlinux-64-1.0.0-1.noarch.rpm
 	rpm_unpack cprocsp-compat-suse-1.0.0-1.noarch.rpm
 	rpm_unpack cprocsp-cptools-gtk-64-5.0.12000-6.x86_64.rpm
 	rpm_unpack cprocsp-curl-64-5.0.12000-6.x86_64.rpm
-	rpm_unpack cprocsp-drv-64-5.0.12000-6.src.rpm
+#	rpm_unpack cprocsp-drv-64-5.0.12000-6.src.rpm
 	rpm_unpack cprocsp-drv-devel-5.0.12000-6.noarch.rpm
 	rpm_unpack cprocsp-ipsec-devel-5.0.12000-6.noarch.rpm
-	rpm_unpack cprocsp-ipsec-esp-64-5.0.12000-6.src.rpm
+#	rpm_unpack cprocsp-ipsec-esp-64-5.0.12000-6.src.rpm
 	rpm_unpack cprocsp-ipsec-genpsk-64-5.0.12000-6.x86_64.rpm
 	rpm_unpack cprocsp-ipsec-ike-64-5.0.12000-6.x86_64.rpm
 	rpm_unpack cprocsp-rdr-cloud-64-5.0.12000-6.x86_64.rpm
@@ -84,7 +84,7 @@ src_unpack () {
 	rpm_unpack lsb-cprocsp-rdr-maxim-64-5.0.12000-6.x86_64.rpm
 	rpm_unpack lsb-cprocsp-rdr-sobol-64-5.0.12000-6.x86_64.rpm
 	rpm_unpack lsb-cprocsp-rdr-vityaz-64-5.0.12000-6.x86_64.rpm
-	rpm_unpack sobol-1-8.src.rpm
+#	rpm_unpack sobol-1-8.src.rpm
 
 	rm ${S}/lib64/ld-lsb-x86-64.so.3
 }
