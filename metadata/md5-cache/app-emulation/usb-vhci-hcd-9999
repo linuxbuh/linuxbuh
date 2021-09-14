@@ -1,0 +1,13 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup unpack
+DEPEND=kernel_linux? ( sys-apps/kmod[tools] dist-kernel? ( virtual/dist-kernel:= ) ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
+DESCRIPTION=Linux kernel module of USB Virtual Host Controller Interface
+EAPI=7
+HOMEPAGE=https://sourceforge.net/p/usb-vhci/wiki/Home/
+IUSE=kernel_linux kernel_linux dist-kernel
+LICENSE=GPL-2
+PROPERTIES=live
+RDEPEND=kernel_linux? ( sys-apps/kmod[tools] dist-kernel? ( virtual/dist-kernel:= ) )
+SLOT=0
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	dab5d8ec471d025b79c9e6906bcf3bff	git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da	linux-info	ffb37fb9f244ba768773f153972c9a52	linux-mod	42a7a0aa05c4a383593bdaad7958058a	multilib	4b66d835ec72e021e359bb81eacfe988	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=132e0c3b9e131d1dfd161e87efe4c87f

@@ -76,6 +76,8 @@ src_unpack () {
 	rpm_unpack lsb-cprocsp-rdr-crypton${SUFF}
 	rpm_unpack lsb-cprocsp-rdr-maxim${SUFF}
 	rpm_unpack lsb-cprocsp-rdr-sobol${SUFF}
+
+	rm ${S}/lib64/ld-lsb-x86-64.so.3
 }
 
 src_install() {

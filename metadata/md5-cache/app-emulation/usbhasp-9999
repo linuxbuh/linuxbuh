@@ -1,0 +1,11 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install postinst unpack
+DEPEND=dev-libs/jansson sys-libs/libusb-vhci systemd? ( sys-apps/systemd )
+DESCRIPTION=USB HASP emulator
+EAPI=7
+HOMEPAGE=https://github.com/rsvt1973/UsbHasp
+IUSE=systemd
+PROPERTIES=live
+SLOT=0
+_eclasses_=git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da
+_md5_=871673869351442bb3a101e48d1fc072

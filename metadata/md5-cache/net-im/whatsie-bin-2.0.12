@@ -1,0 +1,11 @@
+DEFINED_PHASES=install unpack
+DESCRIPTION=A simple & beautiful desktop client for WhatsApp Web
+EAPI=7
+HOMEPAGE=https://whatsie.chat/
+IUSE=autostart
+KEYWORDS=~amd64 ~x86
+RESTRICT=mirror
+SLOT=0
+SRC_URI=amd64? ( https://github.com/Aluxian/Whatsie/releases/download/v2.0.12/whatsie-2.0.12-linux-amd64.deb ) x86? ( https://github.com/Aluxian/Whatsie/releases/download/v2.0.12/whatsie-2.0.12-linux-i386.deb )
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	dab5d8ec471d025b79c9e6906bcf3bff	multilib	4b66d835ec72e021e359bb81eacfe988	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa	unpacker	928e1f35ef78ba9fc2b214e29c2b55a4	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=8e1d5ddbd97c51d18f6cbbdca0bc9914

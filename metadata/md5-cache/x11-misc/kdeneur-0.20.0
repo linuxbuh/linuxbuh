@@ -1,0 +1,14 @@
+BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=>=sys-devel/gettext-0.16.1 >=x11-misc/xneur-0.20 !x11-misc/xneur[gtk3] dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtdbus:5 kde-base/kdelibs virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=GTK+ based GUI for xneur
+EAPI=7
+HOMEPAGE=http://www.xneur.ru/
+IUSE=nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=sys-devel/gettext-0.16.1 >=x11-misc/xneur-0.20 !x11-misc/xneur[gtk3] dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtdbus:5 kde-base/kdelibs nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=ftp://ftp.linuxbuh.ru/linuxbuh/x11-misc/kdeneur_0.20.0.orig.tar.gz
+_eclasses_=autotools	c7052b276346587968d52ea8eaf5aca1	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	dab5d8ec471d025b79c9e6906bcf3bff	gnuconfig	262062cef0ba4f22b397193da514a350	libtool	241a8f577b9781a42a7421e53448a44e	multilib	4b66d835ec72e021e359bb81eacfe988	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa	wrapper	4251d4c84c25f59094fd557e0063a974
+_md5_=87a7825e24a7eadf751b9b9a8638cd6f
