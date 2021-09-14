@@ -10,7 +10,7 @@ HOMEPAGE="https://www.balena.io/etcher//"
 
 KEYWORDS="amd64"
 
-SRC_URI="amd64? ( https://github.com/balena-io/etcher/releases/download/v1.5.120/balena-etcher-electron-1.5.120-linux-x64.zip )
+SRC_URI="amd64? ( https://github.com/balena-io/etcher/releases/download/v1.5.122/balena-etcher-electron-1.5.122-linux-x64.zip )
     "
 
 SLOT="0"
