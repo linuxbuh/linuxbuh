@@ -86,7 +86,7 @@ src_unpack () {
 	rpm_unpack lsb-cprocsp-rdr-vityaz-64-5.0.12000-6.x86_64.rpm
 	rpm_unpack sobol-1-8.src.rpm
 
-#	rm ${S}/lib64/ld-lsb-x86-64.so.3
+	rm ${S}/lib64/ld-lsb-x86-64.so.3
 }
 
 src_install() {
