@@ -38,10 +38,33 @@ src_install() {
     cp -vR ${S}/* ${D}/
 }
 
-#pkg_postinst() {
-#для chromium
-#ln -s /usr/share/chromium-browser/extensions /usr/lib64/chromium/extensions
-#ln -s /usr/share/chromium-browser/extensions /usr/lib64/chromium-browser/extensions
-#для Firefox
-#cp /opt/cprocsp/lib/amd64/libnpcades.so.2.0.0 /usr/lib64/browser-plugins/libnpcades.so
-#}
+pkg_postinst() {
+#Create logs dir
+mkdir -p /var/log/ifc
+mkdir -p /var/log/ifc/engine_logs
+chmod 777 /var/log/ifc
+chmod 777 /var/log/ifc/engine_logs
+
+# Add VIDs and PIDs to CCID Boundle
+cd /etc/update_ccid_boundle
+bash ./update_ccid_boundle.sh
+
+chmod 755 /usr/lib/mozilla/plugins/lib
+chmod 755 /usr/lib/mozilla/plugins
+chmod 755 /usr/lib64/mozilla/native-messaging-hosts
+chmod 755 /usr/lib/mozilla/native-messaging-hosts
+chmod 755 /usr/lib/mozilla
+chmod 755 /usr/lib
+
+chmod 755 /etc/opt/chrome/native-messaging-hosts
+chmod 755 /etc/update_ccid_boundle
+chmod 755 /etc/opt/chrome
+chmod 755 /etc/opt
+chmod 755 /etc
+
+chmod 755 /opt/google/chrome/extensions
+chmod 755 /opt/google/chrome
+chmod 755 /opt/google
+chmod 755 /opt
+
+}
