@@ -67,4 +67,9 @@ chmod 755 /opt/google/chrome
 chmod 755 /opt/google
 chmod 755 /opt
 
+cp -f ${FILESDIR}/ifcx64.cfg /etc/ifc.cfg
+
+/opt/cprocsp/bin/amd64/csptestf -absorb -certs -autoprov
+
+cp /etc/opt/chrome/native-messaging-hosts/ru.rtlabs.ifcplugin.json /etc/chromium/native-messaging-hosts
 }
