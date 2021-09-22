@@ -92,8 +92,8 @@ src_unpack () {
 src_install() {
 
     cp -vR ${S}/* ${D}/
-    rm ${D}/etc/init.d/cprocsp
-    cp ${FILESDIR}/cprocsp-5.0.12000 ${D}/etc/init.d/cprocsp
+    rm -f ${D}/etc/init.d/cprocsp
+    cp -f ${FILESDIR}/cprocsp-5.0.12000 ${D}/etc/init.d/cprocsp
 }
 
 #pkg_config() {
@@ -106,4 +106,7 @@ pkg_postinst() {
 chmod -R 777 /var/opt/cprocsp
 touch /etc/debian_version
 echo "jessie/sid" > /etc/debian_version
+rm -f /etc/opt/cprocsp/config64.ini
+cp -f ${FILESDIR}/goodconfig64.ini /etc/opt/cprocsp/config64.ini
+
 }
