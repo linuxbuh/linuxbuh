@@ -67,9 +67,18 @@ chmod 755 /opt/google/chrome
 chmod 755 /opt/google
 chmod 755 /opt
 
+rm -f /etc/ifc.cfg
+
 cp -f ${FILESDIR}/ifcx64.cfg /etc/ifc.cfg
 
 /opt/cprocsp/bin/amd64/csptestf -absorb -certs -autoprov
 
 cp /etc/opt/chrome/native-messaging-hosts/ru.rtlabs.ifcplugin.json /etc/chromium/native-messaging-hosts
+
+echo "
+После установки IFCPlugin подключите ключевой носитель (флеш-накопитель, Рутокен, ESMART token и т.д.)
+
+и выполните комманду /opt/cprocsp/bin/amd64/csptestf -absorb -certs -autoprov
+"
+
 }
