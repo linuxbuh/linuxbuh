@@ -75,7 +75,7 @@ cp -f ${FILESDIR}/ifcx64.cfg /etc/ifc.cfg
 
 cp /etc/opt/chrome/native-messaging-hosts/ru.rtlabs.ifcplugin.json /etc/chromium/native-messaging-hosts
 
-echo "
+einfo "
 После установки IFCPlugin подключите ключевой носитель (флеш-накопитель, Рутокен, ESMART token и т.д.)
 
 и выполните комманду /opt/cprocsp/bin/amd64/csptestf -absorb -certs -autoprov
