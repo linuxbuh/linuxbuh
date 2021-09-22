@@ -94,6 +94,8 @@ chmod -R 777 /var/opt/cprocsp
 touch /etc/debian_version
 echo "jessie/sid" > /etc/debian_version
 rm -f /etc/opt/cprocsp/config64.ini
-cp -f ${FILESDIR}/goodconfig64.ini /etc/opt/cprocsp/config64.ini
+#cp -f ${FILESDIR}/goodconfig64.ini /etc/opt/cprocsp/config64.ini
+cp -f ${FILESDIR}/cprocsp_postinstal_all_scripts.sh /etc/opt/cprocsp/cprocsp_postinstal_all_scripts.sh
+/etc/opt/cprocsp/cprocsp_postinstal_all_scripts.sh
 
 }
