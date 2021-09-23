@@ -24,12 +24,12 @@ RDEPEND="${DEPEND}"
 RESTRICT="mirror strip"
 
 src_unpack () {
-#    unpack ${A}
-#	cd ${WORKDIR}
+    unpack ${A}
+	cd ${WORKDIR}
 #	mv linux-amd64/* ${DISTDIR}
 #	rm -rf *
-#	mkdir ${S}
-#	cd ${S}
+	mkdir ${S}
+	cd ${S}
 
 #    SUFF="-64-${PV}-5.x86_64.rpm"
 
@@ -39,10 +39,10 @@ src_unpack () {
 }
 
 src_install() {
-
+    rm ${S}/usr/lib64/pcsc/drivers/ifd-rutokens.bundle/Contents/Info.plist
+    rm ${S}/usr/lib64/pcsc/drivers/ifd-rutokens.bundle/Contents/Linux/librutokens.so
+    rm ${S}/usr/lib64/pcsc/drivers/ifd-rutokens.bundle/Contents/Linux/librutokens.so.1.0.4
     cp -vR ${S}/* ${D}/
-    rm ${D}/etc/init.d/cprocsp
-    cp ${FILESDIR}/cprocsp-5.0.12000 ${D}/etc/init.d/cprocsp
 }
 
 #pkg_config() {
@@ -51,8 +51,8 @@ src_install() {
 #	/opt/cprocsp/sbin/amd64/configure_base_prov.sh kc1
 #}
 
-pkg_postinst() {
-chmod -R 777 /var/opt/cprocsp
-touch /etc/debian_version
-echo "jessie/sid" > /etc/debian_version
-}
+#pkg_postinst() {
+#chmod -R 777 /var/opt/cprocsp
+#touch /etc/debian_version
+#echo "jessie/sid" > /etc/debian_version
+#}
