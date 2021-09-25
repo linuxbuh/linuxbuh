@@ -81,7 +81,7 @@ pkg_postinst() {
     mkdir -p /var/run/sbis
     bash /opt/sbis3plugin/sbis3plugin-postinst.sh
     rc-update add SBIS3Plugin-daemon default
-    /etc/init.d/SBIS3Plugin-daemon start
+    /etc/init.d/SBIS3Plugin-daemon restart
     elog "запустите приложение самостоятельно с помощью ярлыка на рабочем столе."
 }
 
