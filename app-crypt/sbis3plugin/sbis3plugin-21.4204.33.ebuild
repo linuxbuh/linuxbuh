@@ -81,6 +81,7 @@ pkg_postinst() {
     mkdir -p /var/run/sbis
     bash /opt/sbis3plugin/sbis3plugin-postinst.sh
     rc-update add SBIS3Plugin-daemon default
+    /etc/init.d/SBIS3Plugin-daemon start
     elog "запустите приложение самостоятельно с помощью ярлыка на рабочем столе."
 }
 
@@ -91,6 +92,7 @@ pkg_prerm ()  {
     rm -Rv /usr/share/applications/Sbis3Plugin.desktop
     rm -Rv /etc/profile.d/sbis3plugin-user-install.sh
     rm -Rv /var/run/sbis
+    /etc/init.d/SBIS3Plugin-daemon stop
     rm -Rv /etc/init.d/SBIS3Plugin-daemon
     rc-update del SBIS3Plugin-daemon default
 }
