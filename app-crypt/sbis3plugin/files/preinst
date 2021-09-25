@@ -72,11 +72,11 @@ ipc_catalog="/var/run/sbisplugin"
 autorun_dir="/etc/xdg/autostart"
 autorun_path="\$autorun_dir/Sbis3Plugin.desktop"
 
-if [ -d /usr/lib/systemd/system ]; then
-    SYSTEMD_ROOT=/usr/lib/systemd/system
-else
-    SYSTEMD_ROOT=/lib/systemd/system
-fi
+#if [ -d /usr/lib/systemd/system ]; then
+#    SYSTEMD_ROOT=/usr/lib/systemd/system
+#else
+#    SYSTEMD_ROOT=/lib/systemd/system
+#fi
 
 if [ -d /etc/profile.d ]; then
     per_user_dir="/etc/profile.d"
@@ -136,22 +136,22 @@ fi
 # Подумать над установкой abrt, abrt-cli
 
 #FIXME Удалить после выхода 19.713
-if [ -e /opt/sbis3plugin/uninstall.sh ]; then
-   command_call "cd /opt/sbis3plugin/ && ./uninstall.sh"
-fi
+#if [ -e /opt/sbis3plugin/uninstall.sh ]; then
+#   command_call "cd /opt/sbis3plugin/ && ./uninstall.sh"
+#fi
 
 # prepare target directory
 mkdir -p "$ipc_catalog"
 
 # stop running processes
-echo_with_log "Остановка сервиса"
-command_call "service SBIS3Plugin stop"
-if [ $? -ne 0 ]
-  then
-    echo_with_log "Не удалось остановить сервис."
-fi
-echo_with_log "Остановка приложения"
-command_call "killall -9 sbis3plugin"
-sleep 3
+#echo_with_log "Остановка сервиса"
+#command_call "service SBIS3Plugin stop"
+#if [ $? -ne 0 ]
+#  then
+#    echo_with_log "Не удалось остановить сервис."
+#fi
+#echo_with_log "Остановка приложения"
+#command_call "killall -9 sbis3plugin"
+#sleep 3
 
 echo_with_log "-------------"
