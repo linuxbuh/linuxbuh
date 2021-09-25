@@ -82,10 +82,9 @@ pkg_postinst() {
 
 }
 
-pkg_prerm ()  { 
+pkg_prerm ()  {
 
     rm -Rv /opt/sbis3plugin
     rm -Rv /usr/share/Sbis3Plugin
     rm -Rv /usr/share/application/Sbis3Plugin.desktop
-    
 }
