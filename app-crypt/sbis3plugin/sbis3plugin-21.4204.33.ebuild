@@ -10,7 +10,7 @@ HOMEPAGE="https://sbis.ru/"
 
 KEYWORDS="amd64"
 
-SRC_URI="amd64? ( https://update-msk1.sbis.ru/Sbis3Plugin/rc/linux/deb_repo/sbis3plugin.deb -> sbis3plugin-21.4204.33.deb )"
+SRC_URI="amd64? ( https://update-msk1.sbis.ru/Sbis3Plugin/rc/linux/deb_repo/sbis3plugin.deb -> sbis3plugin-${PN}.deb )"
 
 SLOT="0"
 RESTRICT="strip mirror"
@@ -73,6 +73,7 @@ src_install() {
 
 	cp -R "${WORKDIR}/opt" "${D}" || die "install failed!"
 	cp -R "${FILESDIR}/sbis3plugin-postinst.sh" "${D}/opt/sbis3plugin/sbis3plugin-postinst.sh" || die "install failed!"
+	cp -R "${FILESDIR}/addDaemonRestart.sh" "${D}/opt/sbis3plugin/temp/${PN}/service/update_scripts/addDaemonRestart.sh" || die "install failed!"
 }
 
 pkg_postinst() {

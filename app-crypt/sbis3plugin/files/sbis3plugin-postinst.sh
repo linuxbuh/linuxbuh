@@ -72,11 +72,13 @@ ipc_catalog="/var/run/sbisplugin"
 autorun_dir="/etc/xdg/autostart"
 autorun_path="\$autorun_dir/Sbis3Plugin.desktop"
 
+#ztime Пока заремил - надо переделать
 #if [ -d /usr/lib/systemd/system ]; then
 #    SYSTEMD_ROOT=/usr/lib/systemd/system
 #else
 #    SYSTEMD_ROOT=/lib/systemd/system
 #fi
+#end ztime
 
 if [ -d /etc/profile.d ]; then
     per_user_dir="/etc/profile.d"
@@ -135,15 +137,18 @@ fi
 #TODO
 # Подумать над установкой abrt, abrt-cli
 
+#ztime Пока заремил - надо переделать
 #FIXME Удалить после выхода 19.713
 #if [ -e /opt/sbis3plugin/uninstall.sh ]; then
 #   command_call "cd /opt/sbis3plugin/ && ./uninstall.sh"
 #fi
+#end ztime
 
 # prepare target directory
 mkdir -p "$ipc_catalog"
 
 # stop running processes
+#ztime Пока заремил - надо переделать
 #echo_with_log "Остановка сервиса"
 #command_call "service SBIS3Plugin stop"
 #if [ $? -ne 0 ]
@@ -153,6 +158,7 @@ mkdir -p "$ipc_catalog"
 #echo_with_log "Остановка приложения"
 #command_call "killall -9 sbis3plugin"
 #sleep 3
+#end ztime
 
 echo_with_log "-------------"
 
@@ -173,8 +179,8 @@ variable_value cert_path
 echo_with_log "Установка сертификата для всех пользователей"
 
 mkdir -p /usr/local/share/ca-certificates
-#mkdir -p /usr/share/pki/ca-trust-source/anchors
-#mkdir -p /usr/share/pki/trust/anchors
+mkdir -p /usr/share/pki/ca-trust-source/anchors
+mkdir -p /usr/share/pki/trust/anchors
 
 if [ -d /usr/share/pki/ca-trust-source/ ]; then
    command_call "cp \"$cert_path\" /usr/share/pki/ca-trust-source/anchors/sbis.pem"
@@ -306,39 +312,41 @@ if [ $? -ne 0 ]
 fi
 
 # register daemon
-echo_with_log "Регистрация демона"
-command_call "bash \"$sbis3plugin_path/21.4204.33/service/sbis-daemon-setup.sh\" --daemon-name SBIS3Plugin uninstall"
+#ztime Пока заремил - надо переделать
+#echo_with_log "Регистрация демона"
+#command_call "bash \"$sbis3plugin_path/21.4204.33/service/sbis-daemon-setup.sh\" --daemon-name SBIS3Plugin uninstall"
 
-if [ -z "$USER" ] && [ -z "$SUDO_USER" ]; then
-   echo_with_log "НЕОБХОДИМО ПЕРЕЗАГРУЗИТЬ КОМПЬЮТЕР ПОСЛЕ УСТАНОВКИ"
-fi
+#if [ -z "$USER" ] && [ -z "$SUDO_USER" ]; then
+#   echo_with_log "НЕОБХОДИМО ПЕРЕЗАГРУЗИТЬ КОМПЬЮТЕР ПОСЛЕ УСТАНОВКИ"
+#fi
 
-command_call "bash \"$sbis3plugin_path/21.4204.33/service/sbis-daemon-setup.sh\" --force --library \"auto\" --ep \"auto\" --autorun --directory \"$sbis3plugin_path\" --executable-name sbis3plugin --add-opts \"--daemon --output_file \"/usr/share/Sbis3Plugin/logs/service_daemon.log\"\" --daemon-name SBIS3Plugin --user root install"
+#command_call "bash \"$sbis3plugin_path/21.4204.33/service/sbis-daemon-setup.sh\" --force --library \"auto\" --ep \"auto\" --autorun --directory \"$sbis3plugin_path\" --executable-name sbis3plugin --add-opts \"--daemon --output_file \"/usr/share/Sbis3Plugin/logs/service_daemon.log\"\" --daemon-name SBIS3Plugin --user root install"
 
-if [ $? -ne 0 ]
-  then
-    echo_with_log "Не удалось зарегистрировать демона. Установка не завершена."
-    exit 1
-fi
-command_call "bash \"$sbis3plugin_path/21.4204.33/service/update_scripts/addDaemonRestart.sh\""
-command_call "service SBIS3Plugin start"
-if [ $? -ne 0 ]
-  then
-    echo_with_log "Не удалось запустить демона. Установка не завершена."
-    exit 1
-fi
+#if [ $? -ne 0 ]
+#  then
+#    echo_with_log "Не удалось зарегистрировать демона. Установка не завершена."
+#    exit 1
+#fi
+#command_call "bash \"$sbis3plugin_path/21.4204.33/service/update_scripts/addDaemonRestart.sh\""
+#command_call "service SBIS3Plugin start"
+#if [ $? -ne 0 ]
+#  then
+#    echo_with_log "Не удалось запустить демона. Установка не завершена."
+#    exit 1
+#fi
 
-if { [ "$os_name" == "centos" ] || [ "$os_name" == "red soft" ]; } && [ -e /etc/abrt.conf ]; then
-   echo_with_log "Настройка abrtd."
-   sed -i 's,^\(MaxCrashReportsSize = \).*$,\15000,' /etc/abrt/abrt.conf >/dev/null 2>&1
-   sed -i 's,^\(OpenGPGCheck = \).*$,\1no,' /etc/abrt/abrt-action-save-package-data.conf >/dev/null 2>&1
-   sed -i 's,^\(ProcessUnpackaged = \).*$,\1yes,' /etc/abrt/abrt-action-save-package-data.conf >/dev/null 2>&1
-   systemctl restart abrtd >/dev/null 2>&1
-   for f in $SYSTEMD_ROOT/multi-user.target.wants/abrt-*.service; do
-     SRV=$(basename "$f")
-     systemctl restart "$SRV"
-   done 
-fi
+#if { [ "$os_name" == "centos" ] || [ "$os_name" == "red soft" ]; } && [ -e /etc/abrt.conf ]; then
+#   echo_with_log "Настройка abrtd."
+#   sed -i 's,^\(MaxCrashReportsSize = \).*$,\15000,' /etc/abrt/abrt.conf >/dev/null 2>&1
+#   sed -i 's,^\(OpenGPGCheck = \).*$,\1no,' /etc/abrt/abrt-action-save-package-data.conf >/dev/null 2>&1
+#   sed -i 's,^\(ProcessUnpackaged = \).*$,\1yes,' /etc/abrt/abrt-action-save-package-data.conf >/dev/null 2>&1
+#   systemctl restart abrtd >/dev/null 2>&1
+#   for f in $SYSTEMD_ROOT/multi-user.target.wants/abrt-*.service; do
+#     SRV=$(basename "$f")
+#     systemctl restart "$SRV"
+#   done 
+#fi
+#end ztime
 
 # Wait for afterInstall result
 i="0"
@@ -370,6 +378,7 @@ do
 
     sleep 1
 done
+#end ztime
 
 # create per-user installer
 variable_value per_user_dir
