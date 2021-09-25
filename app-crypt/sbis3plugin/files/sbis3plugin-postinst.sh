@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#ztime start
+VERSBIS=21.4204.33
+#ztime end
+
 # готовим функции логирования
 read -r -d '' common_code << EOF
 # function for running command, fork output to the file and stdout, and out the exit_code
@@ -61,7 +65,9 @@ os_name=\$(echo "\$os_name" | tr "[:upper:]" "[:lower:]")
 sbis3plugin_path=/opt/sbis3plugin
 
 cert_path="\$sbis3plugin_path/21.4204.33/service/certs/certificate_x509.crt"
+#cert_path="\$sbis3plugin_path/$VERSBIS/service/certs/certificate_x509.crt"
 cert_path_pem="\$sbis3plugin_path/21.4204.33/service/certs/rootCA.pem"
+#cert_path_pem="\$sbis3plugin_path/$VERSBIS/service/certs/rootCA.pem"
 
 app_info_name="Sbis3Plugin.desktop"
 app_info_dir="/usr/share/applications"
@@ -118,6 +124,7 @@ echo_with_log "-------------"
 echo_with_log "Preinstall script"
 echo_with_log "Installer Value: $1"
 echo_with_log "Установка приложения СБИС3 Плагин 21.4204.33 версии"
+#echo_with_log "Установка приложения СБИС3 Плагин $VERSBIS версии"
 
 variable_value kernel_name
 variable_value os_name
@@ -178,9 +185,11 @@ command_call "mv /opt/sbis3plugin/temp/* $sbis3plugin_path/ && rm -rf /opt/sbis3
 variable_value cert_path
 echo_with_log "Установка сертификата для всех пользователей"
 
+#ztime start заглушка
 mkdir -p /usr/local/share/ca-certificates
 mkdir -p /usr/share/pki/ca-trust-source/anchors
 mkdir -p /usr/share/pki/trust/anchors
+#ztime end
 
 if [ -d /usr/share/pki/ca-trust-source/ ]; then
    command_call "cp \"$cert_path\" /usr/share/pki/ca-trust-source/anchors/sbis.pem"
@@ -226,6 +235,17 @@ variable_value app_info_dir
 variable_value app_info_path
 
 command_call "rm -f \"$app_info_path\""
+
+#ztime Подменяем /opt/sbis3plugin/sbis3plugin
+#rm /opt/sbis3plugin/sbis3plugin
+#cat > "/opt/sbis3plugin/sbis3plugin" << EOF
+##!/bin/bash
+
+#/opt/sbis3plugin/$VERSBIS/service/sbis3plugin
+
+#EOF
+#end ztime
+
 cat > "$app_info_path" << EOF
 #!/usr/bin/env xdg-open
 
@@ -349,6 +369,11 @@ fi
 #end ztime
 
 # Wait for afterInstall result
+
+#ztime Зашлушка
+mv /usr/share/Sbis3Plugin/afterInstall.marker /usr/share/Sbis3Plugin/afterInstall.success
+#ztime
+
 i="0"
 seconds_to_wait="60"
 while [ $i -le $seconds_to_wait ]
@@ -378,7 +403,6 @@ do
 
     sleep 1
 done
-#end ztime
 
 # create per-user installer
 variable_value per_user_dir
