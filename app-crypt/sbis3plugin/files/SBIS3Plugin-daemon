@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="SBIS3Plugin-daemon"
+piddir="/var/run/sbis"
+pidfile="/var/run/sbis/SBIS3Plugin.pid"
+
+start_pre() {
+    checkpath -q -d -m 0777 -o root:root ${piddir}
+}
+
+start() {
+    ebegin "Starting SBIS3Plugin-daemon"
+    /opt/sbis3plugin/sbis3plugin --name "SBIS3Plugin" --library "auto" --ep "auto" start --daemon --output_file "/usr/share/Sbis3Plugin/logs/service_daemon.log"
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping SBIS3Plugin-daemon"
+    /opt/sbis3plugin/sbis3plugin --name "SBIS3Plugin" stop
+    rm -f ${pidfile}
+    eend $?
+}
