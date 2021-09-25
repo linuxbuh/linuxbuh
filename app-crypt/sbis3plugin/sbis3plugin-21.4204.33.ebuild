@@ -78,8 +78,8 @@ src_install() {
 
 pkg_postinst() {
 
-#    elog "Запустите скрипт /opt/sbis3plugin/sbis3plugin-postinst.sh"
     bash /opt/sbis3plugin/sbis3plugin-postinst.sh
+    elog "запустите приложение самостоятельно с помощью ярлыка на рабочем столе."
 }
 
 pkg_prerm ()  {
