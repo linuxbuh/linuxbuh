@@ -1,0 +1,157 @@
+#!/bin/bash
+
+# готовим функции логирования
+read -r -d '' common_code << EOF
+# function for running command, fork output to the file and stdout, and out the exit_code
+# must call like this: command_call "ls -la /tmp/000"
+function command_call {
+  echo -e "\$(date +%T.%3N)\t\$1" >> "\$logfile"
+  command_call_cmd="\$1 2>&1 | tee -a \"\$logfile\""
+  set -o pipefail
+  eval \$command_call_cmd
+  command_call_exit_code=\${PIPESTATUS[0]}
+  set +o pipefail
+  echo -e "\$(date +%T.%3N)\tExit code for: \"\$1\" is \$command_call_exit_code" >> "\$logfile"
+  # восстанавливаем код возврата команды, сбрасываемый вызовом tee
+  (exit \$command_call_exit_code)
+}
+
+# function for output variable name and same variable value to the file
+# must call like this: variable_value kernel_name
+#   which out for example: kernel_name is "linux"
+#   when kernel_name contains value linux
+function variable_value {
+  variable_val=\$1
+  echo -e "\$(date +%T.%3N)\t\c" >> "\$logfile"
+  echo "\$variable_val is \"\${!variable_val}\"" >> "\$logfile"
+}
+
+# echo equivalent with fork to logfile
+function echo_with_log {
+  echo -e "\$(date +%T.%3N)\t\c" >> "\$logfile"
+  echo "\$1" | tee -a "\$logfile"
+}
+
+# echo equivalent with redirect to logfile
+function echo_log_only {
+  echo -e "\$(date +%T.%3N)\t\c" >> "\$logfile"
+  echo "\$1" >> "\$logfile"
+}
+
+os_name=""
+os_version=""
+kernel_name=\$(uname -s | tr "[:upper:]" "[:lower:]")
+if [ "\$kernel_name" == "linux" ]
+  then
+    if [ -f /etc/lsb-release -o -d /etc/lsb-release.d ]
+      then
+        os_name=\$(lsb_release -i | cut -d: -f2 | sed s/'^\t'//)
+        os_version=\$(lsb_release -r | cut -d: -f2 | sed s/'^\t'//)
+      else
+        os_name=\$(ls -d /etc/[A-Za-z]*[_-][rv]e[lr]* | grep -v "lsb" | cut -d'/' -f3 | cut -d'-' -f1 | cut -d'_' -f1)
+    fi
+fi
+
+if [[ "\$os_name" =~ altlinux.* ]]; then
+   os_name="altlinux"
+fi
+
+#const
+os_name=\$(echo "\$os_name" | tr "[:upper:]" "[:lower:]")
+sbis3plugin_path=/opt/sbis3plugin
+
+cert_path="\$sbis3plugin_path/21.4204.33/service/certs/certificate_x509.crt"
+cert_path_pem="\$sbis3plugin_path/21.4204.33/service/certs/rootCA.pem"
+
+app_info_name="Sbis3Plugin.desktop"
+app_info_dir="/usr/share/applications"
+app_info_path="\$app_info_dir/\$app_info_name"
+
+ipc_catalog="/var/run/sbisplugin"
+
+autorun_dir="/etc/xdg/autostart"
+autorun_path="\$autorun_dir/Sbis3Plugin.desktop"
+
+if [ -d /usr/lib/systemd/system ]; then
+    SYSTEMD_ROOT=/usr/lib/systemd/system
+else
+    SYSTEMD_ROOT=/lib/systemd/system
+fi
+
+if [ -d /etc/profile.d ]; then
+    per_user_dir="/etc/profile.d"
+else
+    per_user_dir="/etc/X11/xinit/xinitrc.d"
+fi
+per_user_install="\$per_user_dir/sbis3plugin-user-install.sh"
+per_user_uninstall="\$per_user_dir/sbis3plugin-user-uninstall.sh"
+
+if [ ! -z "\$SUDO_USER" ] && [ "\$SUDO_USER" != "root" ]; then
+   OWNER="\$SUDO_USER"
+elif [ ! -z "\$USER" ]; then
+   OWNER="\$USER"
+else
+   OWNER="root"
+fi
+
+log_folder="/usr/share/Sbis3Plugin/logs/\$(date +%Y%m%d)"
+mkdir -p "\$log_folder"
+chmod 777 "\$log_folder" &> /dev/null
+logfile="\$log_folder/\$(date +%Y-%m-%d)_\$logname.log"
+
+touch "\$logfile" &> /dev/null
+chmod 777 "\$logfile" &> /dev/null
+
+EOF
+
+echo "$common_code" > "/usr/bin/sbis3plugin-install.common.sh"
+
+# create install temporary log file
+logname="sbis3plugin-preinstall"
+
+# load logging functions
+source "/usr/bin/sbis3plugin-install.common.sh"
+
+echo_with_log "-------------"
+echo_with_log "Preinstall script"
+echo_with_log "Installer Value: $1"
+echo_with_log "Установка приложения СБИС3 Плагин 21.4204.33 версии"
+
+variable_value kernel_name
+variable_value os_name
+variable_value os_version
+
+# check os version
+if [ -z "$os_name" ]; then
+  echo_with_log "Не удалось определить ОС. Корректная работа приложения не гарантирована."
+elif [ "$os_name" == "centos" ] || [ "$os_name" == "red soft" ] || 
+     [ "$os_name" == "astralinuxce" ] || [ "$os_name" == "altlinux" ] ||
+     [ "$os_name" == "linuxmint" ] || [ "$os_name" == "os" ] || [ "$os_name" == "debian" ]; then
+  echo_with_log "ОС определена как $os_name версии $os_version."
+else
+  echo_with_log "ОС определена как $os_name. Корректная работа приложения в данной ОС не гарантирована."
+fi
+
+#TODO
+# Подумать над установкой abrt, abrt-cli
+
+#FIXME Удалить после выхода 19.713
+if [ -e /opt/sbis3plugin/uninstall.sh ]; then
+   command_call "cd /opt/sbis3plugin/ && ./uninstall.sh"
+fi
+
+# prepare target directory
+mkdir -p "$ipc_catalog"
+
+# stop running processes
+echo_with_log "Остановка сервиса"
+command_call "service SBIS3Plugin stop"
+if [ $? -ne 0 ]
+  then
+    echo_with_log "Не удалось остановить сервис."
+fi
+echo_with_log "Остановка приложения"
+command_call "killall -9 sbis3plugin"
+sleep 3
+
+echo_with_log "-------------"

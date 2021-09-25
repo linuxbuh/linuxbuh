@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ $1 == 0 ] || [ $1 == "remove" ]; then
+   # create install temporary log file
+   logname="sbis3plugin-postuninstall"
+
+   # load logging functions
+   source "/usr/bin/sbis3plugin-install.common.sh"
+   echo_with_log "-------------"
+   echo_with_log "Postuninstall script"
+   echo_with_log "Installer Value: $1"
+
+   command_call "rm -rf \"$sbis3plugin_path\" > /dev/null 2>&1"
+   command_call "rm -rf /var/run/sbisplugin > /dev/null 2>&1"
+   command_call "rm -rf /root/.Sbis3Plugin/tmp > /dev/null 2>&1"
+   command_call "rm -rf /root/.Sbis3Plugin/_settings > /dev/null 2>&1"
+   for path in /usr/share/Sbis3Plugin/*
+   do
+       name=$(basename "$path")
+       [ "$name" != "logs" -a "$name" != "user-config.ini" ] || continue
+       [ "$name" != "rc" ] || continue
+       command_call "rm -rf \"$path\" > /dev/null 2>&1"
+   done
+   command_call "killall -9 sbis3plugin > /dev/null 2>&1"
+   echo_with_log "Удаление завершено"
+   echo_with_log "-------------"
+fi

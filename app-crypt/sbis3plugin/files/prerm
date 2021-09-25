@@ -1,0 +1,77 @@
+#!/bin/bash
+
+if [ $1 == 0 ] || [ $1 == "remove" ]; then
+   # create install temporary log file
+   logname="sbis3plugin-preuninstall"
+
+   # load logging functions
+   source "/usr/bin/sbis3plugin-install.common.sh"
+   echo_with_log "-------------"
+   echo_with_log "Preuninstall script"
+   echo_with_log "Installer Value: $1"
+
+   command_call "service SBIS3Plugin stop"
+   command_call "killall -9 sbis3plugin"
+   sleep 3
+
+   last_valid_dir_ic="$(ls -t "$sbis3plugin_path/"*/integrity.checked | head -1)"
+   variable_value last_valid_dir_ic
+   last_valid_dir="$(dirname "$last_valid_dir_ic")"
+   variable_value last_valid_dir
+
+   command_call "$sbis3plugin_path/sbis3plugin --configuration_path=sbis-uninstall.ini"
+   command_call "bash \"$last_valid_dir/service/sbis-daemon-setup.sh\" --daemon-name SBIS3Plugin uninstall"
+   command_call "rm \"$app_info_path\""
+   command_call "rm -rf /tmp/diskCacheFolder"
+
+   per_user_install="$per_user_dir/sbis3plugin-user-install.sh"
+   per_user_uninstall_name="sbis3plugin-user-uninstall.sh"
+   per_user_uninstall="$per_user_dir/$per_user_uninstall_name"
+
+   command_call "rm -f \"$per_user_install\""
+
+   cat > "$per_user_uninstall" << EOF
+#!/bin/bash
+
+# create per user uninstall temporary log file
+logname="sbis3plugin-per-user-uninstall_\$USER"
+
+per_user_install_done=".Sbis3Plugin/install.done.21.4204.33"
+per_user_uninstall_done=".Sbis3Plugin/uninstall.done.21.4204.33"
+eval HOME_DIR=~"\$USER"
+mark_file="\$HOME_DIR/\$per_user_uninstall_done"
+
+if [ ! -e "\$mark_file" ]; then
+    # load logging functions
+    source "/usr/bin/sbis3plugin-install.common.sh"
+    variable_value mark_file
+    mark_file_dir=\$(dirname "\$mark_file")
+    command_call "mkdir -p \"\$mark_file_dir\" > /dev/null 2>&1"
+    command_call "rm -f \"\$HOME_DIR/\$per_user_install_done\" > /dev/null 2>&1"
+    for path in "\$HOME_DIR"/.Sbis3Plugin/*
+    do
+        name=\$(basename "\$path")
+        [ "\$name" != "logs" -a "\$name" != "user-config.ini" ] || continue
+        command_call "rm -rf \"\$path\" > /dev/null 2>&1"
+    done
+
+    if [ \$EUID -ne 0 ]; then
+        # first check running: source "\$HOME/.config/user-dirs.dirs"
+        command_call "source \"\$HOME_DIR/.config/user-dirs.dirs\"" "\$per_user_install_logfile > /dev/null 2>&1"
+        # the immediately run: source "\$HOME_DIR/.config/user-dirs.dirs" with replacing HOME -> HOME_DIR  
+        USER_DIRS=\$(sed "s/HOME/HOME_DIR/g" "\$HOME_DIR/.config/user-dirs.dirs")
+        eval "\$USER_DIRS"
+
+        command_call "rm -f \"\$XDG_DESKTOP_DIR/\$app_info_name\" > /dev/null 2>&1"
+    fi
+    command_call "touch \"\$mark_file\" > /dev/null 2>&1"
+fi
+
+EOF
+   if [ "$OWNER" != "root" ]; then
+      sudo -E -u "$OWNER" bash "$per_user_uninstall"
+      echo_log_only "Exit code for command: \"sudo -E -u \"$(logname)\" bash \"$per_user_uninstall\"\" is $?"
+
+      echo_with_log "-------------"
+   fi
+fi
