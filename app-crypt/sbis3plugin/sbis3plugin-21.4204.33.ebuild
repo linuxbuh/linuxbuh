@@ -78,13 +78,14 @@ src_install() {
 
 pkg_postinst() {
 
-    elog "Запустите скрипт /opt/sbis3plugin/sbis3plugin-postinst.sh"
-
+#    elog "Запустите скрипт /opt/sbis3plugin/sbis3plugin-postinst.sh"
+    bash /opt/sbis3plugin/sbis3plugin-postinst.sh
 }
 
 pkg_prerm ()  {
 
     rm -Rv /opt/sbis3plugin
     rm -Rv /usr/share/Sbis3Plugin
-    rm -Rv /usr/share/application/Sbis3Plugin.desktop
+    rm -Rv /usr/share/applications/Sbis3Plugin.desktop
+    rm -Rv /etc/profile.d/sbis3plugin-user-install.sh
 }
