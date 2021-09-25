@@ -73,11 +73,12 @@ src_install() {
 
 	cp -R "${WORKDIR}/opt" "${D}" || die "install failed!"
 	cp -R "${FILESDIR}/sbis3plugin-postinst.sh" "${D}/opt/sbis3plugin/sbis3plugin-postinst.sh" || die "install failed!"
-	cp -R "${FILESDIR}/addDaemonRestart.sh" "${D}/opt/sbis3plugin/temp/${PV}/service/update_scripts/addDaemonRestart.sh" || die "install failed!"
+#	cp -R "${FILESDIR}/addDaemonRestart.sh" "${D}/opt/sbis3plugin/temp/${PV}/service/update_scripts/addDaemonRestart.sh" || die "install failed!"
 }
 
 pkg_postinst() {
 
+    mkdir -p /var/run/sbis
     bash /opt/sbis3plugin/sbis3plugin-postinst.sh
     elog "запустите приложение самостоятельно с помощью ярлыка на рабочем столе."
 }
@@ -88,4 +89,5 @@ pkg_prerm ()  {
     rm -Rv /usr/share/Sbis3Plugin
     rm -Rv /usr/share/applications/Sbis3Plugin.desktop
     rm -Rv /etc/profile.d/sbis3plugin-user-install.sh
+    rm -Rv /var/run/sbis
 }
