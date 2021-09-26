@@ -76,9 +76,10 @@ src_install() {
 }
 
 pkg_postinst() {
-
+    /etc/init.d/SBIS3Plugin-daemon stop
     cp -R "${FILESDIR}/SBIS3Plugin-daemon" "/etc/init.d/SBIS3Plugin-daemon" || die "install failed!"
     mkdir -p /var/run/sbis
+    /etc/init.d/SBIS3Plugin-daemon stop
     bash /opt/sbis3plugin/sbis3plugin-postinst.sh
 #    rc-update add SBIS3Plugin-daemon default
 #    /etc/init.d/SBIS3Plugin-daemon restart
