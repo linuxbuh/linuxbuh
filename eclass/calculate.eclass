@@ -11,7 +11,7 @@
 # @DESCRIPTION:
 # This eclass use for calculate-utils and calculate-sources ebuilds
 
-inherit eutils linux-info versionator
+inherit eutils linux-info
 
 EXPORT_FUNCTIONS pkg_postinst
 
@@ -435,7 +435,7 @@ calculate_initvars() {
 # Change the version of the system in calculate.ini,issue,grub.conf
 calculate_change_version() {
 	calculate_initvars
-	if [[ -n "${LINUXVER}" ]] && ! version_is_at_least ${PV} ${LINUXVER}
+	if [[ -n "${LINUXVER}" ]] && ! ver_test ${PV} -ge ${LINUXVER}
 	then
 		ebegin "Change version of operation system"
 			change_issue &&
