@@ -126,7 +126,7 @@ echo "jessie/sid" > /etc/debian_version
 rm -f /etc/opt/cprocsp/config64.ini
 #cp -f ${FILESDIR}/goodconfig64.ini /etc/opt/cprocsp/config64.ini
 cp -f ${FILESDIR}/cprocsp_postinstal_all_scripts.sh /etc/opt/cprocsp/cprocsp_postinstal_all_scripts.sh
-/etc/opt/cprocsp/cprocsp_postinstal_all_scripts.sh
+#/etc/opt/cprocsp/cprocsp_postinstal_all_scripts.sh
 
 if use kc1; then
 cp -f ${FILESDIR}/config64-kc1.ini /etc/opt/cprocsp/config64.ini
