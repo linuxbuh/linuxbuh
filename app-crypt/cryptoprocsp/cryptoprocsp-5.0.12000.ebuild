@@ -20,7 +20,7 @@ IUSE="+lsb-kc1 lsb-kc2 +stunnel +cptools +lsb-pkcs11 +ifd-rutokens \
 +rdr-cloud +rdr-cloud-gtk +rdr-cpfkc +rdr-cryptoki +rdr-edoc +rdr-emv \
 +rdr-esmart +rdr-gui-gtk +rdr-infocrypt +rdr-inpaspot +rdr-kst +rdr-mskey \
 +rdr-novacard +rdr-pcsc +rdr-relay +rdr-rosan +rdr-rutoken +lsb-capilite \
-+lsb-rcrypt +lsb-rdr noarch-altlinux noarch-suse noarch-ipsec-devel noarch-drv-devel\
++lsb-rcrypt +lsb-rdr noarch-altlinux noarch-suse noarch-ipsec-devel noarch-drv-devel \
 +noarch-xer2print +noarch-lsb-base +noarch-lsb-ca-certs noarch-lsb-devel \
 +noarch-lsb-import-ca-certs src-accord_random src-cprocsp-drv src-ipsec-esp src-sobol"
 
