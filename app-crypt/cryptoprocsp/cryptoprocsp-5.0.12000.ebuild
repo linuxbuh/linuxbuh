@@ -281,11 +281,11 @@ pkg_postinst() {
     cp -f ${FILESDIR}/cprocsp_postinstal_all_scripts.sh /etc/opt/cprocsp/cprocsp_postinstal_all_scripts.sh
     #/etc/opt/cprocsp/cprocsp_postinstal_all_scripts.sh
 
-    if use kc1; then
+    if use lsb-kc1; then
 	cp -f ${FILESDIR}/config64-kc1.ini /etc/opt/cprocsp/config64.ini
     fi
 
-    if use kc2; then
+    if use lsb-kc2; then
 	cp -f ${FILESDIR}/config64-kc2.ini /etc/opt/cprocsp/config64.ini
     fi
 
