@@ -8,7 +8,7 @@ inherit eutils toolchain-funcs fdo-mime
 
 DESCRIPTION="A high-quality scanning and digital camera raw image processing software."
 HOMEPAGE="http://www.hamrick.com/"
-SRC_URI="https://www.hamrick.com/files/vuex6497.tgz"
+SRC_URI="https://www.hamrick.com/files/vuex6497.tgz -> ${P}.tgz"
 
 LICENSE="vuescan"
 SLOT="0"
