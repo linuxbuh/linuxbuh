@@ -101,5 +101,4 @@ pkg_prerm ()  {
     /etc/init.d/SBIS3Plugin-daemon stop
     rc-update del SBIS3Plugin-daemon default
     rm -Rv /etc/init.d/SBIS3Plugin-daemon
-
 }
