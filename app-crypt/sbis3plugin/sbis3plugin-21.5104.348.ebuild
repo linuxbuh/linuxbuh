@@ -18,7 +18,8 @@ LICENSE="GPL-3"
 IUSE=""
 
 
-NATIVE_DEPEND="sys-libs/glibc
+NATIVE_DEPEND="app-arch/deb2targz
+	sys-libs/glibc
 	sys-devel/gcc
 	app-crypt/sbis-libstdc
 	dev-libs/atk
