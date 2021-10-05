@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #ztime start
-VERSBIS=21.4204.33
+VERSBIS=21.5104.348
 #ztime end
 
 # готовим функции логирования
@@ -64,10 +64,10 @@ fi
 os_name=\$(echo "\$os_name" | tr "[:upper:]" "[:lower:]")
 sbis3plugin_path=/opt/sbis3plugin
 
-cert_path="\$sbis3plugin_path/21.4204.33/service/certs/certificate_x509.crt"
-#cert_path="\$sbis3plugin_path/$VERSBIS/service/certs/certificate_x509.crt"
-cert_path_pem="\$sbis3plugin_path/21.4204.33/service/certs/rootCA.pem"
-#cert_path_pem="\$sbis3plugin_path/$VERSBIS/service/certs/rootCA.pem"
+#cert_path="\$sbis3plugin_path/21.5104.348/service/certs/certificate_x509.crt"
+cert_path="\$sbis3plugin_path/$VERSBIS/service/certs/certificate_x509.crt"
+#cert_path_pem="\$sbis3plugin_path/21.5104.348/service/certs/rootCA.pem"
+cert_path_pem="\$sbis3plugin_path/$VERSBIS/service/certs/rootCA.pem"
 
 app_info_name="Sbis3Plugin.desktop"
 app_info_dir="/usr/share/applications"
@@ -123,8 +123,8 @@ source "/usr/bin/sbis3plugin-install.common.sh"
 echo_with_log "-------------"
 echo_with_log "Preinstall script"
 echo_with_log "Installer Value: $1"
-echo_with_log "Установка приложения СБИС3 Плагин 21.4204.33 версии"
-#echo_with_log "Установка приложения СБИС3 Плагин $VERSBIS версии"
+#echo_with_log "Установка приложения СБИС3 Плагин 21.5104.348 версии"
+echo_with_log "Установка приложения СБИС3 Плагин $VERSBIS версии"
 
 variable_value kernel_name
 variable_value os_name
@@ -303,7 +303,8 @@ variable_value current_locale
 if [ ! -z $current_locale ]; then
    current_locale="locale=$current_locale"
 fi
-command_call "\"$sbis3plugin_path/21.4204.33/service/components-registrator\" installActions $current_locale"
+#command_call "\"$sbis3plugin_path/21.5104.348/service/components-registrator\" installActions $current_locale"
+command_call "\"$sbis3plugin_path/$VERSBIS/service/components-registrator\" installActions $current_locale"
 if [ $? -ne 0 ]
   then
     echo_with_log "Не удалось выполнить регистрацию дополнительных компонентов. Установка не завершена."
@@ -315,7 +316,8 @@ echo_with_log "Обновление версии CromeNmhTransport"
 command_call "killall -9 ChromeNmhTransport"
 
 # mark files as verified
-command_call "touch \"$sbis3plugin_path/21.4204.33/integrity.checked\""
+#command_call "touch \"$sbis3plugin_path/21.4204.33/integrity.checked\""
+command_call "touch \"$sbis3plugin_path/$VERSBIS/integrity.checked\""
 if [ $? -ne 0 ]
   then
     echo_with_log "Не удалось создать файл признака корректности файлов. Установка не завершена."
@@ -417,7 +419,8 @@ cat > "$per_user_install" << EOF
 logname="sbis3plugin-per-user-install_\$USER"
 
 # create per user install temporary log file
-per_user_install_done=".Sbis3Plugin/install.done.21.4204.33"
+#per_user_install_done=".Sbis3Plugin/install.done.21.4204.33"
+per_user_install_done=".Sbis3Plugin/install.done.$VERSBIS"
 eval HOME_DIR=~"\$USER"
 mark_file="\$HOME_DIR/\$per_user_install_done"
 
@@ -499,7 +502,8 @@ fi
 chown "$OWNER" -R "$sbis3plugin_path"
 
 if [ "$OWNER" != "root" ] && [ ! -z "$DESKTOP_SESSION" ]; then
-   success_flag_path="/usr/share/Sbis3Plugin/checking/21.4204.33"
+#   success_flag_path="/usr/share/Sbis3Plugin/checking/21.4204.33"
+   success_flag_path="/usr/share/Sbis3Plugin/checking/$VERSBIS"
    command_call "mkdir -p \"$success_flag_path\""
    command_call "touch \"$success_flag_path/success\""
    
