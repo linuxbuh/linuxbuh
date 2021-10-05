@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #ztime start
-VERSBIS=21.5104.348
+VERSBIS=21.5104.352
 #ztime end
 
 # готовим функции логирования
