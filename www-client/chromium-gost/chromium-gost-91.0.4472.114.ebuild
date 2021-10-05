@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/deemru/chromium-gost"
 
 KEYWORDS="amd64"
 
-SRC_URI="amd64? ( https://github.com/deemru/chromium-gost/releases/download/91.0.4472.114/chromium-gost-91.0.4472.114-linux-amd64.deb )"
+SRC_URI="amd64? ( https://github.com/deemru/chromium-gost/releases/download/${PV}/chromium-gost-${PV}-linux-amd64.deb )"
 
 SLOT="0"
 RESTRICT="strip mirror"
