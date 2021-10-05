@@ -27,7 +27,8 @@ IUSE="+lsb-kc1 lsb-kc2 +stunnel +cptools +lsb-pkcs11 +ifd-rutokens \
 DEPEND=" sys-apps/pcsc-tools
 	sys-apps/pcsc-lite
 	sys-apps/lsb-release
-	app-crypt/ccid"
+	app-crypt/ccid
+	app-arch/rpm2targz"
 RDEPEND="${DEPEND}"
 RESTRICT="mirror strip"
 
