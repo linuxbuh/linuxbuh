@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Установка 1C:Предприятие 8,3
-Comment=Установка 1C:Предприятие 8,3
+Name=Установка 1C:Предприятие 8.3
+Comment=Установка 1C:Предприятие 8.3
 Exec=xterm -maximized linuxbuh-1c-installer
 Icon=linuxbuh-1c-installer
 Type=Application

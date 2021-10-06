@@ -1,5 +1,5 @@
 #------------------------------------------------------------------------------
-# Modified Calculate Utilities 3.6.9.10
+# Modified Calculate Utilities 3.7.1.24
 # Processed template files:
 # /var/db/repos/calculate/profiles/templates/3.6/6_ac_desktop_profile/2-user/xfce-base/Xfce-4.10/.local/share/applications/xfce4-about.desktop
 #------------------------------------------------------------------------------
@@ -121,7 +121,7 @@ Comment[sr]=Подаци о радном окружењу Иксфце-а
 Comment[sv]=Information om skrivbordsmiljön Xfce
 Comment[te]=Xfce డెస్క్‍టాప్ పర్యావరణం గురించిన సమాచారం
 Comment[th]=ข้อมูลเกี่ยวกับเดสก์ท็อป Xfce
-Comment[tr]=Xfce Masaüstü Ortamı hakkında bilgi
+Comment[tr]=Xfce Masaüstü Ortamı ile ilgili bilgi
 Comment[ug]=مەزكۇر Xfce ئۈستەلئۈستى مۇھىتى ھەققىدە ئۇچۇر
 Comment[uk]=Інформація про середовище робочого столу Xfce
 Comment[vi]=Thông tin về môi trường màn hình Xfce

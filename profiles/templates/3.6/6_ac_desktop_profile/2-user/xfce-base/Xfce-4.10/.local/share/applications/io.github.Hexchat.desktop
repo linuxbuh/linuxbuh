@@ -1,5 +1,5 @@
 #------------------------------------------------------------------------------
-# Modified Calculate Utilities 3.6.9.11
+# Modified Calculate Utilities 3.7.1.24
 # Processed template files:
 # /var/db/repos/calculate/profiles/templates/3.6/6_ac_desktop_profile/2-user/net-irc/hexchat-2.9/applications/hexchat-2.14.desktop
 #------------------------------------------------------------------------------
@@ -118,7 +118,7 @@ Keywords[sv]=IM;Chatt;
 Keywords[tr]=IM;Sohbet;
 Keywords[zh_CN]=IM;聊天;
 Keywords=IM;Chat;
-Exec=hexchat "--url=irc://irc.freenode.net:6667/#calculate-ru"
+Exec=hexchat "--url=ircs://irc.calculate.social:6697/#chat-ru"
 Icon=hexchat
 Terminal=false
 Type=Application

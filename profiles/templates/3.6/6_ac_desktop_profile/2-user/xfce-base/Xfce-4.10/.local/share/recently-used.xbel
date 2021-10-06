@@ -3,12 +3,22 @@
       xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
       xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
 >
-  <bookmark href="file:///opt/chromium-gost/chromium-gost" added="2021-04-16T15:42:56.462116Z" modified="2021-04-16T15:42:56.462130Z" visited="2021-04-16T15:42:56.462117Z">
+  <bookmark href="file:///usr/bin/kali-undercover" added="2021-10-06T20:17:53.226927Z" modified="2021-10-06T20:17:53.226934Z" visited="2021-10-06T20:17:53.226928Z">
     <info>
       <metadata owner="http://freedesktop.org">
         <mime:mime-type type="application/octet-stream"/>
         <bookmark:applications>
-          <bookmark:application name="xfce4-mime-helper" exec="&apos;xfce4-mime-helper %u&apos;" modified="2021-04-16T15:42:56.462122Z" count="1"/>
+          <bookmark:application name="xfce4-session-settings" exec="&apos;xfce4-session-settings %u&apos;" modified="2021-10-06T20:17:53.226930Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///usr/bin/microsoft-edge-beta" added="2021-10-06T20:20:13.601665Z" modified="2021-10-06T20:20:13.601672Z" visited="2021-10-06T20:20:13.601666Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="xfce4-mime-settings" exec="&apos;xfce4-mime-settings %u&apos;" modified="2021-10-06T20:20:13.601669Z" count="1"/>
         </bookmark:applications>
       </metadata>
     </info>

@@ -4,8 +4,8 @@ Version=1.0
 Encoding=UTF-8
 Type=X-XFCE-Helper
 X-XFCE-Category=MailReader
-X-XFCE-CommandsWithParameter=/opt/Rambox/rambox %U "%s"
-Icon=rambox
-Name=rambox
-X-XFCE-Commands=/opt/Rambox/rambox %U
+X-XFCE-CommandsWithParameter=/opt/rambox/Rambox "%s"
+Icon=Rambox
+Name=Rambox
+X-XFCE-Commands=/opt/rambox/Rambox
 

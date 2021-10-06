@@ -1,5 +1,5 @@
-favorites=xfce4-terminal-emulator.desktop,xfce4-file-manager.desktop,xfce4-web-browser.desktop,xfce-ui-settings.desktop,xfce-display-settings.desktop,xfce-settings-manager.desktop,xfce-backdrop-settings.desktop,onlyoffice-desktopeditors.desktop,chromium-gost.desktop,thunar.desktop,linuxbuh-1c-installer.desktop,cptools64.desktop,torbrowser.desktop,org.midori_browser.Midori.desktop,rambox.desktop,xfce4-mail-reader.desktop,*.desktop
-recent=xfce4-terminal-emulator.desktop,xfce-settings-manager.desktop
+favorites=xfce4-terminal-emulator.desktop,xfce4-file-manager.desktop,xfce4-web-browser.desktop,xfce-ui-settings.desktop,xfce-display-settings.desktop,xfce-settings-manager.desktop,xfce-backdrop-settings.desktop
+recent=xfce4-terminal-emulator.desktop,xfce-settings-manager.desktop,microsoft-edge-beta.desktop
 button-icon=xfce4-whiskermenu
 button-single-row=false
 show-button-title=false

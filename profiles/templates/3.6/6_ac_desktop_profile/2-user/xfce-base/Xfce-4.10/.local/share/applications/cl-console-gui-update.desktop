@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Calculate Linux Update
+Name[ru]=Обновление Windows 10
+Comment=Обновление Windows 10
+Exec=cl-console-gui-update
+Icon=console-gui-update
+Terminal=false
+Type=Application
+Categories=Settings;X-GNOME-PersonalSettings;
+OnlyShowIn=KDE;LXQt;LXDE;MATE;Razor;ROX;TDE;Unity;XFCE;Old;
+StartupNotify=true
+Path=

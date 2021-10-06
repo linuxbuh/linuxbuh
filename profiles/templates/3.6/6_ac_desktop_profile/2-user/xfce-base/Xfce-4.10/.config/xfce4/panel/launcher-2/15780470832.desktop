@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Exec=xfce4-appfinder
+Icon=edit-find-symbolic
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Utility;X-XFCE;
+Name=Application Finder

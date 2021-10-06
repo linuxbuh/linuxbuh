@@ -1,5 +1,5 @@
 #------------------------------------------------------------------------------
-# Modified Calculate Utilities 3.6.9.10
+# Modified Calculate Utilities 3.7.1.24
 # Processed template files:
 # /var/db/repos/calculate/profiles/templates/3.6/6_ac_desktop_profile/2-user/xfce-base/Xfce-4.10/.local/share/applications/xfce-keyboard-settings.desktop
 #------------------------------------------------------------------------------
@@ -73,7 +73,7 @@ Comment[ar]=تحرير إعدادات لوحة المفاتيح واختصارا
 Comment[ast]=Edita la configuración del tecláu y los accesos direutos d'aplicación
 Comment[be]=Рэдагаванне налад клавіятуры і спалучэнняў клавіш
 Comment[be@tarask]=Рэдагаваць налады клявіятуры й спалучэньні клявішаў
-Comment[bg]=Редактиране на настройките на клавиатурата и клавишните комбинации
+Comment[bg]=Настройки на клавиатурата и съчетанията от клавиши
 Comment[bn]=কীবোর্ড সেটিংসমূহ ও অ্যাপ্লিকেশন শর্টকাট সম্পাদনা
 Comment[ca]=Editeu els ajusts del teclat i les dreceres de les aplicacions
 Comment[cs]=Úprava nastavení klávesnice a klávesových zkratek
@@ -83,7 +83,7 @@ Comment[el]=Επεξεργασία ρυθμίσεων πληκτρολογίου
 Comment[en_AU]=Edit keyboard settings and application shortcuts
 Comment[en_CA]=Edit keyboard settings and application shortcuts
 Comment[en_GB]=Edit keyboard settings and application shortcuts
-Comment[es]=Edite la configuración del teclado y los atajos de aplicación
+Comment[es]=Edite la configuración del teclado y los atajos de las aplicaciones
 Comment[et]=Halda klaviatuuri seadistusi ning rakenduste otseteesid
 Comment[eu]=Editatu teklatu ezarpenak eta aplikazio lasterbideak
 Comment[fi]=Näppäimistön asetukset ja sovellusten pikanäppäimet
@@ -130,13 +130,13 @@ Comment[zh_TW]=編輯鍵盤設定與應用程式捷徑
 Keywords=numlock;keyboard;layout;shortcuts;
 Keywords[be]=numlock;клавіятура;раскладка;спалучэнні клавіш;
 Keywords[be@tarask]=numlock;клявіятура;раскладка;цэтлікі;
-Keywords[bg]=numlock;клавиатура;подредба;клавишни комбинации;
+Keywords[bg]=numlock;клавиатура;подредба;съчетания от клавиши;
 Keywords[ca]=bloqueig numèric;teclat;disposició;dreceres;
 Keywords[cs]=numlock;klávesnice;rozložení;klávesové zkratky;
 Keywords[da]=numerisk lås;tastatur;layout;genveje;
 Keywords[de]=Numlock;Tastatur;Layout;Verknüpfungen;
 Keywords[en_CA]=numlock;keyboard;layout;shortcuts;
-Keywords[es]=panel númerico;teclado;disposición;atajos;
+Keywords[es]=bloqueo numérico;teclado;distribución;atajos;
 Keywords[et]=numlock;keyboard;layout;shortcuts;otsetee;otseteed;kiirklahv:kiirklahvid;klaviatuur;paigutus;klaviatuuripaigutus;
 Keywords[eu]=numlock;teklatua;bistaratzeak;lasterbideak;
 Keywords[fr]=pavé numérique;clavier;disposition;raccourcis;
@@ -160,6 +160,7 @@ Keywords[sl]=zaklep numeričnega;tipkovnica;razpored;bližnjice;
 Keywords[sq]=numlock;tastierë;skemë;shkurtore;
 Keywords[sr]=тастатура;дугмад;распоред;пречице;
 Keywords[sv]=numlock;tangentbord;layout;genvägar;
+Keywords[th]=numlock;แป้นพิมพ์;ผัง;ปุ่มลัด;
 Keywords[tr]=numara kilidi;sayı kilidi;numlock;klavye;düzen;kısayollar;
 Keywords[uk]=numlock;клавіятура;розкладка;комбінації
 Keywords[zh_CN]=numlock;keyboard;layout;shortcuts;字键;键盘;布局;快捷键;

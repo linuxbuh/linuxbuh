@@ -9,8 +9,8 @@ lock-after=false
 item-type=0
 display-name=Chrome Safe Storage Control
 secret=The meaning of life
-mtime=1618587795
-ctime=1618587795
+mtime=1633550586
+ctime=1633550586
 
 [2:attribute0]
 name=explanation
@@ -25,9 +25,9 @@ value=_chrome_dummy_schema_for_unlocking
 [3]
 item-type=0
 display-name=Chromium Safe Storage
-secret=FJeR5fQ4HSCsNVasSPSPsA==
-mtime=1618587795
-ctime=1618587795
+secret=c3fmENg0FnXp57Qr5aeLnQ==
+mtime=1633550586
+ctime=1633550586
 
 [3:attribute0]
 name=application

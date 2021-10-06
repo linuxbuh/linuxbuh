@@ -4,8 +4,8 @@ Version=1.0
 Encoding=UTF-8
 Type=X-XFCE-Helper
 X-XFCE-Category=WebBrowser
-X-XFCE-CommandsWithParameter=/opt/chromium-gost/chromium-gost "%s"
-Icon=chromium-gost
-Name=chromium-gost
-X-XFCE-Commands=/opt/chromium-gost/chromium-gost
+X-XFCE-CommandsWithParameter=/usr/bin/microsoft-edge-beta "%s"
+Icon=microsoft-edge-beta
+Name=microsoft-edge-beta
+X-XFCE-Commands=/usr/bin/microsoft-edge-beta
 

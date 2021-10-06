@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
- Modified Calculate Utilities 3.6.9.10
+ Modified Calculate Utilities 3.7.1.24
  Processed template files:
  /var/db/repos/calculate/profiles/templates/3.6/6_ac_desktop_profile/2-user/xfce-base/Xfce-4.10/.config/xfce4/xfconf/xfce-perchannel-xml/pointers.xml
 -->
 
-<channel name="pointers" version="1.0">
-  <property name="ImExPS2_Generic_Explorer_Mouse" type="empty">
+
+<channel version="1.0" name="pointers">
+<property name="ImExPS2_Generic_Explorer_Mouse" type="empty">
     <property name="RightHanded" type="bool" value="true"/>
   </property>
   <property name="VirtualBox_USB_Tablet" type="empty">

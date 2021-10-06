@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=Tor Browser (анонимный браузер)
+Name[hu]=Tor-böngésző
+Name[pt_BR]=Navegador Tor
+GenericName=Tor browser
+GenericName[hu]=Tor böngésző indító
+Comment=Tor Browser (анонимный браузер)
+Comment[hu]=Tor böngésző indító
+Comment[pt_BR]=Navegador Tor
+Exec=torbrowser-launcher %u
+Terminal=false
+Type=Application
+Icon=torbrowser
+Categories=Network;WebBrowser;
+StartupWMClass=Tor Browser
+Path=
+StartupNotify=false

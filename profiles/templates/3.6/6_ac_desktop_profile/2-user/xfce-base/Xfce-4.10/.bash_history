@@ -1,1 +1,3 @@
-sudo su
+nc
+mc
+eix rambox

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Rambox
+Exec=/opt/Rambox/rambox %U
+Terminal=false
+Type=Application
+Icon=rambox
+StartupWMClass=Rambox
+Categories=Network;
+Comment=Почта, Skype, WhatsAap и многое другое
+Path=
+StartupNotify=true

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Установка 1C:Предприятие 8,3
+Comment=Установка 1C:Предприятие 8,3
+Exec=xterm -maximized linuxbuh-1c-installer
+Icon=/usr/share/pixmaps/1c-logo.png
+Type=Application
+Categories=Office;
+
+Path=
+Terminal=false
+StartupNotify=false

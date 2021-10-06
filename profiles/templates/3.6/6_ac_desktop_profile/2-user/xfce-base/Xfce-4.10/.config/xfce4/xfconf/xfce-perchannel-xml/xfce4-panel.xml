@@ -9,23 +9,19 @@
       <property name="length" type="uint" value="100"/>
       <property name="plugin-ids" type="array">
         <value type="int" value="1"/>
+        <value type="int" value="2"/>
         <value type="int" value="4"/>
         <value type="int" value="5"/>
-        <value type="int" value="7"/>
-        <value type="int" value="19"/>
-        <value type="int" value="18"/>
-        <value type="int" value="21"/>
-        <value type="int" value="20"/>
         <value type="int" value="6"/>
-        <value type="int" value="13"/>
-        <value type="int" value="22"/>
-        <value type="int" value="15"/>
+        <value type="int" value="7"/>
         <value type="int" value="9"/>
         <value type="int" value="10"/>
         <value type="int" value="3"/>
         <value type="int" value="11"/>
         <value type="int" value="12"/>
+        <value type="int" value="13"/>
         <value type="int" value="14"/>
+        <value type="int" value="15"/>
         <value type="int" value="16"/>
         <value type="int" value="17"/>
       </property>
@@ -49,14 +45,13 @@
       <property name="size-max" type="uint" value="24"/>
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
-        <value type="string" value="hexchat"/>
-        <value type="string" value="anydesk"/>
-        <value type="string" value="rambox"/>
-        <value type="string" value="blueman-tray"/>
         <value type="string" value="менеджер буфера обмена clipman"/>
         <value type="string" value="volumeicon"/>
         <value type="string" value="аплет networkmanager"/>
       </property>
+    </property>
+    <property name="plugin-13" type="string" value="pulseaudio">
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
     </property>
     <property name="plugin-14" type="string" value="notification-plugin"/>
     <property name="plugin-15" type="string" value="separator">
@@ -68,10 +63,20 @@
     <property name="plugin-17" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
     </property>
+    <property name="plugin-2" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="15780470832.desktop"/>
+      </property>
+    </property>
     <property name="plugin-4" type="string" value="showdesktop"/>
     <property name="plugin-5" type="string" value="directorymenu">
       <property name="icon-name" type="string" value="system-file-manager"/>
       <property name="base-directory" type="string" value="/home/guest"/>
+    </property>
+    <property name="plugin-6" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="15735608061.desktop"/>
+      </property>
     </property>
     <property name="plugin-7" type="string" value="launcher">
       <property name="items" type="array">
@@ -83,44 +88,9 @@
       <property name="show-labels" type="bool" value="false"/>
     </property>
     <property name="plugin-3" type="string" value="xkb">
-      <property name="display-scale" type="uint" value="75"/>
-      <property name="display-name" type="uint" value="1"/>
       <property name="display-type" type="uint" value="0"/>
-    </property>
-    <property name="plugin-6" type="string" value="launcher">
-      <property name="items" type="array">
-        <value type="string" value="16185878331.desktop"/>
-      </property>
-    </property>
-    <property name="plugin-13" type="string" value="launcher">
-      <property name="items" type="array">
-        <value type="string" value="16185885103.desktop"/>
-      </property>
-    </property>
-    <property name="plugin-18" type="string" value="launcher">
-      <property name="items" type="array">
-        <value type="string" value="16185885254.desktop"/>
-      </property>
-    </property>
-    <property name="plugin-19" type="string" value="launcher">
-      <property name="items" type="array">
-        <value type="string" value="16185885315.desktop"/>
-      </property>
-    </property>
-    <property name="plugin-20" type="string" value="launcher">
-      <property name="items" type="array">
-        <value type="string" value="16185885366.desktop"/>
-      </property>
-    </property>
-    <property name="plugin-21" type="string" value="launcher">
-      <property name="items" type="array">
-        <value type="string" value="16185885407.desktop"/>
-      </property>
-    </property>
-    <property name="plugin-22" type="string" value="launcher">
-      <property name="items" type="array">
-        <value type="string" value="16185886488.desktop"/>
-      </property>
+      <property name="display-name" type="uint" value="1"/>
+      <property name="display-scale" type="uint" value="50"/>
     </property>
   </property>
 </channel>

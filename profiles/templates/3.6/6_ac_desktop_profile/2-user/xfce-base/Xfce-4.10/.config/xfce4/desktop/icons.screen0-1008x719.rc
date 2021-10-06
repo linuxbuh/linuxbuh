@@ -1,23 +1,39 @@
 [xfdesktop-version-4.10.3+-rcfile_format]
 4.10.3+=true
 
-[~/Рабочий стол/calculate-install.desktop]
+[/home/guest/Рабочий стол/calculate-install.desktop]
 row=1
 col=0
 
-[~/Рабочий стол/gparted.desktop]
+[/home/guest/Рабочий стол/gparted.desktop]
 row=1
 col=1
 
-[~/Рабочий стол/README.desktop]
+[/home/guest/Рабочий стол/README.desktop]
 row=2
 col=0
 
-[~/Рабочий стол/calculate-community.desktop]
+[/home/guest/Рабочий стол/calculate-community.desktop]
 row=2
 col=1
 
-[~]
+[9f3d9a3a-2f46-47db-af36-64ad63a0c500]
+row=0
+col=0
+
+[dc7cd590-790f-4577-877b-7e62115a7686]
+row=4
+col=0
+
+[/home/guest]
+row=0
+col=0
+
+[Корзина]
+row=3
+col=0
+
+[/]
 row=0
 col=0
 

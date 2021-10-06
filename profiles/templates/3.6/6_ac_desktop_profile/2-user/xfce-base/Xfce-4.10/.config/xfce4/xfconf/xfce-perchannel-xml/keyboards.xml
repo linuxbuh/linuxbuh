@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Modified Calculate Utilities 3.7.1.24
+ Processed template files:
+ /var/db/repos/calculate/profiles/templates/3.6/6_ac_desktop_profile/2-user/xfce-base/Xfce-4.10/.config/xfce4/xfconf/xfce-perchannel-xml/keyboards.xml
+-->
 
-<channel name="keyboards" version="1.0">
-  <property name="Default" type="empty">
+
+<channel version="1.0" name="keyboards">
+<property name="Default" type="empty">
     <property name="Numlock" type="bool" value="true"/>
     <property name="KeyRepeat" type="empty">
       <property name="Rate" type="int" value="30"/>
       <property name="Delay" type="int" value="330"/>
-    </property>
-    <property name="RestoreNumlock" type="bool" value="true"/>
+      </property>
   </property>
 </channel>

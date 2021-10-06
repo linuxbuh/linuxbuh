@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=CryptoPro Tools
+Name[ru]=Инструменты КриптоПро
+TryExec=/opt/cprocsp/bin/amd64/cptools
+Exec=/opt/cprocsp/bin/amd64/cptools
+Terminal=false
+Icon=/opt/cprocsp/share/icons/cptools.png
+Categories=Utility;Security;Settings;
