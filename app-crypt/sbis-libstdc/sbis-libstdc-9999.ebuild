@@ -11,7 +11,9 @@ HOMEPAGE="https://sbis.ru/"
 KEYWORDS="amd64"
 
 #SRC_URI="amd64? ( https://update-msk1.sbis.ru/Sbis3Plugin/rc/linux/deb_repo/sbis-libstdc++.deb -> sbis-libstdc-0.1.deb )"
+#if [[ ${PV} != 9999 ]]; then
 SRC_URI="amd64? ( https://update-msk1.sbis.ru/Sbis3Plugin/rc/linux/deb_repo/sbis-libstdc++.deb -> ${P}.deb )"
+#fi
 
 SLOT="0"
 RESTRICT="strip mirror"
