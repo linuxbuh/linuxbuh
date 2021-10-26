@@ -1,0 +1,42 @@
+#!/bin/sh -u
+
+readonly VAR_DIRECTORY='/var/opt/kaspersky/kesl/'
+readonly LOG_DIRECTORY='/var/log/kaspersky/kesl/'
+readonly LOG_USER_DIRECTORY='/var/log/kaspersky/kesl-user/'
+readonly LICENSE_KEY_FILEPATH='/var/opt/kaspersky/kesl/common/license'
+
+RmDirIfEmpty()
+{
+    rmdir "$1" 2>/dev/null || true
+}
+
+RmDirAndParentIfEmpty()
+{
+    rm -rf "$1"
+    RmDirIfEmpty "$(dirname "$1")"
+}
+
+Cleanup()
+{
+    find "${VAR_DIRECTORY}" \( -type f -o -type l \) | grep -F -v "${LICENSE_KEY_FILEPATH}" | xargs -I '{}' rm -f '{}'
+    find "${VAR_DIRECTORY}" -type d -empty -delete
+
+    RmDirIfEmpty "${VAR_DIRECTORY}"
+    RmDirIfEmpty "$(dirname "${VAR_DIRECTORY}")"
+    RmDirAndParentIfEmpty "${LOG_DIRECTORY}"
+    RmDirAndParentIfEmpty "${LOG_USER_DIRECTORY}"
+}
+
+Main()
+{
+    local removeMark='remove'
+    if [ "$1" != "${removeMark}" ]; then
+        return
+    fi
+
+    Cleanup
+}
+
+Main "$@"
+exit 0
+

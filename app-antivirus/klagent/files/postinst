@@ -1,0 +1,59 @@
+#!/bin/sh
+
+opts=""
+
+if [ "$1" = 'upgrade' ] ; then
+    opts="$opts --upgrade"
+fi
+
+if [ -d "/etc/init.d" -o -h "/etc/init.d" ]; then
+    initdir=/etc/init.d
+fi
+
+for dir in /etc/rc.d /etc /sbin/rc.d /sbin; do
+	if [ -d "$dir/rc3.d" -o -h "$dir/rc3.d" ]; then
+		if [ -z "$rcdir" ]; then
+			rcdir="$dir"
+		fi
+	fi
+done
+
+if [ -z "$initdir" -a -n "$rcdir" ]; then
+    initdir="$rcdir"
+    if [ -d "$rcdir/init.d" ]; then
+    	initdir="$rcdir/init.d"
+    fi
+fi
+
+if [ -n "$initdir" ]; then
+    /bin/cp -p --remove-destination "/opt/kaspersky/klnagent64/lib/bin/klnagent64" "$initdir/klnagent64"
+else
+    echo "Failed to find init.d directory"
+fi
+
+INSSERV=
+for p in /sbin /usr/lib/insserv ; do
+    tst_exe=$p/insserv
+    if [ -x "$tst_exe" ] ; then
+        INSSERV=$tst_exe
+        break
+    fi
+done
+
+if [ -n "$INSSERV" ] ; then
+    # If system suports insserv it ignores runlevel settings and manages boot using LSB header.
+    # More, update-rc.d produces warning if we don't use such syntax
+    update-rc.d klnagent64 defaults >/dev/null
+else
+    update-rc.d klnagent64 start 50 2 3 4 5 . stop 30 0 1 6 . >/dev/null
+fi
+
+if [ "$1" = 'configure' ] ; then
+    upgrade=""
+    if [ -n "$2" ] ; then
+		upgrade="--upgrade"
+    fi
+    perl /opt/kaspersky/klnagent64/lib/bin/setup/postinstall.pl deb $upgrade
+fi
+
+

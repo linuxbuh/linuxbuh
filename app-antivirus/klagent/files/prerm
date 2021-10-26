@@ -1,0 +1,34 @@
+#!/bin/sh
+
+opts=""
+
+if [ "$1" = 'upgrade' ] ; then
+    opts="$opts --upgrade"
+fi
+
+perl /opt/kaspersky/klnagent64/lib/bin/setup/uninstall.pl deb $opts
+
+update-rc.d -f klnagent64 remove >/dev/null
+
+# finally, remove init.d link
+
+for dir in /etc/rc.d /etc /sbin/rc.d /sbin; do
+	if [ -d "$dir/rc3.d" -o -h "$dir/rc3.d" ]; then
+		if [ -z "$rcdir" ]; then
+			rcdir="$dir"
+		fi
+	fi
+done
+
+if [ -n "$rcdir" ]; then
+    initdir="$rcdir"
+    if [ -d "$rcdir/init.d" ]; then
+		initdir="$rcdir/init.d"
+    fi
+fi
+
+	echo "Removing $initdir/klnagent64"
+	# remove file
+	rm -f "$initdir/klnagent64"
+
+

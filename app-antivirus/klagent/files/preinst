@@ -1,0 +1,27 @@
+#!/bin/sh
+APP_NAME='klnagent64'
+APP_EXEC_FILE='/opt/kaspersky/klnagent/sbin'
+exec_file="$APP_EXEC_FILE/$APP_NAME"
+
+PERLPATH=`which perl 2>/dev/null`
+if [ $? = "127" ]; then
+	echo "No 'which' utility. Installation aborted."
+    exit 1
+fi
+if [ -z "$PERLPATH" ]; then
+	echo "Perl not found. Installation aborted."
+	exit 1
+fi
+if ! perl -e 'require 5.0' 2>/dev/null; then
+	echo "Perl 5.0 or greater required. Installation aborted."
+	exit 1
+fi
+
+if [ "$(uname -m | grep '64')" = "" ]; then
+	echo "Machibe with 64 bit processor required. Installation aborted."
+	exit 1
+fi
+
+exit 0
+
+

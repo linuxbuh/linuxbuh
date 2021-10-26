@@ -1,0 +1,905 @@
+#!/bin/sh -u
+
+#!/bin/sh
+if [ -z "${__UTILS_INC_GUARD__:-}" ]; then
+readonly __UTILS_INC_GUARD__=1
+
+DieRc()
+{
+    local res=1
+    if [ "$1" -eq "$1" ] 2>/dev/null; then
+        res=$1
+        shift
+    fi
+
+    printf "\n%s: ERROR: %s\n\n" "$(basename "$0")" "$*" >&2
+
+    exit ${res}
+}
+
+DieFmt()
+{
+    local fmt="$1"
+    shift
+
+    printf "\n%s: ERROR: ${fmt}\n\n" "$(basename "$0")" "$@" >&2
+
+    exit 1
+}
+
+Die()
+{
+    DieRc 1 "$@"
+}
+
+Echo()
+{
+    printf "%b\n" "$*"
+}
+
+EchoBold()
+{
+    Echo "$@" | perl -e "while(<>) { print \"\033[1m\$_\033[0m\"; }"
+}
+
+PrintfBold()
+{
+    printf "$@" | perl -e "while(<>) { print \"\033[1m\$_\033[0m\"; }"
+}
+
+Repeat()
+{
+    local n="$1"
+    local ch="$2"
+    printf "%${n}s\n" | tr " " "${ch}"
+}
+
+fi
+
+#!/bin/sh
+if [ -z "${__TOOLS_INC_GUARD__:-}" ]; then
+readonly __TOOLS_INC_GUARD__=1
+
+ContainSubstr()
+{
+    printf '%s' "$1" | grep -F "$2" >/dev/null
+}
+
+IContainSubstr()
+{
+    printf '%s' "$1" | grep -iF "$2" >/dev/null
+}
+
+IStartsWith()
+{
+    awk -v "_input=$1" -v "_test=$2" -- 'BEGIN { exit(index(tolower(_input), tolower(_test)) == 1 ? 0 : 1); }'
+    return $?
+}
+
+IsNo()
+{
+    [ -n "$1" ] && IStartsWith 'no' "$1"
+}
+
+IsYes()
+{
+    [ -n "$1" ] && IStartsWith 'yes' "$1"
+}
+
+ReplaceAllByRegex()
+{
+
+    local _out=''
+    local rc=0
+    _out=$(awk -v _ere="$2" -v _repl="$3" -v _in="$1" -- 'BEGIN { num = gsub(_ere, _repl, _in); print _in; exit(10 + num); }' 2>/dev/null) || rc=$?
+
+    if [ ${rc} -lt 10 ]; then
+        return 1
+    fi
+
+    if [ -n "${4:-}" ]; then
+        eval "${4}='${_out}'"
+    fi
+
+    if [ -n "${5:-}" ]; then
+        eval "${5}=$((${rc}-10))"
+    fi
+
+    return 0
+}
+
+ParseVersionString()
+{
+    local _ver="$1"
+    shift
+
+    local _cmd=''
+    _cmd=$(cat <<'AWK_PROGRAM'
+BEGIN {
+    n = split(version, a, ".");
+    if (n > num)
+        n = num;
+    for (i = 1; i <= n; ++i)
+    {
+        printf("${%s:+eval \"${%s}='%s'\"};", i, i, a[i]);
+    }
+    exit;
+}
+AWK_PROGRAM
+)
+    local _code=''
+    _code="$(awk -v version="${_ver}" -v num="$#" -- "${_cmd}" 2>/dev/null)" || return $?
+    eval "${_code}"
+    return $?
+}
+
+CompareVersions()
+{
+    local _v1="$1"
+    local _v2="$2"
+
+    local _v1_major=''
+    local _v1_minor=''
+    local _v1_fix=''
+    local _v1_build=''
+    if ! ParseVersionString "${_v1}" _v1_major _v1_minor _v1_fix _v1_build; then
+        return 1
+    fi
+
+    local _v2_major=''
+    local _v2_minor=''
+    local _v2_fix=''
+    local _v2_build=''
+    if ! ParseVersionString "${_v2}" _v2_major _v2_minor _v2_fix _v2_build; then
+        return 1
+    fi
+
+    test "${_v1_major}" -eq "${_v1_major}" 2>/dev/null || return 1
+    test "${_v1_minor}" -eq "${_v1_minor}" 2>/dev/null || return 1
+    test "${_v1_fix}"   -eq "${_v1_fix}"   2>/dev/null || return 1
+    test "${_v1_build}" -eq "${_v1_build}" 2>/dev/null || return 1
+
+    test "${_v2_major}" -eq "${_v2_major}" 2>/dev/null || return 1
+    test "${_v2_minor}" -eq "${_v2_minor}" 2>/dev/null || return 1
+    test "${_v2_fix}"   -eq "${_v2_fix}"   2>/dev/null || return 1
+    test "${_v2_build}" -eq "${_v2_build}" 2>/dev/null || return 1
+
+    local _res='='
+
+    while :; do
+        if [ "${_v1_major}" -ne "${_v2_major}" ]; then
+            [ "${_v1_major}" -lt "${_v2_major}" ] && _res='<' || _res='>'
+            break
+        fi
+
+        if [ "${_v1_minor}" -ne "${_v2_minor}" ]; then
+            [ "${_v1_minor}" -lt "${_v2_minor}" ] && _res='<' || _res='>'
+            break
+        fi
+
+        if [ "${_v1_fix}" -ne "${_v2_fix}" ]; then
+            [ "${_v1_fix}" -lt "${_v2_fix}" ] && _res='<' || _res='>'
+            break
+        fi
+
+        if [ "${_v1_build}" -ne "${_v2_build}" ]; then
+            [ "${_v1_build}" -le "${_v2_build}" ] && _res='<' || _res='>'
+            break
+        fi
+
+        break
+    done
+
+    eval "${3}='${_res}'"
+    return $?
+}
+
+DeleteFromList()
+{
+
+    local _cmd=''
+    _cmd=$(cat <<'AWK_PROGRAM'
+function ltrim(s) { sub(/^\s+/, "", s); return s; }
+function rtrim(s) { sub(/\s+$/, "", s); return s; }
+function trim(s) { return rtrim(ltrim(s)); }
+BEGIN {
+    re = "\\s*" rmItem "\\s*";
+    n = split(lst, a);
+    k = 0;
+    for (i = 1; i <= n; i++)
+    {
+        if (a[i] ~ re)
+            continue;
+
+        if (k > 0)
+            printf("%s ", FS);
+
+        printf("%s", trim(a[i]));
+        k++;
+    }
+    exit;
+}
+AWK_PROGRAM
+)
+    local _s=''
+    _s="$(awk -v lst="${1}" -v FS="${2}" -v rmItem="${3}" -- "${_cmd}")" || return $?
+
+    eval "${4}='${_s}'"
+    return $?
+}
+
+fi
+
+#!/bin/sh
+if [ -z "${__INI_FILE_INC_GUARD__:-}" ]; then
+readonly __INI_FILE_INC_GUARD__=1
+
+ReadIni()
+{
+
+    local _inFile="${1:--}"
+    local _section="$2"
+    local _key="$3"
+    local _outVar="${4:-}"
+
+    local _cmd=''
+    _cmd=$(cat <<'AWK_PROGRAM'
+BEGIN {
+    FS = "=";
+
+    sectionFound = (section == "");
+    keyFound = 0;
+}
+
+END {
+    if (keyFound)
+    {
+        exit 0;
+    }
+
+    exit (sectionFound ? 102 : 101);
+}
+
+$0 == "[" section "]" {
+    sectionFound = 1;
+    next;
+}
+
+/^\[/ {
+    if (sectionFound)
+    {
+        exit;
+    }
+}
+
+sectionFound && $1 == key {
+    keyFound = 1;
+    print $2;
+    exit;
+}
+AWK_PROGRAM
+)
+    local _value=''
+    _value="$(awk -v section="${_section}" -v key="${_key}" -- "${_cmd}" "${_inFile}" 2>/dev/null)"
+    local res=$?
+    if [ ${res} -ne 0 ]; then
+        return ${res}
+    fi
+
+    if [ -n "${_outVar}" ]; then
+        eval "${_outVar}='${_value}'"
+    fi
+
+    return 0
+}
+
+WriteIni()
+{
+    local _inFile="${1:--}"
+    local _section="$2"
+    local _key="$3"
+    local _value="$4"
+    local _outFile="${5:-${_inFile}}"
+
+    local _cmd=''
+    _cmd=$(cat <<'AWK_PROGRAM'
+BEGIN {
+    FS = "=";
+    sectionFound = 0;
+    keySet = 0;
+    emptyLines = 0;
+}
+
+END {
+    if (!keySet)
+    {
+        if (sectionFound)
+        {
+            print key "=" value;
+            printEmptyLines();
+        }
+        else
+        {
+            print "[" section "]";
+            print key "=" value;
+            printEmptyLines();
+        }
+    }
+}
+
+function printTail(    s)
+{
+    while ((getline s) > 0)
+    {
+        print s;
+    }
+}
+
+function printEmptyLines()
+{
+    while (emptyLines > 0)
+    {
+        print "";
+        --emptyLines;
+    }
+}
+
+$0 == "[" section "]" {
+    sectionFound = 1;
+    print;
+    next;
+}
+
+/^\[/ {
+    if (sectionFound)
+    {
+        print key "=" value;
+        keySet = 1;
+        printEmptyLines();
+        print;
+        printTail();
+        exit;
+    }
+    else
+    {
+        print;
+        next;
+    }
+}
+
+sectionFound {
+    if ($1 == key)
+    {
+        printEmptyLines();
+        print $1 "=" value;
+        keySet = 1;
+        printTail();
+        exit;
+    }
+    else
+    {
+        if ($0 == "")
+        {
+            ++emptyLines;
+        }
+        else
+        {
+            printEmptyLines();
+            print;
+        }
+        next;
+    }
+}
+
+{ print; }
+AWK_PROGRAM
+)
+    local _tmpFilename=''
+    local _redirTxt=''
+
+    if [ "${_inFile}" = '-' ] || [ -f "${_inFile}" ]; then
+        _redirTxt=' "${_inFile}" '
+    else
+        _redirTxt=' </dev/null '
+    fi
+
+    if [ "${_outFile}" != '-' ]; then
+        _tmpFilename="${_outFile}.tmp";
+        _redirTxt="${_redirTxt}"' 1>"${_tmpFilename}"'
+    fi
+
+    eval 'awk -v section="${_section}" -v key="${_key}" -v value="${_value}" -- "${_cmd}"' ${_redirTxt} 2>/dev/null
+    local res=$?
+    if [ ${res} -ne 0 ]; then
+        [ -n "${_tmpFilename}" ] && rm -f "${_tmpFilename}" 2>/dev/null
+    else
+        [ -n "${_tmpFilename}" ] && { mv -T "${_tmpFilename}" "${_outFile}" 2>/dev/null; res=$?; }
+    fi
+
+    return ${res}
+}
+
+fi
+
+#!/bin/sh
+if [ -z "${__UPGRADE_STATE_INC_GUARD__:-}" ]; then
+readonly __UPGRADE_STATE_INC_GUARD__=1
+
+GetUpgradeState()
+{
+    local stateVarName="${1:-}"
+    local newVersionVarName="${2:-}"
+    local oldVersionVarName="${3:-}"
+
+    local current='/var/opt/kaspersky/kesl/install-current'
+    local upgrade='/var/opt/kaspersky/kesl/install-upgrade'
+    local previous='/var/opt/kaspersky/kesl/install-previous'
+    local failed='/var/opt/kaspersky/kesl/install-failed'
+
+    local manifestFilePath='/opt/kaspersky/kesl/doc/manifest.ini'
+    local oldIniPath=''
+    local newIniPath=''
+
+    local state=''
+
+    if [ ! -h "${current}" ]; then
+        state='NotInstalled'
+        return
+    fi
+
+    if [ ! -h "${failed}" ]; then
+        if [ ! -h "${upgrade}" ]; then
+            if [ ! -h "${previous}" ]; then
+                state='Installed'
+                oldIniPath="${current}"
+                newIniPath="${current}"
+            else
+                state='Start'
+                oldIniPath="${previous}"
+                newIniPath="${current}"
+            fi
+        else
+            if [ ! -h "${previous}" ]; then
+                state='Uninstall'
+                oldIniPath="${current}"
+                newIniPath="${upgrade}"
+            else
+                state='Upgrade'
+                oldIniPath="${current}"
+                newIniPath="${upgrade}"
+            fi
+        fi
+    else
+        if [ ! -h "${previous}" ]; then
+            if [ ! -h "${upgrade}" ]; then
+                state='RollingBack'
+                oldIniPath="${current}"
+                newIniPath="${failed}"
+            else
+                state='RolledBack'
+                oldIniPath="${current}"
+                newIniPath="${failed}"
+            fi
+        else
+            local curr
+            if ! curr=$(readlink "${current}"); then
+                echo "Faild to read 'current' symlink" 1>&2
+                return 255
+            fi
+
+            local prev
+            if ! prev=$(readlink "${previous}"); then
+                echo "Faild to read 'previous' symlink" 1>&2
+                return 255
+            fi
+
+            if [ "${curr}" = "${prev}" ]; then
+                state='UpgradeFailed'
+                oldIniPath="${current}"
+                newIniPath="${failed}"
+            else
+                state='StartFailed'
+                oldIniPath="${previous}"
+                newIniPath="${failed}"
+            fi
+        fi
+    fi
+
+    if [ -z "${stateVarName}" ]; then
+        echo "${state}"
+    else
+        eval "${stateVarName}='${state}'"
+    fi
+
+    local grepRegEx='^\s*ProductVersion\s*='
+    local sedCmd='s:\(.*=\s*\)\(\S*\)\(\s*\):\2:'
+    local ver=''
+
+    if [ ! -z "${newVersionVarName}" ]; then
+        ver=''
+        if [ ! -z "${newIniPath}" ]; then
+            if ver=$(grep "${grepRegEx}" "${newIniPath}/${manifestFilePath}"); then
+                ver=$(echo "${ver}" | sed -e "${sedCmd}")
+            fi
+        fi
+        eval "${newVersionVarName}='${ver}'"
+    fi
+
+    if [ ! -z "${oldVersionVarName}" ]; then
+        ver=''
+        if [ ! -z "${oldIniPath}" ]; then
+            if ver=$(grep "${grepRegEx}" "${oldIniPath}/${manifestFilePath}"); then
+                ver=$(echo "${ver}" | sed -e "${sedCmd}")
+            fi
+        fi
+
+        eval "${oldVersionVarName}='${ver}'"
+    fi
+}
+
+fi
+
+#!/bin/sh
+if [ -z "${__OFFLINE_EVENT_INC_GUARD__:-}" ]; then
+readonly __OFFLINE_EVENT_INC_GUARD__=1
+
+EmitOfflineEvent()
+{
+    local eventsDir='/var/opt/kaspersky/kesl/common/offline-events/'
+
+    if [ $# -lt 2 ]; then
+        Die "Too few number of arguments: 'EventType' and 'DangerLevel' must be specified"
+    fi
+
+    local eventType="${1:?}"
+    local dangerLevel="${2:?}"
+    shift 2
+
+    local timestamp="$(date '+%s')"
+    local jsonTxt="\"EventType\": \"${eventType}\", \"DangerLevel\": \"${dangerLevel}\", \"Date\": ${timestamp}"
+    while [ $# -gt 0 ]; do
+        if [ $# -eq 1 ]; then
+            Die "Improper number of arguments"
+        fi
+
+        local key="$1"
+        local value="$2"
+        shift 2
+
+        jsonTxt="${jsonTxt}, \"${key}\": \"${value}\""
+    done
+
+    jsonTxt="{ ${jsonTxt} }"
+
+    local eventFilePath
+    eventFilePath="$(umask 577; mktemp -t --tmpdir="${eventsDir}" "$(date '+%FT%T.%3N%:z')(XXXXXX).${eventType}")"
+    echo "${jsonTxt}" > "${eventFilePath}"
+    chmod u=r "${eventFilePath}"
+}
+
+fi
+
+#!/bin/sh
+if [ -z "${__SYSTEMD_UNIT_PATH_INC_GUARD__:-}" ]; then
+readonly __SYSTEMD_UNIT_PATH_INC_GUARD__=1
+
+GetSystemdUnitPath()
+{
+    local result=''
+    local etcSystemd='/etc/systemd/system'
+    local usrLibSystemd='/usr/lib/systemd/system'
+
+    ps -p 1 -o comm= | grep 'systemd' >/dev/null 2>&1
+    if [ $? -eq 0 ]; then
+       if [ -d "${etcSystemd}" ]; then
+           result="${etcSystemd}"
+       else
+           if [ -d "${usrLibSystemd}" ]; then
+               result="${usrLibSystemd}"
+           else
+               Die "There is unsupported OS or configuration. Let's provide symlink '${etcSystemd}' to systemd unit directory."
+           fi
+       fi
+    fi
+
+    if [ -z "$1" ]; then
+        echo "${result}"
+    else
+        eval "$1='${result}'"
+    fi
+}
+
+fi
+
+
+readonly KESL_EULA_AGREED="${KESL_EULA_AGREED:-}"
+readonly KESL_PRIVACY_POLICY_AGREED="${KESL_PRIVACY_POLICY_AGREED:-}"
+readonly KESL_USE_KSN="${KESL_USE_KSN:-}"
+
+readonly PACKAGE_TYPE=deb
+
+readonly PRODUCT_TITLE='Kaspersky Endpoint Security 10 SP1 MR1 for Linux'
+readonly NEW_VERSION='10.1.1.6421'
+readonly ETC_DIRECTORY='/etc/opt/kaspersky/kesl/'
+readonly VAR_DIRECTORY='/var/opt/kaspersky/kesl/'
+readonly VAR_OPT_KASPERSKY_DIRECTORY='/var/opt/kaspersky/'
+readonly PACKAGE_INSTALL_DIRECTORY='/var/opt/kaspersky/kesl/install/'
+readonly PACKAGE_CURRENT_DIRLINK='/var/opt/kaspersky/kesl/install-current'
+readonly PACKAGE_UPGRADE_DIRLINK='/var/opt/kaspersky/kesl/install-upgrade'
+readonly PACKAGE_FAILED_DIRLINK='/var/opt/kaspersky/kesl/install-failed'
+readonly VAR_COMMON_DIRECTORY='/var/opt/kaspersky/kesl/common/'
+readonly VAR_PRIVATE_DIRECTORY='/var/opt/kaspersky/kesl/private/'
+readonly VAR_UPDATES_DIRECTORY='/var/opt/kaspersky/kesl/common/updates/'
+readonly VAR_STORAGE_DIRECTORY='/var/opt/kaspersky/kesl/private/storage/'
+readonly CONTROL_FILEPATH='/opt/kaspersky/kesl/bin/kesl-control'
+readonly SUPERVISOR_FILEPATH='/etc/init.d/kesl-supervisor'
+readonly WDSERVER_FILEPATH='/opt/kaspersky/kesl/libexec/wdserver'
+readonly LAUNCHER_FILEPATH='/opt/kaspersky/kesl/libexec/kesl_launcher.sh'
+readonly SHARED_INIT_STORAGE_DIRECTORY='/opt/kaspersky/kesl/shared/init/storage/'
+readonly SHARED_INIT_UPDATES_DIRECTORY='/opt/kaspersky/kesl/shared/init/updates/'
+readonly INSTALL_DATE_FILEPATH='/var/opt/kaspersky/kesl/common/install_date.txt'
+readonly UPGRADE_DATE_FILEPATH='/var/opt/kaspersky/kesl/private/upgrade_date.txt'
+readonly INI_FILEPATH='/var/opt/kaspersky/kesl/common/kesl.ini'
+readonly INSTALL_FILEPATH='/opt/kaspersky/kesl/libexec/install'
+readonly INSTALL_LOG_FILEPATH='/var/opt/kaspersky/kesl/private/install.log'
+readonly SETUP_FILEPATH='/opt/kaspersky/kesl/bin/kesl-setup.pl'
+readonly SC_CONNECTOR_CONF_DIRECTORY='/etc/opt/kaspersky/klnagent/connectors64.d/'
+readonly DOC_DIRECTORY='/opt/kaspersky/kesl/doc/'
+readonly EULA_ID='cac672be-0ee0-fed8-7fc9-701e5e50e083'
+readonly KSNUA_ID='0cc5b942-1a4b-407a-414b-8c8b76b05fd3'
+readonly PREPARE_MODULE_SCRIPT_FILEPATH='/opt/kaspersky/kesl/libexec/prepare_module.sh'
+readonly AGREED_USE_KSN_FILEPATH='/var/opt/kaspersky/kesl/private/UseKSN.agreed'
+readonly PRODUCT_RUNNING_STATUS=0
+readonly LICENSE_KEY_FILEPATH='/var/opt/kaspersky/kesl/common/license'
+readonly EVENTS_STORAGE_FILEPATH='/var/opt/kaspersky/kesl/private/storage/events.db'
+
+readonly KERNEL_MODULE_NAME='kav4fs_oas'
+readonly TIMESTAMP="$(date '+%s')"
+readonly UNIQUE_WC_DIRNAME="${NEW_VERSION}_${TIMESTAMP}"
+readonly PACKAGE_VERSION_WC_DIRECTORY="${VAR_DIRECTORY}${UNIQUE_WC_DIRNAME}"
+
+readonly KESL10TR_UPGRADE_TMP_DATA_DIRECTORY='/tmp/kesl10.0.0_data/'
+readonly KESL10TR_UPGRADE_DATA_DIRECTORY='/var/opt/kaspersky/kesl/private/kesl10.0.0_data/'
+readonly KESL10TR_UPGRADE_MARKER='/tmp/kesl10.0.0_data/kesl10.0'
+
+UPGRADE_STATE=''
+
+readonly MSG_CANNOT_PREPARE_WORKING_FILES="cannot prepare working files."
+readonly MSG_FAILED_TO_BUILD_KERNEL_MODULE="failed to build kernel module."
+readonly MSG_NO_FILE_PKG_BROKEN_1="There is no '%s' file in the package.\nInconsistent package. Please contact Kaspersky Lab Technical Support."
+readonly MSG_PRODUCT_INSTALLED_1="%s has been installed successfully,\nbut it must be properly configured before using."
+readonly MSG_RUN_SCRIPT_1="Please run \"%s\" script\nmanually to configure it."
+readonly MSG_UNEXPECTED_SCRPT_CALL="ignore unexpected post-upgrade script call."
+readonly MSG_UPDATE_INSTALLED_2="%s %s update has been installed."
+readonly MSG_REBOOT_OS="Please restart operating system to complete application update procedure."
+readonly MSG_RESTART_APP_1="Please restart '%s' to complete application update procedure."
+
+CopyInstalledFiles()
+{
+
+    if ! cp -rplPT "${PACKAGE_INSTALL_DIRECTORY}" "${PACKAGE_VERSION_WC_DIRECTORY}"; then
+       Die "${MSG_CANNOT_PREPARE_WORKING_FILES}"
+    fi
+}
+
+RemoveVersionWcFiles()
+{
+    rm -rf "${PACKAGE_VERSION_WC_DIRECTORY}"
+}
+
+IsFanotifyOn()
+{
+    local useFanotify=''
+    if ! ReadIni "${INI_FILEPATH}" 'General' 'UseFanotify' useFanotify; then
+        return 1
+    fi
+
+    if ! echo "${useFanotify}" | grep -iE '^(true|yes|1)$' >/dev/null; then
+        return 1
+    fi
+
+    return 0
+}
+
+IsKernelModuleLoaded()
+{
+    test -f "${MONITOR_OAS_VERSION_FILEPATH}"
+    return $?
+}
+
+IsProductRunning()
+{
+    if [ ! -f "${SUPERVISOR_FILEPATH}" ]; then
+        return 1
+    fi
+
+    "${SUPERVISOR_FILEPATH}" status 2>/dev/null 1>&2
+    test $? -eq ${PRODUCT_RUNNING_STATUS}
+    return $?
+}
+
+PrepareKernelModule()
+{
+    if ! "${PACKAGE_VERSION_WC_DIRECTORY}${PREPARE_MODULE_SCRIPT_FILEPATH}" '--build-only'; then
+        RemoveVersionWcFiles
+        Die "${MSG_FAILED_TO_BUILD_KERNEL_MODULE}"
+    fi
+}
+
+SwitchToUninstallState()
+{
+    ln -sfT "${UNIQUE_WC_DIRNAME}" "$1"
+
+    UPGRADE_STATE='Uninstall'
+}
+
+AssureXFileExists()
+{
+    if [ ! -x "$1" ] ; then
+        DieFmt "${MSG_NO_FILE_PKG_BROKEN_1}" "$1"
+    fi
+}
+
+PostInstall()
+{
+    CopyInstalledFiles
+
+    SwitchToUninstallState "${PACKAGE_CURRENT_DIRLINK}"
+
+    chmod a+X "${VAR_OPT_KASPERSKY_DIRECTORY}"
+    chmod a+X "${VAR_DIRECTORY}"
+
+    cp -frp "${PACKAGE_VERSION_WC_DIRECTORY}${SHARED_INIT_UPDATES_DIRECTORY}." "${VAR_UPDATES_DIRECTORY}"
+
+    echo "${TIMESTAMP}" > "${INSTALL_DATE_FILEPATH}"
+    WriteIni "${INI_FILEPATH}" 'General' 'PackageType' "${PACKAGE_TYPE}"
+
+    if ! "${PACKAGE_VERSION_WC_DIRECTORY}${INSTALL_FILEPATH}" "${PACKAGE_VERSION_WC_DIRECTORY}${INSTALL_LOG_FILEPATH}"; then
+        Die "fail on post-install script execution"
+    fi
+
+    AssureXFileExists "${CONTROL_FILEPATH}"
+    AssureXFileExists "${SUPERVISOR_FILEPATH}"
+    AssureXFileExists "${WDSERVER_FILEPATH}"
+    AssureXFileExists "${LAUNCHER_FILEPATH}"
+
+    cp -frp "${PACKAGE_VERSION_WC_DIRECTORY}${SHARED_INIT_STORAGE_DIRECTORY}." "${PACKAGE_VERSION_WC_DIRECTORY}${VAR_STORAGE_DIRECTORY}"
+
+    Echo
+    printf "${MSG_PRODUCT_INSTALLED_1}" "${PRODUCT_TITLE}"
+    Echo
+    PrintfBold "${MSG_RUN_SCRIPT_1}\n" "${SETUP_FILEPATH}"
+    Echo
+}
+
+SaveEulaAcceptance()
+{
+    local ids=''
+    ReadIni "${INI_FILEPATH}" 'AcceptedAgreement' 'EulaId' ids
+    if ! IContainSubstr "${ids}" "${EULA_ID}"; then
+        [ ! -z "${ids}" ] && ids="${ids}, ${EULA_ID}" || ids="${EULA_ID}"
+        WriteIni "${INI_FILEPATH}" 'AcceptedAgreement' 'EulaId' "${ids}"
+    fi
+}
+
+SaveKsnaAcceptance()
+{
+    local agreedKsna=''
+    if IsYes "${KESL_USE_KSN}"; then
+        agreedKsna='1'
+
+        local ids=''
+        ReadIni "${INI_FILEPATH}" 'AcceptedAgreement' 'KsnaId' ids
+        if ! IContainSubstr "${ids}" "${KSNUA_ID}"; then
+            [ ! -z "${ids}" ] && ids="${ids}, ${KSNUA_ID}" || ids="${KSNUA_ID}"
+            WriteIni "${INI_FILEPATH}" 'AcceptedAgreement' 'KsnaId' "${ids}"
+        fi
+    elif IsNo "${KESL_USE_KSN}"; then
+        agreedKsna='0'
+    fi
+
+    [ -n "${agreedKsna}" ] && echo "${agreedKsna}" > "${PACKAGE_VERSION_WC_DIRECTORY}${AGREED_USE_KSN_FILEPATH}"
+}
+
+CleanupFailedUpgrade()
+{
+
+    rm -f "${PACKAGE_UPGRADE_DIRLINK}"
+
+    if [ -h "${PACKAGE_FAILED_DIRLINK}" ]; then
+        rm -rf "${VAR_DIRECTORY}$(readlink "${PACKAGE_FAILED_DIRLINK}")"
+        rm -f "${PACKAGE_FAILED_DIRLINK}"
+    fi
+}
+
+CleanupKesl10Tr()
+{
+    local line=''
+    sort -r "${KESL10TR_UPGRADE_MARKER}" | \
+        while IFS='' read -r line || [ -n "${line}" ]; do
+            unlink "${line}" || rmdir "${line}"
+        done
+
+    rm -rf '/etc/opt/kaspersky/kesl'
+    rm -rf '/opt/kaspersky/kesl'
+     rm -rf '/tmp/async_service'
+}
+
+PostUpgradeFromKesl10Tr()
+{
+    CleanupKesl10Tr 2>/dev/null
+
+    PostInstall "$@"
+
+    mv "${KESL10TR_UPGRADE_TMP_DATA_DIRECTORY}" "${KESL10TR_UPGRADE_DATA_DIRECTORY}"
+}
+
+PostUpgrade()
+{
+    if GetUpgradeState UPGRADE_STATE; then
+        case "${UPGRADE_STATE}" in
+            'NotInstalled'|'Installed'|'RolledBack')
+                ;;
+            *)
+                DieRc 0 "${MSG_UNEXPECTED_SCRPT_CALL}"
+                ;;
+        esac
+    fi
+
+    CopyInstalledFiles
+
+    local upgradingKernelModuleFl=0
+    if ! IsFanotifyOn; then
+        PrepareKernelModule
+        upgradingKernelModuleFl=1
+    fi
+
+    SaveEulaAcceptance
+    SaveKsnaAcceptance
+
+    echo "${TIMESTAMP}" > "${PACKAGE_VERSION_WC_DIRECTORY}${UPGRADE_DATE_FILEPATH}"
+
+    cp -frp "${PACKAGE_VERSION_WC_DIRECTORY}${SHARED_INIT_STORAGE_DIRECTORY}." "${PACKAGE_VERSION_WC_DIRECTORY}${VAR_STORAGE_DIRECTORY}"
+
+    CleanupFailedUpgrade
+
+    {
+        SwitchToUninstallState "${PACKAGE_UPGRADE_DIRLINK}"
+        EmitOfflineEvent 'PatchInstalled' 'Informational' 'PatchVersion' "${NEW_VERSION}"
+    }
+
+    Echo
+    printf "${MSG_UPDATE_INSTALLED_2}" "${PRODUCT_TITLE}" "${NEW_VERSION}"
+    Echo
+
+    if [ ${upgradingKernelModuleFl} -ne 0 ]; then
+        EmitOfflineEvent 'OSRebootRequired' 'Informational' 'PatchVersion' "${NEW_VERSION}"
+        EchoBold "${MSG_REBOOT_OS}"
+    elif IsProductRunning; then
+        EmitOfflineEvent 'ProgramRestartRequired' 'Informational' 'PatchVersion' "${NEW_VERSION}"
+        PrintfBold  "${MSG_RESTART_APP_1}\n" "${PRODUCT_TITLE}"
+    fi
+    Echo
+}
+
+Main()
+{
+    if [ "$1" != "configure" ]; then
+        exit 0
+    fi
+
+    if [ -f "${KESL10TR_UPGRADE_MARKER}" ]; then
+        PostUpgradeFromKesl10Tr
+        return
+    fi
+
+    if [ ! -d "${PACKAGE_CURRENT_DIRLINK}" ]; then
+        PostInstall
+    else
+        PostUpgrade
+    fi
+}
+
+Main "$@"
+exit 0
+

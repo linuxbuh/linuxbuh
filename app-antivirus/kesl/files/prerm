@@ -1,0 +1,121 @@
+#!/bin/sh -u
+
+#!/bin/sh
+if [ -z "${__SYSTEMD_UNIT_PATH_INC_GUARD__:-}" ]; then
+readonly __SYSTEMD_UNIT_PATH_INC_GUARD__=1
+
+GetSystemdUnitPath()
+{
+    local result=''
+    local etcSystemd='/etc/systemd/system'
+    local usrLibSystemd='/usr/lib/systemd/system'
+
+    ps -p 1 -o comm= | grep 'systemd' >/dev/null 2>&1
+    if [ $? -eq 0 ]; then
+       if [ -d "${etcSystemd}" ]; then
+           result="${etcSystemd}"
+       else
+           if [ -d "${usrLibSystemd}" ]; then
+               result="${usrLibSystemd}"
+           else
+               Die "There is unsupported OS or configuration. Let's provide symlink '${etcSystemd}' to systemd unit directory."
+           fi
+       fi
+    fi
+
+    if [ -z "$1" ]; then
+        echo "${result}"
+    else
+        eval "$1='${result}'"
+    fi
+}
+
+fi
+
+
+readonly PACKAGE_CURRENT_DIRLINK='/var/opt/kaspersky/kesl/install-current'
+readonly INSTALL_LOG_FILEPATH='/var/opt/kaspersky/kesl/private/install.log'
+readonly UNINSTALL_FILEPATH="/opt/kaspersky/kesl/libexec/uninstall"
+readonly SUPERVISOR_FILEPATH='/etc/init.d/kesl-supervisor'
+readonly SYSTEMD_SERVICE_FILENAME='kesl-supervisor.service'
+readonly SC_KLNAGENT_BIN='/opt/kaspersky/klnagent64/sbin/klnagent'
+readonly GUI_FILENAME='kesl-gui'
+
+StopService()
+{
+    local systemdUnitPath=''
+    GetSystemdUnitPath systemdUnitPath
+    if [ -z "${systemdUnitPath}" ]; then
+        [ -f "${SUPERVISOR_FILEPATH}" ] && "${SUPERVISOR_FILEPATH}" stop
+    else
+        systemctl stop "${SYSTEMD_SERVICE_FILENAME}"
+    fi
+}
+
+StopGui()
+{
+    pkill -TERM "$GUI_FILENAME"
+}
+
+RemoveSupervisorSymlink()
+{
+    rm -f "${SUPERVISOR_FILEPATH}"
+}
+
+UninstallService()
+{
+    local systemdUnitPath=''
+    GetSystemdUnitPath systemdUnitPath
+    if [ -n "${systemdUnitPath}" ]; then
+        systemctl disable "${SYSTEMD_SERVICE_FILENAME}"
+        rm -f "${systemdUnitPath}/${SYSTEMD_SERVICE_FILENAME}"
+        systemctl daemon-reload
+    fi
+
+    RemoveSupervisorSymlink
+}
+
+Uninstall()
+{
+    local instLog="${PACKAGE_CURRENT_DIRLINK}${INSTALL_LOG_FILEPATH}"
+    if [ -f "${instLog}" ]; then
+        "${PACKAGE_CURRENT_DIRLINK}${UNINSTALL_FILEPATH}" "${instLog}"
+    fi
+}
+
+RemoveKernelModuleFiles()
+{
+    local kernelRelease
+    kernelRelease="$(uname -r)"
+    rm -f "/lib/modules/${kernelRelease}/misc/kav4fs_oas.ko"
+    rm -f "/lib/modules/${kernelRelease}/misc/redirfs.ko"
+}
+
+ReloadKlnagent()
+{
+    if [ -x "${SC_KLNAGENT_BIN}" ]; then
+        "${SC_KLNAGENT_BIN}" -reload-connectors
+    fi
+}
+
+Main()
+{
+    local removeMark='remove'
+    if [ "$1" != "${removeMark}" ]; then
+        return
+    fi
+
+    StopGui
+    StopService
+
+    UninstallService
+    Uninstall
+
+    RemoveKernelModuleFiles
+
+    ReloadKlnagent
+}
+
+Main "$@"
+exit 0
+
