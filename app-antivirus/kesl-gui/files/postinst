@@ -1,0 +1,120 @@
+#!/bin/sh
+
+set -u
+
+readonly PACKAGE_INSTALL_DIRECTORY='/var/opt/kaspersky/kesl/install/'
+readonly PACKAGE_CURRENT_DIRLINK='/var/opt/kaspersky/kesl/install-current'
+readonly PACKAGE_UPGRADE_DIRLINK='/var/opt/kaspersky/kesl/install-upgrade'
+readonly GUI_FILEPATH='/opt/kaspersky/kesl/libexec/kesl-gui'
+readonly GUI_LAUNCHER_FILEPATH='/opt/kaspersky/kesl/libexec/kesl-gui-launcher'
+readonly LIBEXEC_DIRECTORY='/opt/kaspersky/kesl/libexec/'
+readonly ESM_DIRECTORY='/opt/kaspersky/kesl/lib64/'
+readonly ESM_FILE='kesl_gui.esm'
+readonly GUI_KVDB_SETTINGS_INIT_FILEPATH='/opt/kaspersky/kesl/shared/init/storage/kvdb-user/kesl-gui_settings.kvdb'
+readonly GUI_KVDB_STORAGE_INIT_FILEPATH='/opt/kaspersky/kesl/shared/init/storage/kvdb-user/kesl-gui_storage.kvdb'
+readonly LIB_DIRECTORY='/opt/kaspersky/kesl/lib64/'
+readonly RESOURCE_PATH='/opt/kaspersky/kesl/resource/'
+readonly LOC_DIRECTORY='/opt/kaspersky/kesl/shared/loc/'
+readonly KVDB_USER_DIRECTORY='/var/opt/kaspersky/kesl/private/storage/kvdb-user/'
+
+IsSELinuxPresent()
+{
+    semanage -h >/dev/null 2>&1
+}
+
+SELinux_MarkFileAsBinT()
+{
+    local f="$(realpath "$1")"
+    semanage fcontext -a -t bin_t "$f" && restorecon -v "$f"
+}
+
+CopyFile()
+{
+    local path="$1"
+    local dirlink="$2"
+    cp -lPT --remove-destination "${PACKAGE_INSTALL_DIRECTORY}${path}" "${dirlink}${path}"
+}
+
+CopyDirectory()
+{
+    local path="$1"
+    local dirlink="$2"
+    cp -rlPT --remove-destination "${PACKAGE_INSTALL_DIRECTORY}${path}" "${dirlink}${path}"
+}
+
+MakeCopy()
+{
+    local dirlink="$1"
+    CopyFile "${GUI_FILEPATH}" "${dirlink}"
+    CopyFile "${GUI_LAUNCHER_FILEPATH}" "${dirlink}"
+    CopyFile "${LIBEXEC_DIRECTORY}qt.conf" "${dirlink}"
+    CopyFile "${ESM_DIRECTORY}${ESM_FILE}" "${dirlink}"
+    CopyFile "${GUI_KVDB_SETTINGS_INIT_FILEPATH}" "${dirlink}"
+    CopyFile "${GUI_KVDB_STORAGE_INIT_FILEPATH}" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libqxcb.so" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libqsvg.so" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libQt5Core.so.5" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libQt5DBus.so.5" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libQt5Gui.so.5" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libQt5Network.so.5" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libQt5Qml.so.5" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libQt5Quick.so.5" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libQt5QuickControls2.so.5" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libQt5QuickTemplates2.so.5" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libQt5Svg.so.5" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libQt5Widgets.so.5" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libQt5XcbQpa.so.5" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libpng16.so.16" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libxcb-xkb.so.1" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libxcb-sync.so.1" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libz.so.1" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libfreetype.so.6" "${dirlink}"
+    CopyFile "${LIB_DIRECTORY}libfontconfig.so.1" "${dirlink}"
+    CopyDirectory "${LIB_DIRECTORY}plugins" "${dirlink}"
+    CopyDirectory "${LIB_DIRECTORY}qml" "${dirlink}"
+    CopyDirectory "${RESOURCE_PATH}" "${dirlink}"
+    CopyFile "${LOC_DIRECTORY}de.qm" "${dirlink}"
+    CopyFile "${LOC_DIRECTORY}en.qm" "${dirlink}"
+    CopyFile "${LOC_DIRECTORY}fr.qm" "${dirlink}"
+    CopyFile "${LOC_DIRECTORY}ja.qm" "${dirlink}"
+    CopyFile "${LOC_DIRECTORY}ru.qm" "${dirlink}"
+}
+
+InstallKvdb()
+{
+    local dirlink="$1"
+    local install="cp --remove-destination --preserve=mode,ownership"
+    $install "${dirlink}${GUI_KVDB_SETTINGS_INIT_FILEPATH}" "${dirlink}${KVDB_USER_DIRECTORY}"
+    $install "${dirlink}${GUI_KVDB_STORAGE_INIT_FILEPATH}" "${dirlink}${KVDB_USER_DIRECTORY}"
+}
+
+Install()
+{
+    local dirlink="$1"
+    MakeCopy "${dirlink}"
+    if IsSELinuxPresent; then
+        SELinux_MarkFileAsBinT "${dirlink}${GUI_FILEPATH}"
+    fi
+    InstallKvdb "${dirlink}"
+}
+
+PostInstall()
+{
+    Install "${PACKAGE_CURRENT_DIRLINK}"
+}
+
+PostUpgrade()
+{
+    Install "${PACKAGE_UPGRADE_DIRLINK}"
+}
+
+[ "$1" = "configure" ] || exit 0
+
+if [ -d "${PACKAGE_UPGRADE_DIRLINK}" ]; then
+    PostUpgrade
+else
+    PostInstall
+fi
+
+exit 0
+

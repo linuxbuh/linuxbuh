@@ -1,0 +1,99 @@
+#!/bin/sh
+
+set -u
+
+readonly GUI_FILENAME='kesl-gui'
+readonly PACKAGE_CURRENT_DIRLINK='/var/opt/kaspersky/kesl/install-current'
+readonly GUI_FILEPATH='/opt/kaspersky/kesl/libexec/kesl-gui'
+readonly GUI_LAUNCHER_FILEPATH='/opt/kaspersky/kesl/libexec/kesl-gui-launcher'
+readonly LIBEXEC_DIRECTORY='/opt/kaspersky/kesl/libexec/'
+readonly ESM_DIRECTORY='/opt/kaspersky/kesl/lib64/'
+readonly ESM_FILE='kesl_gui.esm'
+readonly LIB_DIRECTORY='/opt/kaspersky/kesl/lib64/'
+readonly RESOURCE_PATH='/opt/kaspersky/kesl/resource/'
+readonly LOC_DIRECTORY='/opt/kaspersky/kesl/shared/loc/'
+readonly KVDB_USER_DIRECTORY='/var/opt/kaspersky/kesl/private/storage/kvdb-user/'
+readonly GUI_KVDB_SETTINGS_FILENAME='kesl-gui_settings.kvdb'
+readonly GUI_KVDB_STORAGE_FILENAME='kesl-gui_storage.kvdb'
+
+
+StopGui()
+{
+    pkill -TERM -x "$GUI_FILENAME"
+}
+
+RemoveFile()
+{
+    local path="$1"
+    local dirlink="$2"
+    rm -f "${dirlink}${path}"
+}
+
+RemoveDirectory()
+{
+    local path="$1"
+    local dirlink="$2"
+    rm -rf "${dirlink}${path}"
+}
+
+RemoveCopy()
+{
+    local dirlink="$1"
+    RemoveFile "${GUI_FILEPATH}" "${dirlink}"
+    RemoveFile "${GUI_LAUNCHER_FILEPATH}" "${dirlink}"
+    RemoveFile "${LIBEXEC_DIRECTORY}qt.conf" "${dirlink}"
+    RemoveFile "${ESM_DIRECTORY}${ESM_FILE}" "${dirlink}"
+    RemoveFile "${KVDB_USER_DIRECTORY}${GUI_KVDB_SETTINGS_FILENAME}" "${dirlink}"
+    RemoveFile "${KVDB_USER_DIRECTORY}${GUI_KVDB_STORAGE_FILENAME}" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libqxcb.so" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libqsvg.so" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libQt5Core.so.5" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libQt5DBus.so.5" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libQt5Gui.so.5" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libQt5Network.so.5" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libQt5Qml.so.5" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libQt5Quick.so.5" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libQt5QuickControls2.so.5" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libQt5QuickTemplates2.so.5" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libQt5Svg.so.5" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libQt5Widgets.so.5" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libQt5XcbQpa.so.5" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libpng16.so.16" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libxcb-xkb.so.1" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libxcb-sync.so.1" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libz.so.1" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libfreetype.so.6" "${dirlink}"
+    RemoveFile "${LIB_DIRECTORY}libfontconfig.so.1" "${dirlink}"
+    RemoveDirectory "${LIB_DIRECTORY}plugins" "${dirlink}"
+    RemoveDirectory "${LIB_DIRECTORY}qml" "${dirlink}"
+    RemoveDirectory "${RESOURCE_PATH}" "${dirlink}"
+    RemoveFile "${LOC_DIRECTORY}de.qm" "${dirlink}"
+    RemoveFile "${LOC_DIRECTORY}en.qm" "${dirlink}"
+    RemoveFile "${LOC_DIRECTORY}fr.qm" "${dirlink}"
+    RemoveFile "${LOC_DIRECTORY}ja.qm" "${dirlink}"
+    RemoveFile "${LOC_DIRECTORY}ru.qm" "${dirlink}"
+}
+
+RemoveKvdb()
+{
+    local dirlink="$1"
+    rm -f "${dirlink}${KVDB_USER_DIRECTORY}${GUI_KVDB_SETTINGS_FILENAME}"
+    rm -f "${dirlink}${KVDB_USER_DIRECTORY}${GUI_KVDB_STORAGE_FILENAME}"
+}
+
+Remove()
+{
+    StopGui
+    RemoveCopy "${PACKAGE_CURRENT_DIRLINK}"
+    RemoveKvdb "${PACKAGE_CURRENT_DIRLINK}"
+}
+
+removeMark='remove'
+if [ "$1" != "${removeMark}" ]; then
+    return
+fi
+
+Remove
+
+exit 0
+

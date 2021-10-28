@@ -1,0 +1,16 @@
+Package: kesl-gui
+Maintainer: "Kaspersky" <info@kaspersky.com>
+Architecture: amd64
+Version: 11.2.0-4528
+Copyright: (c) 2021 AO Kaspersky Lab. All Rights Reserved.
+Description: Kaspersky Endpoint Security 11.2.0 for Linux
+ Kaspersky Endpoint Security 11.2.0 for Linux
+ protects computers running under Linux operating systems against
+ malware that can infiltrate them via file exchange.
+ Kaspersky Endpoint Security 11.2.0 for Linux scans computer hard drives and other mounted
+ devices. The application can scan individual directories accessible over
+ SMB and NFS protocols, as well as remote directories mounted on the
+ server using the SMB and NFS protocols.
+Section: non-free/admin
+Priority: optional
+Pre-Depends: libice6, libsm6, libx11-6, libx11-xcb1, libxcb-icccm4, libxcb-image0, libxcb-keysyms1, libxcb-randr0, libxcb-render-util0, libxcb-render0, libxcb-shape0, libxcb-shm0, libxcb-sync1, libxcb-xfixes0, libxcb-xinerama0, libxcb-xkb1, libxcb1, libxi6, libxml2, zlib1g, kesl (= 11.2.0-4528)
