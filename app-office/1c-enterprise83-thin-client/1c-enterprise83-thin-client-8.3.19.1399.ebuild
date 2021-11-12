@@ -6,14 +6,12 @@ EAPI=7
 
 inherit eutils unpacker
 
-
-DESCRIPTION="Клиент 1C:Проедприятие 8.3 для GNU\LINUX"
+DESCRIPTION="Тонкий Клиент 1C:Проедприятие 8.3 для GNU\LINUX"
 HOMEPAGE="http://v8.1c.ru"
 
 MY_PV="$(ver_rs 3 '-' )"
-MY_PN="1c-enterprise"
-SRC_URI="abi_x86_64? ( ${MY_PN}-client_${MY_PV}_amd64.tar.gz )"
-
+MY_PN="1c-enterprise83-thin-client"
+SRC_URI="abi_x86_64? ( ${MY_PN}_${MY_PV}_amd64.tar.gz )"
 
 LICENSE="1CEnterprise_en"
 KEYWORDS="amd64"
@@ -24,6 +22,7 @@ SLOT="0"
 IUSE="nls"
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}
+	app-office/linuxbuh-1c-installer
 	=app-office/1c-enterprise83-server-${PV}:${SLOT}
 	>=dev-libs/icu-4.6
 	net-libs/webkit-gtk-linuxbuh-bin:3
@@ -41,9 +40,7 @@ RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}
 	x11-libs/gdk-pixbuf:2
 	dev-libs/glib:2
 	net-libs/libsoup:2.4
-	sys-libs/zlib
-	>=dev-util/google-perftools-2.4
-	app-office/linuxbuh-1c-installer"
+	sys-libs/zlib"
 
 DEPEND="${RDEPEND}"
 
@@ -55,6 +52,7 @@ pkg_nofetch() {
     einfo "Скачайте дистрибутив платформы 1С:Предприятие 8.3 с помощью программы linuxbuh-1c-get-platform-client-gentoo и установите."
 }
 
+
 src_install() {
 	cp -R "${WORKDIR}/opt" "${D}" || die "install failed!"
 	cp -R "${WORKDIR}/usr" "${D}" || die "install failed!"
@@ -63,15 +61,8 @@ src_install() {
 
 pkg_postinst() {
 
-rm /usr/lib/libicui18n.so.63
-rm /usr/lib/libicuuc.so.63
-rm /usr/lib64/libicui18n.so.63
-rm /usr/lib64/libicuuc.so.63
-
-ln -s /usr/lib/libicui18n.so.65 /usr/lib/libicui18n.so.63
-ln -s /usr/lib/libicuuc.so.65 /usr/lib/libicuuc.so.63
-ln -s /usr/lib64/libicui18n.so.65 /usr/lib64/libicui18n.so.63
-ln -s /usr/lib64/libicuuc.so.65 /usr/lib64/libicuuc.so.63
+ln -s /usr/lib/libicui18n.so.64 /usr/lib/libicui18n.so.63
+ln -s /usr/lib/libicuuc.so.64 /usr/lib/libicuuc.so.63
 
 }
 

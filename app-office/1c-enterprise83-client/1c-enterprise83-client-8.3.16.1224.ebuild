@@ -11,7 +11,7 @@ DESCRIPTION="Клиент 1C:Проедприятие 8.3 для GNU\LINUX"
 HOMEPAGE="http://v8.1c.ru"
 
 MY_PV="$(ver_rs 3 '-' )"
-MY_PN="1c-enterprise83-client"
+MY_PN="1c-enterprise"
 SRC_URI="abi_x86_64? ( ${MY_PN}_${MY_PV}_amd64.tar.gz )"
 
 

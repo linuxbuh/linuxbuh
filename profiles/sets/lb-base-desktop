@@ -67,7 +67,6 @@ sys-power/upower
 sys-process/cpu-x
 sys-process/htop
 sys-process/lsof
-x11-misc/compton
 x11-misc/screengrab
 x11-misc/wmctrl
 x11-misc/x11vnc
