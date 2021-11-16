@@ -62,7 +62,10 @@ pkg_nofetch() {
 
 src_install() {
 	cp -R "${WORKDIR}/opt" "${D}" || die "install failed!"
-	cp -R "${WORKDIR}/usr" "${D}" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/app-install" "${D}" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/applications" "${D}" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/icons" "${D}" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/pixmaps" "${D}" || die "install failed!"
 
 }
 
