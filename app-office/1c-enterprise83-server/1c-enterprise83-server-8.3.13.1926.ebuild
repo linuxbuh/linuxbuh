@@ -18,13 +18,15 @@ KEYWORDS="amd64"
 RESTRICT="fetch"
 
 SLOT="0"
-IUSE="nls postgres fontconfig server"
+IUSE="nls postgres fontconfig server -hasp -hasp-emul"
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}
 	app-office/linuxbuh-1c-installer
 	postgres? ( dev-db/postgresql-1c-pro[pg_legacytimestamp] )
 	server? ( app-office/1c-server-utils )
-	fontconfig? ( gnome-extra/libgsf
+	hasp? ( sys-apps/hasp )
+	hasp-emul? ( app-emulation/usbhasp )
+		fontconfig? ( gnome-extra/libgsf
 			app-text/ttf2pt1
 			media-gfx/imagemagick[corefonts]
 			dev-db/unixODBC )

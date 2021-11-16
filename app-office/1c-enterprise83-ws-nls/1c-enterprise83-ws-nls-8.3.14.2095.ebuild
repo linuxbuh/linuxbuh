@@ -4,23 +4,24 @@
 
 EAPI=7
 
-inherit eutils unpacker
+inherit eutils unpacker 
 
-DESCRIPTION="Языковой пакет для Сервера 1C:Проедприятие 8.3 для GNU\LINUX"
+DESCRIPTION="Языковой пакет для WEB Сервера 1C:Проедприятие 8.3 для GNU\LINUX"
 HOMEPAGE="http://v8.1c.ru"
 
 MY_PV="$(ver_rs 3 '-' )"
-MY_PN="1c-enterprise-${PV}"
-SRC_URI="abi_x86_64? ( ${MY_PN}-server-nls_${MY_PV}_amd64.tar.gz )"
+MY_PN="1c-enterprise83-ws-nls"
+SRC_URI="abi_x86_64? ( ${PN}_${MY_PV}_amd64.tar.gz )"
 
 LICENSE="1CEnterprise_en"
 KEYWORDS="amd64"
 RESTRICT="fetch"
 
 SLOT="0"
+
 IUSE=""
 
-RDEPEND="=app-office/1c-enterprise83-server-${PV}:${SLOT}"
+RDEPEND="=app-office/1c-enterprise83-ws-${PV}:${SLOT}"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}"
@@ -35,6 +36,4 @@ src_install() {
 	dodir /opt
 	mv "${WORKDIR}"/opt/* "${D}"/opt
 }
-
-
 

@@ -10,8 +10,8 @@ DESCRIPTION="WEB Сервер 1C:Проедприятие 8.3 для GNU\LINUX"
 HOMEPAGE="http://v8.1c.ru"
 
 MY_PV="$(ver_rs 3 '-' )"
-MY_PN="1c-enterprise83-ws"
-SRC_URI="abi_x86_64? ( ${MY_PN}_${MY_PV}_amd64.tar.gz )"
+MY_PN="1c-enterprise-${PV}"
+SRC_URI="abi_x86_64? ( ${MY_PN}-ws_${MY_PV}_amd64.tar.gz )"
 
 LICENSE="1CEnterprise_en"
 KEYWORDS="amd64"
