@@ -25,7 +25,7 @@ IUSE="nls -license -hasp -hasp-emul"
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}
 	=app-office/1c-enterprise83-server-${PV}:${SLOT}
-	license? ( app-office/license-tools )
+	license? ( =app-office/license-tools-${PV}:${SLOT} )
 	hasp? ( sys-apps/hasp )
 	hasp-emul? ( app-emulation/usbhasp )
 	>=dev-libs/icu-4.6
@@ -76,10 +76,11 @@ rm /usr/lib/libicuuc.so.63
 rm /usr/lib64/libicui18n.so.63
 rm /usr/lib64/libicuuc.so.63
 
-ln -s /usr/lib/libicui18n.so.65 /usr/lib/libicui18n.so.63
-ln -s /usr/lib/libicuuc.so.65 /usr/lib/libicuuc.so.63
-ln -s /usr/lib64/libicui18n.so.65 /usr/lib64/libicui18n.so.63
-ln -s /usr/lib64/libicuuc.so.65 /usr/lib64/libicuuc.so.63
+ln -s /usr/lib/libicui18n.so.69 /usr/lib/libicui18n.so.63
+ln -s /usr/lib/libicuuc.so.69 /usr/lib/libicuuc.so.63
+ln -s /usr/lib64/libicui18n.so.69 /usr/lib64/libicui18n.so.63
+ln -s /usr/lib64/libicuuc.so.69 /usr/lib64/libicuuc.so.63
 
 }
+
 

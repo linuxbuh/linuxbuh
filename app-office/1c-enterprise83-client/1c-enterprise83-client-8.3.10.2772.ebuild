@@ -72,10 +72,10 @@ rm /usr/lib/libicuuc.so.63
 rm /usr/lib64/libicui18n.so.63
 rm /usr/lib64/libicuuc.so.63
 
-ln -s /usr/lib/libicui18n.so.65 /usr/lib/libicui18n.so.63
-ln -s /usr/lib/libicuuc.so.65 /usr/lib/libicuuc.so.63
-ln -s /usr/lib64/libicui18n.so.65 /usr/lib64/libicui18n.so.63
-ln -s /usr/lib64/libicuuc.so.65 /usr/lib64/libicuuc.so.63
+ln -s /usr/lib/libicui18n.so.69 /usr/lib/libicui18n.so.63
+ln -s /usr/lib/libicuuc.so.69 /usr/lib/libicuuc.so.63
+ln -s /usr/lib64/libicui18n.so.69 /usr/lib64/libicui18n.so.63
+ln -s /usr/lib64/libicuuc.so.69 /usr/lib64/libicuuc.so.63
 
 }
 
