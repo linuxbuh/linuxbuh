@@ -21,12 +21,10 @@ RESTRICT="fetch"
 
 SLOT="0"
 
-IUSE="nls -license -hasp -hasp-emul"
+IUSE="nls"
 
 RDEPEND="=app-office/1c-enterprise83-common-${PV}:${SLOT}
 	=app-office/1c-enterprise83-server-${PV}:${SLOT}
-	license? ( =app-office/license-tools-${PV}:${SLOT} )
-	hasp? ( sys-apps/hasp )
 	hasp-emul? ( app-emulation/usbhasp )
 	>=dev-libs/icu-4.6
 	net-libs/webkit-gtk-linuxbuh-bin:3
@@ -53,9 +51,9 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}"
 
 pkg_nofetch() {
-    einfo "Внимание !!!"
+    einfo "Внимание !!! В папке /var/calculate/distfiles отсутствует файл ${PN}_${MY_PV}_amd64.tar.gz"
     einfo "1. Установите пакет linuxbuh-1c-installer"
-    einfo "2. Скачайте дистрибутив платформы 1С:Предприятие 8.3 с помощью программы linuxbuh-1c-get-platform-client-gentoo и установите."
+    einfo "2. Скачайте дистрибутив платформы 1С:Предприятие 8.3 с помощью программы linuxbuh-1c-get-platform-client-gentoo или linuxbuh-1c-installer."
     einfo "Формат комманды (вставьте ваши значения без <>) linuxbuh-1c-get-platform-client-gentoo <Логин на сайте releases.1c.ru> <Пароль на сайте releases.1c.ru> <Номер релиза платфорvы полностью - например ${PV}>"
     einfo "3. Повторно запустите установку платформы 1С коммандой emerge app-office/1c-enterprise83-client"
 }
