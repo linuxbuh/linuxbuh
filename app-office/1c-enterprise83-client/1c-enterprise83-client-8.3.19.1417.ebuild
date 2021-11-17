@@ -68,10 +68,10 @@ mkdir -p ${D}/usr/share/icons
 mkdir -p ${D}/usr/share/pixmaps
 
 	cp -R "${WORKDIR}/opt" "${D}" || die "install failed!"
-	cp -R "${WORKDIR}/usr/share/app-install/*" "${D}/usr/share/app-install" || die "install failed!"
-	cp -R "${WORKDIR}/usr/share/applications/*" "${D}/usr/share/applications" || die "install failed!"
-	cp -R "${WORKDIR}/usr/share/icons/*" "${D}/usr/share/icons" || die "install failed!"
-	cp -R "${WORKDIR}/usr/share/pixmaps/*" "${D}/usr/share/pixmaps" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/app-install" "${D}/usr/share" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/applications" "${D}/usr/share" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/icons" "${D}/usr/share" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/pixmaps" "${D}/usr/share" || die "install failed!"
 
 }
 
