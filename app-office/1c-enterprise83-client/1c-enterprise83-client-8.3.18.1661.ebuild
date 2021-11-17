@@ -58,11 +58,20 @@ pkg_nofetch() {
 }
 
 src_install() {
+cd ${WORKDIR}
+mkdir -p ${D}/opt
+mkdir -p ${D}/usr
+mkdir -p ${D}/usr/share
+mkdir -p ${D}/usr/share/app-install
+mkdir -p ${D}/usr/share/applications
+mkdir -p ${D}/usr/share/icons
+mkdir -p ${D}/usr/share/pixmaps
+
 	cp -R "${WORKDIR}/opt" "${D}" || die "install failed!"
-	cp -R "${WORKDIR}/usr/share/app-install" "${D}" || die "install failed!"
-	cp -R "${WORKDIR}/usr/share/applications" "${D}" || die "install failed!"
-	cp -R "${WORKDIR}/usr/share/icons" "${D}" || die "install failed!"
-	cp -R "${WORKDIR}/usr/share/pixmaps" "${D}" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/app-install" "${D}/usr/share" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/applications" "${D}/usr/share" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/icons" "${D}/usr/share" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/pixmaps" "${D}/usr/share" || die "install failed!"
 
 }
 
@@ -78,6 +87,6 @@ ln -s /usr/lib/libicuuc.so.69 /usr/lib/libicuuc.so.63
 ln -s /usr/lib64/libicui18n.so.69 /usr/lib64/libicui18n.so.63
 ln -s /usr/lib64/libicuuc.so.69 /usr/lib64/libicuuc.so.63
 
+cp -R /opt/1cv8/x86_64/${PV}/*.desktop /usr/share/application
+
 }
-
-
