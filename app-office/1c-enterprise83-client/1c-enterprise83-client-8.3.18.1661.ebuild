@@ -50,7 +50,7 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}"
 
 pkg_nofetch() {
-    einfo "Внимание !!! В папке /var/calculate/distfiles отсутствует файл ${PN}_${MY_PV}_amd64.tar.gz"
+    einfo "Внимание !!! В папке /var/calculate/distfiles отсутствует файл ${MY_PN}-client_${MY_PV}_amd64.tar.gz"
     einfo "1. Установите пакет linuxbuh-1c-installer"
     einfo "2. Скачайте дистрибутив платформы 1С:Предприятие 8.3 с помощью программы linuxbuh-1c-get-platform-client-gentoo или linuxbuh-1c-installer."
     einfo "Формат комманды (вставьте ваши значения без <>) linuxbuh-1c-get-platform-client-gentoo <Логин на сайте releases.1c.ru> <Пароль на сайте releases.1c.ru> <Номер релиза платфорvы полностью - например ${PV}>"
