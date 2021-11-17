@@ -59,10 +59,10 @@ pkg_nofetch() {
 
 src_install() {
 	cp -R "${WORKDIR}/opt" "${D}" || die "install failed!"
-	cp -R "${WORKDIR}/usr/share/app-install" "${D}" || die "install failed!"
-	cp -R "${WORKDIR}/usr/share/applications" "${D}" || die "install failed!"
-	cp -R "${WORKDIR}/usr/share/icons" "${D}" || die "install failed!"
-	cp -R "${WORKDIR}/usr/share/pixmaps" "${D}" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/app-install" "${D}/usr/share/app-install" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/applications" "${D}/usr/share/applications" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/icons" "${D}/usr/share/icons" || die "install failed!"
+	cp -R "${WORKDIR}/usr/share/pixmaps" "${D}/usr/share/pixmaps" || die "install failed!"
 
 }
 
