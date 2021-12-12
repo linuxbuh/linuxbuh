@@ -94,12 +94,44 @@ src_install() {
 #}
 
 pkg_postinst() {
-chmod -R 777 /var/opt/cprocsp
-touch /etc/debian_version
-echo "jessie/sid" > /etc/debian_version
-rm -f /etc/opt/cprocsp/config64.ini
-#cp -f ${FILESDIR}/goodconfig64.ini /etc/opt/cprocsp/config64.ini
-cp -f ${FILESDIR}/cprocsp_postinstal_all_scripts.sh /etc/opt/cprocsp/cprocsp_postinstal_all_scripts.sh
-/etc/opt/cprocsp/cprocsp_postinstal_all_scripts.sh
+    chmod -R 777 /var/opt/cprocsp
+    touch /etc/debian_version
+    echo "jessie/sid" > /etc/debian_version
+    #rm -f /etc/opt/cprocsp/config64.ini
+    #cp -f ${FILESDIR}/goodconfig64.ini /etc/opt/cprocsp/config64.ini
+    cp -f ${FILESDIR}/cprocsp_postinstal_all_scripts.sh /etc/opt/cprocsp/cprocsp_postinstal_all_scripts.sh
+    #/etc/opt/cprocsp/cprocsp_postinstal_all_scripts.sh
+
+# ini файлы с форума https://forum.calculate-linux.org/t/csp-v-4-5/9989/246
+#    if use lsb-kc1; then
+	cp -f ${FILESDIR}/config64-kc1.ini /etc/opt/cprocsp/config64-kc1.ini
+#    fi
+
+#    if use lsb-kc2; then
+	cp -f ${FILESDIR}/config64-kc2.ini /etc/opt/cprocsp/config64-kc2.ini
+#    fi
+
+    cp -f ${FILESDIR}/config64-donnstro.ini /etc/opt/cprocsp/config64-donnstro.ini
+    cp -f ${FILESDIR}/config64-5.0.12000.ini /etc/opt/cprocsp/config64-5.0.12000.ini
+    cp -f ${FILESDIR}/goodconfig64.ini /etc/opt/cprocsp/goodconfig64.ini
+
+
+    elog "Пропишите автозапуск rc-update add cprocsp default"
+    elog "Запустите /etc/init.d/cprocsp start"
+    elog "ОБЯЗАТЕЛЬНО!! Запустите скрипт cprocsp_postinstal_all_scripts.sh командой 'bash /etc/opt/cprocsp/cprocsp_postinstal_all_scripts.sh'"
+    elog "Eсли вам не подходит файл config64.ini созданный скриптом cprocsp_postinstal_all_scripts.sh,"
+    elog "то переименуйте один из ini файлов в каталоге /etc/opt/cprocsp (например файл config64-donnstro.ini"
 
 }
+
+pkg_prerm ()  {
+
+    /etc/init.d/cprocsp stop
+    rc-update del cprocsp default
+    rm -Rv /etc/init.d/cprocsp
+    rm -Rv /etc/debian_version
+    rm -Rv /var/opt/cprocsp
+    rm -Rv /etc/opt/cprocsp
+
+}
+
