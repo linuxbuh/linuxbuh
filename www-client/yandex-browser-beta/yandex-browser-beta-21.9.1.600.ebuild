@@ -129,8 +129,15 @@ pkg_postinst() {
 		ewarn "emerge an ebuild 'www-plugins/yandex-browser-ffmpeg-codec'."
 		ewarn "For more info see: https://yandex.ru/support/browser-beta/working-with-files/video.html#problems__video-linux"
 	fi
+
+rm -f /usr/bin/yandex-browser-beta
+ln -s /opt/yandex/browser-beta/yandex-browser-beta /usr/bin/yandex-browser-beta
+
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+
+rm -f /usr/bin/yandex-browser-beta
+
 }
