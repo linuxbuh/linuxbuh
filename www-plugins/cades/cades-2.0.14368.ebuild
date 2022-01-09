@@ -7,7 +7,8 @@ inherit rpm
 
 DESCRIPTION="Cryptopro package"
 HOMEPAGE="http://www.cryptopro.ru"
-SRC_URI="https://www.cryptopro.ru/sites/default/files/products/cades/current_release_2_0/cades_linux_amd64.tar.gz"
+#SRC_URI="https://www.cryptopro.ru/sites/default/files/products/cades/current_release_2_0/cades_linux_amd64.tar.gz"
+SRC_URI="https://cryptopro.ru/products/cades/plugin/get_2_0/cades_linux_amd64.tar.gz"
 #SRC_URI="linux-amd64.tgz"
 #SRC_URI="$DOWNLOADPAGE/${P}.tgz"
 
