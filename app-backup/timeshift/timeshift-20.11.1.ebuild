@@ -24,7 +24,7 @@ DEPEND="
 	net-misc/rsync
 	sys-process/cronie
 	x11-libs/gtk+:3
-	x11-libs/apps
+	x11-libs/xapp
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
