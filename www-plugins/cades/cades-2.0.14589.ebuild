@@ -5,10 +5,10 @@
 EAPI=7
 inherit rpm
 
-DESCRIPTION="Cryptopro package"
+DESCRIPTION="Cades plugin package"
 HOMEPAGE="http://www.cryptopro.ru"
-#SRC_URI="https://www.cryptopro.ru/sites/default/files/products/cades/current_release_2_0/cades_linux_amd64.tar.gz"
-SRC_URI="https://ftp.linuxbuh.ru/linuxbuh/www-plugins/cades/cades-linux-amd64.tar.gz"
+SRC_URI="https://www.cryptopro.ru/sites/default/files/products/cades/current_release_2_0/cades-linux-amd64.tar.gz"
+#SRC_URI="https://ftp.linuxbuh.ru/linuxbuh/www-plugins/cades/cades-linux-amd64.tar.gz"
 #SRC_URI="linux-amd64.tgz"
 #SRC_URI="$DOWNLOADPAGE/${P}.tgz"
 
