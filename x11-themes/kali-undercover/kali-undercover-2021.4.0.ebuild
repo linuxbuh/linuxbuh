@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="Kali Undercover"
 HOMEPAGE="https://gitlab.com/kalilinux/packages/kali-undercover"
-SRC_URI="http://archive.kali.org/kali/pool/main/k/kali-undercover/kali-undercover_2021.1.2.tar.xz"
+SRC_URI="http://archive.kali.org/kali/pool/main/k/kali-undercover/kali-undercover_2021.4.0.tar.xz"
 
 LICENSE="GPL"
 SLOT="0"
