@@ -100,7 +100,7 @@ sys-apps/linuxbuh-installer
 x11-themes/linuxbuh-backgrounds-micro
 net-vpn/networkmanager-fortisslvpn
 net-vpn/networkmanager-l2tp
-net-vpn/networkmanager-libreswan
+#net-vpn/networkmanager-libreswan
 net-vpn/networkmanager-openconnect
 net-vpn/networkmanager-openvpn
 net-vpn/networkmanager-pptp
