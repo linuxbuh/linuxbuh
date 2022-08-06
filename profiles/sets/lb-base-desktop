@@ -17,7 +17,7 @@ app-text/wgetpaste
 app-vim/colorschemes
 dev-python/gst-python
 media-fonts/noto-emoji
-media-gfx/utsushi
+#media-gfx/utsushi
 net-analyzer/nmap
 net-analyzer/traceroute
 net-dialup/pptpclient
