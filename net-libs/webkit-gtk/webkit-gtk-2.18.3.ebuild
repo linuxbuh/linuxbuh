@@ -152,7 +152,7 @@ pkg_setup() {
 src_prepare() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=555504
 	eapply "${FILESDIR}"/${PN}-2.8.5-fix-ia64-build.patch
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	gnome2_src_prepare
 }
 
@@ -231,7 +231,7 @@ src_configure() {
 		-DENABLE_API_TESTS=$(usex test)
 		-DENABLE_GTKDOC=$(usex doc)
 		-DENABLE_GEOLOCATION=$(usex geolocation)
-		$(cmake-utils_use_find_package gles2 OpenGLES2)
+		$(cmake_use_find_package gles2 OpenGLES2)
 		-DENABLE_GLES2=$(usex gles2)
 		-DENABLE_VIDEO=$(usex gstreamer)
 		-DENABLE_WEB_AUDIO=$(usex gstreamer)
@@ -243,8 +243,8 @@ src_configure() {
 		-DENABLE_SPELLCHECK=$(usex spell)
 		-DENABLE_WAYLAND_TARGET=$(usex wayland)
 		-DENABLE_WEBGL=$(usex webgl)
-		$(cmake-utils_use_find_package egl EGL)
-		$(cmake-utils_use_find_package opengl OpenGL)
+		$(cmake_use_find_package egl EGL)
+		$(cmake_use_find_package opengl OpenGL)
 		-DENABLE_X11_TARGET=$(usex X)
 		-DENABLE_OPENGL=${opengl_enabled}
 		-DENABLE_ACCELERATED_2D_CANVAS=${canvas_enabled}
@@ -262,22 +262,22 @@ src_configure() {
 #		mycmakeargs+=( -DUSE_LD_GOLD=OFF )
 #	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 src_test() {
 	# Prevents test failures on PaX systems
 	use jit && pax-mark m $(list-paxables Programs/*[Tt]ests/*) # Programs/unittests/.libs/test*
 
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# Prevents crashes on PaX systems, bug #522808
 	use jit && pax-mark m "${ED}usr/libexec/webkit2gtk-4.0/jsc" "${ED}usr/libexec/webkit2gtk-4.0/WebKitWebProcess"
