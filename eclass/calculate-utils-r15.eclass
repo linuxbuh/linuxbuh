@@ -11,14 +11,14 @@
 # @DESCRIPTION:
 # This eclass use for calculate-utils ebuild
 
-PYTHON_COMPAT=(python3_9)
+PYTHON_COMPAT=(python3_10)
 
 inherit distutils-r1 eutils
 
 EXPORTED_FUNCTIONS="src_compile src_install pkg_preinst"
 
-CALCULATE_URI="ftp://ftp.calculate-linux.org/calculate/source/calculate3"
-MIRROR_URI="http://mirror.yandex.ru/calculate/source/calculate3"
+CALCULATE_URI="https://mirror.calculate-linux.org/source/calculate3"
+MIRROR_URI=
 
 # @ECLASS-VARIABLE: CALCULATE_MODULES
 # @DESCRIPTION:
@@ -151,18 +151,20 @@ RDEPEND="
 	!minimal? (
 		>=sys-apps/util-linux-2.19.1
 		net-misc/rsync
-		dev-python/pyopenssl[python_targets_python3_9]
-		dev-python/cryptography[python_targets_python3_9]
+		dev-python/pyopenssl[python_targets_python3_10]
+		dev-python/cryptography[python_targets_python3_10]
+		dev-python/cffi[python_targets_python3_10]
+		dev-python/six[python_targets_python3_10]
 		dev-libs/openssl
-		dev-python/m2crypto[python_targets_python3_9]
-		dev-python/pytz[python_targets_python3_9]
+		dev-python/m2crypto[python_targets_python3_10]
+		dev-python/pytz[python_targets_python3_10]
 	)
 	gpg? (
 		app-crypt/gnupg
 		app-crypt/openpgp-keys-calculate-release
 	)
-	dev-python/jaraco-functools[python_targets_python3_9]
-	dev-python/lxml[python_targets_python3_9]
+	dev-python/jaraco-functools[python_targets_python3_10]
+	dev-python/lxml[python_targets_python3_10]
 	sys-apps/iproute2[-minimal]
 	sys-apps/pciutils
 	app-arch/xz-utils
@@ -181,17 +183,17 @@ RDEPEND="
 	!<sys-apps/calculate-server-2.1.18-r1
 
 	qt5? (
-		dev-python/dbus-python[python_targets_python3_9]
+		dev-python/dbus-python[python_targets_python3_10]
 		media-gfx/imagemagick[jpeg]
-		dev-python/PyQt5[python_targets_python3_9]
-		dev-python/pyinotify[python_targets_python3_9]
+		dev-python/PyQt5[python_targets_python3_10]
+		dev-python/pyinotify[python_targets_python3_10]
 	)
 
 	dbus? (
-		dev-python/dbus-python[python_targets_python3_9]
+		dev-python/dbus-python[python_targets_python3_10]
 	)
 
-	dev-python/pexpect[python_targets_python3_9]
+	dev-python/pexpect[python_targets_python3_10]
 
 	desktop? (
 		media-gfx/feh
@@ -199,14 +201,14 @@ RDEPEND="
 		sys-apps/keyutils
 		sys-auth/pam_keystore
 		dev-lang/swig
-		dev-qt/qdbus:5
+		dev-qt/qdbus
 		sys-apps/edid-decode
-		dev-python/pygobject[python_targets_python3_9]
-		dev-python/dbus-python[python_targets_python3_9]
+		dev-python/pygobject[python_targets_python3_10]
+		dev-python/dbus-python[python_targets_python3_10]
 	)
 
 	client? (
-		dev-python/python-ldap[ssl,python_targets_python3_9]
+		dev-python/python-ldap[ssl,python_targets_python3_10]
 		sys-auth/pam_client
 		>=sys-auth/pam_ldap-180[ssl]
 		>=sys-auth/nss_ldap-239
@@ -216,7 +218,7 @@ RDEPEND="
 #	server? (
 #		sys-auth/pam_ldap
 #		sys-auth/nss_ldap
-#		dev-python/python-ldap[python_targets_python3_9]
+#		dev-python/python-ldap[python_targets_python3_10]
 #	)
 #
 #
@@ -298,12 +300,12 @@ calculate-utils-r15_pkg_preinst() {
 	dosym /usr/libexec/calculate/cl-core-wrapper /usr/bin/cl-core-patch
 	dosym /usr/libexec/calculate/cl-core-wrapper /usr/bin/cl-update
 	dosym /usr/libexec/calculate/cl-core-wrapper /usr/bin/cl-update-profile
-	dosym /usr/lib/python-exec/python3.9/cl-console /usr/bin/cl-console
+	dosym /usr/lib/python-exec/python3.10/cl-console /usr/bin/cl-console
 	if use qt5
 	then
-		dosym /usr/lib/python-exec/python3.9/cl-console-gui /usr/bin/cl-console-gui
-		dosym /usr/lib/python-exec/python3.9/cl-console-gui /usr/bin/cl-console-gui-install
-		dosym /usr/lib/python-exec/python3.9/cl-console-gui /usr/bin/cl-console-gui-update
-		dosym /usr/lib/python-exec/python3.9/cl-update-checker /usr/bin/cl-update-checker
+		dosym /usr/lib/python-exec/python3.10/cl-console-gui /usr/bin/cl-console-gui
+		dosym /usr/lib/python-exec/python3.10/cl-console-gui /usr/bin/cl-console-gui-install
+		dosym /usr/lib/python-exec/python3.10/cl-console-gui /usr/bin/cl-console-gui-update
+		dosym /usr/lib/python-exec/python3.10/cl-update-checker /usr/bin/cl-update-checker
 	fi
 }
