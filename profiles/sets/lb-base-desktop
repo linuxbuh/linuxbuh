@@ -64,7 +64,7 @@ sys-power/cpupower
 sys-power/powernowd
 sys-power/powertop
 sys-power/upower
-sys-process/cpu-x
+#sys-process/cpu-x
 sys-process/htop
 sys-process/lsof
 x11-misc/screengrab
@@ -81,13 +81,13 @@ media-gfx/splash-themes-calculate
 media-gfx/grub-splashes-calculate
 media-gfx/gfxboot-themes-calculate
 media-gfx/dm-themes-calculate
-media-sound/alsa-utils
+#media-sound/alsa-utils
 media-plugins/alsa-plugins
-media-libs/alsa-topology-conf
-media-libs/alsa-ucm-conf
+#media-libs/alsa-topology-conf
+#media-libs/alsa-ucm-conf
 media-sound/alsaplayer
 media-sound/bluez-alsa
-media-sound/pulseaudio-ctl
+#media-sound/pulseaudio-ctl
 media-sound/pulsemixer
 x11-themes/calculate-icon-theme
 sys-boot/plymouth-calculate-plugin
