@@ -96,7 +96,6 @@ x11-misc/xxkb
 net-wireless/bluez
 sys-block/gparted
 net-misc/networkmanager
-www-client/midori
 sys-apps/linuxbuh-installer
 x11-themes/linuxbuh-backgrounds-micro
 net-vpn/networkmanager-fortisslvpn
