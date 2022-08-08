@@ -12,7 +12,7 @@ HOMEPAGE="https://www.basilisk-browser.org/"
 KEYWORDS="~amd64"
 
 SRC_URI="
-    amd64? ( https://eu.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz )
+    amd64? ( https://archive.basilisk-browser.org/2022.08.06/linux/x86_64/gtk3/basilisk-20220806041504.linux-x86_64.tar.xz )
     "
 
 SLOT="0"
