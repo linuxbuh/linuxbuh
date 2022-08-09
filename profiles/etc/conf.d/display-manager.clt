@@ -1,0 +1,13 @@
+#------------------------------------------------------------------------------
+# Modified Calculate Utilities 3.6.8.23
+# Processed template files:
+# /var/db/repos/calculate/profiles/templates/3.6/3_ac_install_live/1-merge/x11-base/xorg-server/conf.d/xdm
+# For modify this file, create /etc/conf.d/xdm.clt template.
+#------------------------------------------------------------------------------
+
+CHECKVT=7
+
+DISPLAYMANAGER="lightdm"
+
+
+
