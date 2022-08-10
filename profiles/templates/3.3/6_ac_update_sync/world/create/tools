@@ -1,0 +1,5 @@
+# Calculate name=world format=world
+
+#?in(os_linux_pkglist, Desktop-M, Desktop-X)!=#
+app-portage/cpuinfo2cpuflags
+#in#

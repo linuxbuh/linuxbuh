@@ -1,0 +1,7 @@
+# Calculate name=world format=world
+
+#?in(os_linux_pkglist, Desktop-M, Desktop-X)!=#
+app-dicts/stardict-calculate-ru
+app-text/sdcv
+app-text/stardict
+#in#

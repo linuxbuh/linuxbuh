@@ -1,0 +1,11 @@
+# Calculate format=world name=world ini(overlay-lautre76.world)<2
+
+#-ini(overlay-lautre76.world,2)-#
+
+#?in(os_linux_pkglist, Desktop-X)!=#
+app-dicts/stardict-calculate-ru
+app-emulation/wine
+app-text/sdcv
+app-text/stardict
+games-emulation/dosbox
+#in#

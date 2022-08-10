@@ -1,0 +1,12 @@
+# Calculate name=world format=world
+
+#?in(os_linux_pkglist, Desktop-K)!=#
+app-editors/vim
+media-gfx/calculate-wallpapers
+x11-themes/calculate-icon-theme
+x11-themes/calculate-xcursors
+x11-themes/gnome-breeze
+www-client/chromium
+!x11-terms/rxvt-unicode
+!x11-wm/openbox
+#in#

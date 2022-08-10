@@ -1,0 +1,8 @@
+# Calculate format=world name=world ini(overlay-lautre76.world)<5
+
+#-ini(overlay-lautre76.world,5)-#
+
+#?in(os_linux_pkglist, Desktop-X)!=#
+!www-client/firefox-bin
+www-client/firefox
+#in#

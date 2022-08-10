@@ -1,0 +1,25 @@
+# Calculate name=world format=world
+
+#?in(os_linux_pkglist, Desktop-L)!=#
+lxqt-base/lxqt-admin
+lxqt-base/lxqt-meta
+lxqt-base/lxqt-openssh-askpass
+lxqt-base/lxqt-powermanagement
+lxqt-base/lxqt-sudo
+media-gfx/lximage-qt
+x11-terms/qterminal
+
+app-editors/vim
+mail-client/claws-mail
+media-gfx/calculate-wallpapers
+media-gfx/dm-themes-calculate
+media-gfx/gimp
+media-sound/clementine
+media-video/smplayer
+www-client/qupzilla
+x11-misc/screengrab
+x11-misc/sddm
+x11-misc/xscreensaver
+x11-themes/calculate-icon-theme
+x11-themes/claws-mail-theme-calculate
+#in#

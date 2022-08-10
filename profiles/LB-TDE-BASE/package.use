@@ -1,0 +1,11 @@
+#Добавляем в /etc/portage/package.use флаги сборки для sys-apps/calculate-utils
+sys-apps/calculate-utils backup client console dbus desktop gpg install qt5
+trinity-base/tdepim-tdeioslaves sieve #Обязательно необходимо
+trinity-base/kontact kmail
+trinity-base/kmail mbox
+trinity-base/kaddressbook gnokii
+trinity-base/kopete jingle xmpp #Обязательно необходимо
+trinity-base/tdelibs
+trinity-base/konq-plugins arts
+trinity-base/tdeartwork-tdescreensaver arts
+trinity-base/kbounce arts

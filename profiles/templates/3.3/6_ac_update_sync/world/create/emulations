@@ -1,0 +1,6 @@
+# Calculate name=world format=world
+
+#?in(os_linux_pkglist, Desktop-M, Desktop-X)!=#
+app-emulation/wine
+games-emulation/dosbox
+#in#

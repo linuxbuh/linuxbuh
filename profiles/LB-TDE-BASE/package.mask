@@ -1,0 +1,3 @@
+=trinity-apps/kkbswitch-9999
+=trinity-base/tde-i18n-9999
+=trinity-base/tde-common-cmake-9999

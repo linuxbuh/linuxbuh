@@ -1,0 +1,8 @@
+# Calculate format=world name=world ini(overlay-lautre76.world)<1
+
+#-ini(overlay-lautre76.world,1)-#
+
+#?in(os_linux_pkglist, Desktop-X)!=#
+games-util/steam-launcher
+www-client/firefox-bin
+#in#

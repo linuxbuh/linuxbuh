@@ -1,5 +1,5 @@
 #Офисные приложения
 app-office/onlyoffice-bin
-media-gfx/vuescan
+#media-gfx/vuescan
 media-gfx/xsane
 app-office/joplin-desktop-bin
