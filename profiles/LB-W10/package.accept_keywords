@@ -1,4 +1,2 @@
-#media-sound/pulseaudio-ctl ~amd64
 app-backup/timeshift ~amd64
-#net-vpn/networkmanager-libreswan ~amd64
-emerge x11-themes/kali-undercover ~amd64
+x11-themes/kali-undercover ~amd64
