@@ -2,6 +2,11 @@
 
 #?in(os_linux_pkglist, LB-W10)!=#
 !app-office/libreoffice
+app-office/onlyoffice-bin
+media-gfx/simple-scan
+www-client/yandex-browser-beta
+www-client/chromium-gost
+www-client/microsoft-edge
 #in#
 
 #?in(os_linux_pkglist, CLDC, CLDL, CLDM, CLDX, CLDXS)!=#
