@@ -1,0 +1,4 @@
+# Calculate path=/var/lib/calculate name=ini.env format=samba cl_update_world==rebuild||cl_update_world==merge||ini(overlay-distros.world)==
+
+[overlay-distros]
+world = 20220805

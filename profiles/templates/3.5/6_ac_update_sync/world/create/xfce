@@ -1,0 +1,6 @@
+# Calculate name=world format=world
+
+#?in(os_linux_pkglist, LB-W10)!=#
+app-backup/timeshift
+x11-themes/kali-undercover
+#in#

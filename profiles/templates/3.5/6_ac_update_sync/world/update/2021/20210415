@@ -1,0 +1,7 @@
+# Calculate format=world name=world ini(overlay-distros.world)<#-cut()-#
+
+#-ini(overlay-distros.world,#-cut()-#)-#
+
+#?in(os_linux_pkglist, CLD, CLDC, CLDL, CLDM, CLDX, CLDXS)!=#
+!sys-power/acpid
+#in#
