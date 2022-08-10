@@ -9,10 +9,10 @@
 
 # AMD64 Profiles
 
-amd64		LB-BASE-DESKTOP/amd64					stable
-amd64		LB-W10/amd64					stable
-amd64		LB-TDE-BASE/amd64					stable
-amd64		LB-ICEWM/amd64					stable
-amd64		LB-LXDE/amd64					stable
+amd64		LB-BASE-DESKTOP/amd64/20					stable
+amd64		LB-W10/amd64/20					stable
+amd64		LB-TDE-BASE/amd64/20					stable
+amd64		LB-ICEWM/amd64/20					stable
+amd64		LB-LXDE/amd64/20					stable
 
 # vim: set ts=8
