@@ -8,6 +8,6 @@
 CHECKVT=7
 
 DISPLAYMANAGER="lightdm"
-
+START_STOP_ARGS=
 
 
