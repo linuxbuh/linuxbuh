@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{8..10} )
 CMAKE_ECLASS=cmake
-inherit flag-o-matic java-pkg-opt-2 java-ant-2 cmake multilib python-r1 toolchain-funcs
+inherit flag-o-matic java-pkg-opt-2 java-ant-2 cmake-multilib python-r1 toolchain-funcs
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
 HOMEPAGE="https://opencv.org"
