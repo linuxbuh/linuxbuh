@@ -339,7 +339,7 @@ src_prepare() {
 	java-ant-2_src_configure
 }
 
-multilib_src_configure() {
+cmake_src_configure() {
 	# please dont sort here, order is the same as in CMakeLists.txt
 	GLOBALCMAKEARGS=(
 	# Optional 3rd party components
@@ -572,7 +572,7 @@ python_module_compile() {
 	python_optimize "${ED}"/$(python_get_sitedir)
 }
 
-multilib_src_install() {
+cmake_src_install() {
 	cmake_src_install
 
 	# Build and install the python modules for all targets
