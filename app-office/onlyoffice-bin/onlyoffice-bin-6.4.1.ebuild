@@ -173,6 +173,11 @@ src_install() {
 	dobin usr/bin/desktopeditors usr/bin/onlyoffice-desktopeditors
 	doins -r opt
 	fperms +x /opt/onlyoffice/desktopeditors/{DesktopEditors,editors_helper,converter/x2t}
+	cd ${WORKDIR}
+	mkdir -p ${D}/usr
+	mkdir -p ${D}/usr/bin
+	cp -r ${FILESDIR}/desktopeditors ${D}/usr/bin/onlyoffice-desktopeditors
+
 }
 
 pkg_postinst() {
