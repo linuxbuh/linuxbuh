@@ -3,4 +3,4 @@ mail-client/claws-mail
 media-gfx/calculate-wallpapers
 x11-themes/claws-mail-theme-calculate
 www-client/chromium
-media-gfx/opencv
+media-libc/opencv
