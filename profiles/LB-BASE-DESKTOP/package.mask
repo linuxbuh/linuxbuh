@@ -1,1 +1,2 @@
-media-gfx/opencv
+media-gfx/nomacs
+media-libs/opencv
