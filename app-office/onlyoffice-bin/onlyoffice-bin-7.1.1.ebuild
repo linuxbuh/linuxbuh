@@ -170,7 +170,7 @@ QA_PREBUILT="
 
 src_install() {
 	domenu usr/share/applications/onlyoffice-desktopeditors.desktop
-	dobin $FILES/desktopeditors usr/bin/onlyoffice-desktopeditors
+	cp -r $FILES/desktopeditors /usr/bin/onlyoffice-desktopeditors
 	doins -r opt
 	fperms +x /opt/onlyoffice/desktopeditors/{DesktopEditors,editors_helper,converter/x2t}
 }
