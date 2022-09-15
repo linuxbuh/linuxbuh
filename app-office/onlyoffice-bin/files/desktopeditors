@@ -108,5 +108,5 @@ check_templates "$@"
 
 DIR=/opt/onlyoffice/desktopeditors
 export LD_LIBRARY_PATH=$DIR:$LD_LIBRARY_PATH
-
-exec QT_QPA_PLATFORM=xcb $DIR/DesktopEditors "$@"
+QT_QPA_PLATFORM=xcb
+exec $DIR/DesktopEditors "$@"
