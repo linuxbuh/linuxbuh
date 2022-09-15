@@ -172,9 +172,13 @@ src_install() {
 	domenu usr/share/applications/onlyoffice-desktopeditors.desktop
 	doins -r opt
 	fperms +x /opt/onlyoffice/desktopeditors/{DesktopEditors,editors_helper,converter/x2t}
+	cd ${WORKDIR}
+	mkdir -p ${D}/usr
+	mkdir -p ${D}/usr/bin
+	cp -r ${FILESDIR}/desktopeditors ${D}/usr/bin/onlyoffice-desktopeditors
+
 }
 
 pkg_postinst() {
-cp -r ${FILESDIR}/desktopeditors usr/bin/onlyoffice-desktopeditors
 cp -r /opt/onlyoffice/desktopeditors/asc-de-256.png /usr/share/pixmaps/onlyoffice-desktopeditors.png
 }
