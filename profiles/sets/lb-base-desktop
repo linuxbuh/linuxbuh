@@ -74,7 +74,7 @@ x11-themes/calculate-icon-theme
 media-gfx/dm-themes-calculate
 media-gfx/grub-splashes-calculate
 media-gfx/imagemagick
-media-gfx/nomacs
+#media-gfx/nomacs
 media-gfx/splash-themes-calculate
 media-gfx/splash-themes-calculate
 media-gfx/grub-splashes-calculate
