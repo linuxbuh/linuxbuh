@@ -1,2 +1,2 @@
-# linuxbuh
+# Репозиторий дистрибутива LinuxBuh https://linuxbuh.ru
 
