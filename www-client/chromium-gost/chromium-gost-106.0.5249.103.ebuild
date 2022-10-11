@@ -30,7 +30,6 @@ S="${WORKDIR}"
 src_install() {
 
 	cp -R "${WORKDIR}/opt" "${D}" || die "install failed!"
-	cp -R "${WORKDIR}/opt" "${D}" || die "install failed!"
 	cp -R "${WORKDIR}/usr" "${D}" || die "install failed!"
 
 	mkdir -p ${D}/usr/share/applications
