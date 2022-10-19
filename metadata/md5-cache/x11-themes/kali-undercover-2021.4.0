@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Kali Undercover
+EAPI=7
+HOMEPAGE=https://gitlab.com/kalilinux/packages/kali-undercover
+INHERIT=eutils
+KEYWORDS=amd64 x86
+LICENSE=GPL
+RDEPEND=xfce-extra/xfce4-whiskermenu-plugin
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=http://archive.kali.org/kali/pool/main/k/kali-undercover/kali-undercover_2021.4.0.tar.xz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	8f942ebdcf04334697649d4a0bf65a32	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	wrapper	4a1902f969e5718126434fc35f3a0d9c
+_md5_=eeff5ce32789a8b103c5bdcb888b10c4

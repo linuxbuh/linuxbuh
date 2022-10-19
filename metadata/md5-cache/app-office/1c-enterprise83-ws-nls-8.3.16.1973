@@ -1,0 +1,14 @@
+DEFINED_PHASES=install nofetch unpack
+DEPEND==app-office/1c-enterprise83-ws-8.3.16.1973:0
+DESCRIPTION=Языковой пакет для WEB Сервера 1C:Проедприятие 8.3 для GNU\LINUX
+EAPI=7
+HOMEPAGE=http://v8.1c.ru
+INHERIT=eutils unpacker
+KEYWORDS=amd64
+LICENSE=1CEnterprise_en
+RDEPEND==app-office/1c-enterprise83-ws-8.3.16.1973:0
+RESTRICT=fetch
+SLOT=0
+SRC_URI=abi_x86_64? ( 1c-enterprise83-ws-nls_8.3.16-1973_amd64.tar.gz )
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	8f942ebdcf04334697649d4a0bf65a32	multilib	5ca4e49abed8e3a2f7b56920eadee157	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	toolchain-funcs	441f754fd75cd4fd1fa06fbc17da6144	unpacker	bc57272a0491765c71d973c8cfd35063	wrapper	4a1902f969e5718126434fc35f3a0d9c
+_md5_=2fc85df01baf4df89a970f0d857d2ea4

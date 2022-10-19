@@ -2,13 +2,14 @@ DEFINED_PHASES=install
 DESCRIPTION=Tool for partial deblobbing of Intel ME/TXE firmware images
 EAPI=7
 HOMEPAGE=https://github.com/corna/me_cleaner
+INHERIT=python-r1
 IUSE=python_targets_python3_8
 KEYWORDS=~amd64 ~arm ~arm64
 LICENSE=GPL-3+
-RDEPEND=python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_8(-)?]
+RDEPEND=python_targets_python3_8? ( >=dev-lang/python-3.8.13:3.8 )
 REQUIRED_USE=|| ( python_targets_python3_8 )
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://github.com/corna/me_cleaner/archive/v1.2.tar.gz -> me_cleaner-1.2.tar.gz
-_eclasses_=eapi8-dosym	cd7d420bb5be5ee079f27239ce76b8f5	multibuild	05a584848db4901c97fcd94ae7cc3a97	multilib	4b66d835ec72e021e359bb81eacfe988	multiprocessing	61c959fc55c15c00bbb1079d6a71370b	python-r1	e574a3642f886323f18f867ecc4d91c4	python-utils-r1	08d890890f70fe0096093016e55438d5	toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa
+_eclasses_=eapi8-dosym	cd7d420bb5be5ee079f27239ce76b8f5	multibuild	d26d81f242cb193d899a72bca423d0bd	multilib	5ca4e49abed8e3a2f7b56920eadee157	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	python-r1	2d51fd03931e743811ce30d198e4dcfd	python-utils-r1	b9fc5e97e886514e5132f50465185401	toolchain-funcs	441f754fd75cd4fd1fa06fbc17da6144
 _md5_=34cdb8083e56f050121704f140dea02b

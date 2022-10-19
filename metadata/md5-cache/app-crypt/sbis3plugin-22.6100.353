@@ -1,0 +1,16 @@
+BDEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DEFINED_PHASES=install postinst postrm prerm setup unpack
+DEPEND=app-arch/deb2targz sys-libs/glibc sys-devel/gcc app-crypt/sbis-libstdc dev-libs/atk dev-libs/libatomic_ops virtual/libc virtual/libcrypt sys-apps/dbus x11-libs/libdrm media-libs/gegl dev-libs/expat media-libs/fontconfig app-eselect/eselect-fontconfig x11-libs/gdk-pixbuf dev-libs/glib media-libs/gstreamer x11-libs/gtk+:2 x11-libs/gtk+:3 media-libs/harfbuzz app-arch/lzma dev-libs/nspr dev-libs/nss x11-libs/pango sys-apps/pcsc-lite media-sound/pulseaudio sys-libs/libstdc++-v3 sys-libs/libudev-compat app-misc/ca-certificates media-libs/libvorbis x11-libs/libX11 x11-libs/libxcb x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXinerama x11-apps/xrandr x11-libs/libXrender x11-libs/libXtst sys-libs/zlib
+DESCRIPTION=СБИС Плагин. Desktop Plugin for convenient work in the browser SBIS3Plugin (SABY Plugin) — a desktop application for working with notifications, editing documents in a browser, entering your personal account by certificate, uploading files to the cloud, and so on
+EAPI=7
+HOMEPAGE=https://sbis.ru/
+INHERIT=font gnome2-utils eutils multilib unpacker
+IUSE=X
+KEYWORDS=amd64
+LICENSE=GPL-3
+RDEPEND=app-arch/deb2targz sys-libs/glibc sys-devel/gcc app-crypt/sbis-libstdc dev-libs/atk dev-libs/libatomic_ops virtual/libc virtual/libcrypt sys-apps/dbus x11-libs/libdrm media-libs/gegl dev-libs/expat media-libs/fontconfig app-eselect/eselect-fontconfig x11-libs/gdk-pixbuf dev-libs/glib media-libs/gstreamer x11-libs/gtk+:2 x11-libs/gtk+:3 media-libs/harfbuzz app-arch/lzma dev-libs/nspr dev-libs/nss x11-libs/pango sys-apps/pcsc-lite media-sound/pulseaudio sys-libs/libstdc++-v3 sys-libs/libudev-compat app-misc/ca-certificates media-libs/libvorbis x11-libs/libX11 x11-libs/libxcb x11-libs/libXcomposite x11-libs/libXcursor x11-libs/libXdamage x11-libs/libXext x11-libs/libXfixes x11-libs/libXi x11-libs/libXinerama x11-apps/xrandr x11-libs/libXrender x11-libs/libXtst sys-libs/zlib
+RESTRICT=strip mirror
+SLOT=0
+SRC_URI=amd64? ( https://update-msk1.sbis.ru/Sbis3Plugin/rc/linux/deb_repo/sbis3plugin.deb -> sbis3plugin-22.6100.353.deb )
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	8f942ebdcf04334697649d4a0bf65a32	font	d31f12a0f6e13d56dc3062e76ae58a61	gnome2-utils	2116cec8f46f4d1b0a88c5b1f1575dd3	multilib	5ca4e49abed8e3a2f7b56920eadee157	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	toolchain-funcs	441f754fd75cd4fd1fa06fbc17da6144	unpacker	bc57272a0491765c71d973c8cfd35063	wrapper	4a1902f969e5718126434fc35f3a0d9c	xdg-utils	ac0e315a3688929e34ac75b139e7349a
+_md5_=55613a5bd253b780d79a18be23d29263

@@ -1,0 +1,16 @@
+BDEPEND=app-arch/rpm2targz
+DEFINED_PHASES=install postinst prerm unpack
+DEPEND=sys-apps/pcsc-tools sys-apps/pcsc-lite sys-apps/lsb-release app-crypt/ccid app-arch/rpm2targz
+DESCRIPTION=Cryptopro package
+EAPI=7
+HOMEPAGE=http://www.cryptopro.ru
+INHERIT=rpm
+IUSE=+lsb-kc1 lsb-kc2 +stunnel +cptools +lsb-pkcs11 +ifd-rutokens +rdr-jacarta +lsb-rdr-accord +lsb-rdr-ancud +lsb-rdr-crypton +lsb-rdr-maxim +lsb-rdr-sobol +lsb-rdr-vityaz +apache-modssl +curl +ipsec-genpsk +ipsec-ike +rdr-cloud +rdr-cloud-gtk +rdr-cpfkc +rdr-cryptoki +rdr-edoc +rdr-emv +rdr-esmart +rdr-gui-gtk +rdr-infocrypt +rdr-inpaspot +rdr-kst +rdr-mskey +rdr-novacard +rdr-pcsc +rdr-relay +rdr-rosan +rdr-rutoken +lsb-capilite +lsb-rcrypt +lsb-rdr noarch-altlinux noarch-suse noarch-ipsec-devel noarch-drv-devel +noarch-xer2print +noarch-lsb-base +noarch-lsb-ca-certs noarch-lsb-devel +noarch-lsb-import-ca-certs src-accord_random src-cprocsp-drv src-ipsec-esp src-sobol
+KEYWORDS=~amd64
+LICENSE=Cryptopro
+RDEPEND=sys-apps/pcsc-tools sys-apps/pcsc-lite sys-apps/lsb-release app-crypt/ccid app-arch/rpm2targz
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=ftp://ftp.linuxbuh.ru/linuxbuh/app-crypt/cryptoprocsp/cryptoprocsp-5.0.12000.tgz
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	estack	055c42df72f76a4f45ec92b35e83cd56	eutils	8f942ebdcf04334697649d4a0bf65a32	rpm	f73e907469f65e52192f110dec72dce0	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	wrapper	4a1902f969e5718126434fc35f3a0d9c
+_md5_=84bcccbbe608d9bba28f2c0301e39508

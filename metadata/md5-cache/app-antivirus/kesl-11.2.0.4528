@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Kaspersky Endpoint Security для Linux Дистрибутив
+EAPI=7
+HOMEPAGE=https://kaspersky.ru/
+INHERIT=desktop gnome2-utils unpacker xdg
+KEYWORDS=~amd64
+RDEPEND=sys-kernel/calculate-sources[minimal(-),vmlinuz(-)] dev-lang/perl
+RESTRICT=mirror strip
+SLOT=0
+SRC_URI=amd64? ( ftp://ftp.linuxbuh.ru/linuxbuh/app-antivirus/kesl_11.2.0-4528_amd64.deb -> kesl-11.2.0.4528_amd64.deb )
+_eclasses_=desktop	22952d8f27cac191d75529d4c38e6bfa	gnome2-utils	2116cec8f46f4d1b0a88c5b1f1575dd3	multilib	5ca4e49abed8e3a2f7b56920eadee157	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	441f754fd75cd4fd1fa06fbc17da6144	unpacker	bc57272a0491765c71d973c8cfd35063	xdg	6024fbc93167fad782e2032933654857	xdg-utils	ac0e315a3688929e34ac75b139e7349a
+_md5_=daf7c89d1caa4ac6439d421534180059

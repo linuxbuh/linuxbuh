@@ -1,9 +1,10 @@
-BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.5:1.16 ) >=sys-devel/autoconf-2.71 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure postinst prepare
 DEPEND=>=dev-libs/libpcre-5.0 sys-libs/zlib >=x11-libs/libX11-1.1 x11-libs/libXi x11-libs/libXtst app-dicts/aspell-ru gstreamer? ( media-libs/gstreamer:1.0 ) !gstreamer? ( openal? ( >=media-libs/freealut-1.0.1 ) !openal? ( aplay? ( >=media-sound/alsa-utils-1.0.17 ) ) ) libnotify? ( gtk? ( gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) ) >=x11-libs/libnotify-0.4.0 ) spell? ( app-text/enchant:0 ) xosd? ( x11-libs/xosd ) dev-util/intltool virtual/pkgconfig nls? ( sys-devel/gettext )
 DESCRIPTION=In-place conversion of text typed in with a wrong keyboard layout
 EAPI=7
 HOMEPAGE=http://www.xneur.ru/
+INHERIT=autotools
 IUSE=aplay debug gstreamer gtk gtk3 keylogger libnotify nls openal xosd +spell
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
@@ -11,5 +12,5 @@ RDEPEND=>=dev-libs/libpcre-5.0 sys-libs/zlib >=x11-libs/libX11-1.1 x11-libs/libX
 REQUIRED_USE=libnotify? ( gtk )
 SLOT=0
 SRC_URI=ftp://ftp.linuxbuh.ru/linuxbuh/x11-misc/xneur_0.20.0.orig.tar.gz
-_eclasses_=autotools	c7052b276346587968d52ea8eaf5aca1	gnuconfig	262062cef0ba4f22b397193da514a350	libtool	241a8f577b9781a42a7421e53448a44e	multilib	4b66d835ec72e021e359bb81eacfe988	toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa
+_eclasses_=autotools	9e6965bfaa00f52cc61e0d4bc44c87b3	gnuconfig	b6b3e92f8b8c996400074b5f61a59256	libtool	241a8f577b9781a42a7421e53448a44e	multilib	5ca4e49abed8e3a2f7b56920eadee157	toolchain-funcs	441f754fd75cd4fd1fa06fbc17da6144
 _md5_=4ecfeba45cf91198a76e1fa93b51de1a

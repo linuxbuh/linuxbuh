@@ -1,0 +1,16 @@
+BDEPEND=python_targets_python3_8? ( >=dev-lang/python-3.8.13:3.8 ) python_targets_python3_9? ( >=dev-lang/python-3.9.12:3.9 ) >=dev-python/setuptools-65.3.0[python_targets_python3_8(-)?,python_targets_python3_9(-)?]
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-python/python-distutils-extra
+DESCRIPTION=GUI frontend for managing ufw.
+EAPI=7
+HOMEPAGE=https://gufw.org/ https://costales.github.io/projects/gufw/
+INHERIT=distutils-r1
+IUSE=python_targets_python3_8 python_targets_python3_9
+KEYWORDS=~amd64
+LICENSE=GPL-3
+RDEPEND=net-firewall/ufw x11-libs/gtk+:3[introspection] net-libs/webkit-gtk[introspection] dev-python/netifaces sys-auth/polkit x11-themes/gnome-icon-theme-symbolic dev-python/pygobject:3 sys-auth/elogind dev-util/intltool python_targets_python3_8? ( >=dev-lang/python-3.8.13:3.8 ) python_targets_python3_9? ( >=dev-lang/python-3.9.12:3.9 )
+REQUIRED_USE=|| ( python_targets_python3_8 python_targets_python3_9 )
+SLOT=0
+SRC_URI=https://github.com/costales/gufw/archive/21.04.0.tar.gz
+_eclasses_=distutils-r1	8c1ceb6b71a65547b0ea7bc901d906cb	eapi8-dosym	cd7d420bb5be5ee079f27239ce76b8f5	multibuild	d26d81f242cb193d899a72bca423d0bd	multilib	5ca4e49abed8e3a2f7b56920eadee157	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	python-r1	2d51fd03931e743811ce30d198e4dcfd	python-utils-r1	b9fc5e97e886514e5132f50465185401	toolchain-funcs	441f754fd75cd4fd1fa06fbc17da6144
+_md5_=aebbb0a8ce262a35624139d1f00d446b

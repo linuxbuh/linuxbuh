@@ -1,14 +1,15 @@
-BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.2-r1:1.16 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.5:1.16 ) >=sys-devel/autoconf-2.71 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst postrm preinst prepare
 DEPEND=gnome-base/libglade:2.0 >=sys-devel/gettext-0.16.1 >=x11-libs/gtk+-2.18:2 >=x11-misc/xneur-0.20 appindicator? ( dev-libs/libappindicator:2 ) gconf? ( gnome-base/gconf:2 ) !x11-misc/xneur[gtk3] dev-util/intltool virtual/pkgconfig nls? ( sys-devel/gettext )
 DESCRIPTION=GTK+ based GUI for xneur
 EAPI=7
 HOMEPAGE=http://www.xneur.ru/
+INHERIT=autotools eutils gnome2-utils
 IUSE=appindicator +gconf nls
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=gnome-base/libglade:2.0 >=sys-devel/gettext-0.16.1 >=x11-libs/gtk+-2.18:2 >=x11-misc/xneur-0.20 appindicator? ( dev-libs/libappindicator:2 ) gconf? ( gnome-base/gconf:2 ) !x11-misc/xneur[gtk3] nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=ftp://ftp.linuxbuh.ru/linuxbuh/x11-misc/gxneur_0.20.0.orig.tar.gz
-_eclasses_=autotools	c7052b276346587968d52ea8eaf5aca1	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	dab5d8ec471d025b79c9e6906bcf3bff	gnome2-utils	355c758ccc0d6df60d43a066640e642c	gnuconfig	262062cef0ba4f22b397193da514a350	libtool	241a8f577b9781a42a7421e53448a44e	multilib	4b66d835ec72e021e359bb81eacfe988	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa	wrapper	4251d4c84c25f59094fd557e0063a974	xdg-utils	27f9a2f19502b925ac117bd657aa2979
+_eclasses_=autotools	9e6965bfaa00f52cc61e0d4bc44c87b3	edos2unix	33e347e171066657f91f8b0c72ec8773	eutils	8f942ebdcf04334697649d4a0bf65a32	gnome2-utils	2116cec8f46f4d1b0a88c5b1f1575dd3	gnuconfig	b6b3e92f8b8c996400074b5f61a59256	libtool	241a8f577b9781a42a7421e53448a44e	multilib	5ca4e49abed8e3a2f7b56920eadee157	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	toolchain-funcs	441f754fd75cd4fd1fa06fbc17da6144	wrapper	4a1902f969e5718126434fc35f3a0d9c	xdg-utils	ac0e315a3688929e34ac75b139e7349a
 _md5_=2b975e78c941a4121afc5483da99e872
