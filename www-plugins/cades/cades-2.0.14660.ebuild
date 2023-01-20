@@ -24,17 +24,19 @@ RESTRICT="mirror strip"
 src_unpack () {
     unpack ${A}
 	cd ${WORKDIR}
-	mv * ${DISTDIR}
-	rm -rf *
 	mkdir ${S}
+	elog "LS `ls -l`"
+	mv cades-linux-amd64/*.rpm ${S}/ || die
 	cd ${S}
+	ls -l
+
     SUFF="-64-${PV}-1.amd64.rpm"
 
+	rpm_unpack ./cprocsp-pki-cades${SUFF}
+	rpm_unpack ./cprocsp-pki-phpcades${SUFF}
+	rpm_unpack ./cprocsp-pki-plugin${SUFF}
 
-	rpm_unpack cprocsp-pki-cades${SUFF}
-	rpm_unpack cprocsp-pki-phpcades${SUFF}
-	rpm_unpack cprocsp-pki-plugin${SUFF}
-
+	rm ./*.rpm
 }
 
 src_install() {
