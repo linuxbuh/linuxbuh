@@ -268,6 +268,26 @@ cpconfig -ini '\config\KeyCarriers\TRUST' -add string DLL librdrric.so
 cpconfig -ini '\config\KeyCarriers\TRUSTS' -add string DLL librdrric.so
 cpconfig -ini '\config\KeyCarriers\TRUSTD' -add string DLL librdrric.so
 
+# from scripts of rdr-cryptoki
+cpconfig -ini '\config\apppath' -add string librdrcryptoki.so /opt/cprocsp/lib/amd64/librdrcryptoki.so
+
+cpconfig -ini '\config\KeyDevices\cryptoki_rutoken' -add long Group 1
+cpconfig -ini '\config\KeyDevices\cryptoki_rutoken' -add string DLL librdrcryptoki.so
+cpconfig -ini '\config\KeyDevices\cryptoki_rutoken\PNP cryptoki\Default' -add string pkcs11_dll librtpkcs11ecp.so
+#cpconfig -ini '\config\KeyDevices\cryptoki_rutoken\PNP cryptoki\Default' -add string pkcs11_dll "/Library/Frameworks/rtpkcs11ecp.framework/rtpkcs11ecp"
+
+cpconfig -ini '\config\KeyDevices\cryptoki_esmart' -add long Group 1
+cpconfig -ini '\config\KeyDevices\cryptoki_esmart' -add string DLL librdrcryptoki.so
+cpconfig -ini '\config\KeyDevices\cryptoki_esmart\PNP cryptoki\Default' -add string pkcs11_dll libisbc_pkcs11_main.so
+#cpconfig -ini '\config\KeyDevices\cryptoki_esmart\PNP cryptoki\Default' -add string pkcs11_dll "/Applications/ESMART PKI Client/libisbc_pkcs11_main.dylib"
+
+cpconfig -ini '\config\KeyDevices\cryptoki_jacarta' -add long Group 1
+cpconfig -ini '\config\KeyDevices\cryptoki_jacarta' -add string DLL librdrcryptoki.so
+cpconfig -ini '\config\KeyDevices\cryptoki_jacarta\PNP cryptoki\Default' -add string pkcs11_dll libjcPKCS11-2.so
+#cpconfig -ini '\config\KeyDevices\cryptoki_jacarta\PNP cryptoki\Default' -add string pkcs11_dll "/Library/Frameworks/jcPKCS11-2.framework/jcPKCS11-2"
+
+cpconfig -ini '\config\debug' -add long cryptoki 1
+
 cpconfig -hardware media -add oscar -name 'Oscar' > /dev/null
 cpconfig -hardware media -configure oscar -add hex atr 0000000000000043525950544f5052
 cpconfig -hardware media -configure oscar -add hex mask 00000000000000ffffffffffffffff
