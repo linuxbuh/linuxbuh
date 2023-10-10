@@ -3,7 +3,8 @@
 
 EAPI=8
 CMAKE_MAKEFILE_GENERATOR="ninja"
-PYTHON_COMPAT=(python{3_{7,8,9,10,11}})
+#PYTHON_COMPAT=(python{3_{7,8,9,10,11}})
+PYTHON_COMPAT=( python3_{4,5,6,7,8,9,10,11} )
 USE_RUBY="ruby22 ruby23 ruby24"
 
 inherit check-reqs cmake flag-o-matic gnome2 pax-utils python-any-r1 ruby-single toolchain-funcs virtualx
