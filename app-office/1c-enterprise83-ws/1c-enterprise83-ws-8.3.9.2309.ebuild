@@ -4,7 +4,7 @@
 
 EAPI=7
 
-inherit eutils unpacker
+inherit unpacker
 
 DESCRIPTION="WEB Сервер 1C:Проедприятие 8.3 для GNU\LINUX"
 HOMEPAGE="http://v8.1c.ru"
