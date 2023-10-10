@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7,8,9} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7,8,9,10,11,12} )
 
 inherit gnome.org meson python-r1 virtualx xdg
 
