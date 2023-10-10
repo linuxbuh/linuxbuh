@@ -6,7 +6,8 @@ GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python3_{4,5,6,7,8,9,10,11} )
 
-inherit autotools eutils gnome2 python-r1 virtualx
+#inherit autotools eutils gnome2 python-r1 virtualx
+inherit autotools gnome2 python-r1 virtualx
 
 DESCRIPTION="GLib's GObject library bindings for Python"
 HOMEPAGE="http://www.pygtk.org/"
