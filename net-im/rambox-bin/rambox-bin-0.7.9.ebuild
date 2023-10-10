@@ -1,7 +1,7 @@
 # Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit gnome2-utils rpm xdg
 
@@ -21,17 +21,28 @@ QA_PRESTRIPPED="opt/${MY_PN^}/lib.*
 	opt/${MY_PN^}/${MY_PN}
 	opt/${MY_PN^}/swiftshader/lib.*"
 
+#DEPEND="dev-libs/libpcre:3
+#	dev-libs/libtasn1:0
+#	dev-libs/nettle:0
+#	dev-libs/nspr:0
+#	dev-libs/nss:0
+#	gnome-base/gconf:2
+#	media-libs/alsa-lib:0
+#	media-libs/libpng:0
+#	net-libs/gnutls:0
+#	x11-libs/gtk+:2
+#	x11-libs/libXScrnSaver:0"
 DEPEND="dev-libs/libpcre:3
 	dev-libs/libtasn1:0
 	dev-libs/nettle:0
 	dev-libs/nspr:0
 	dev-libs/nss:0
-	gnome-base/gconf:2
 	media-libs/alsa-lib:0
 	media-libs/libpng:0
 	net-libs/gnutls:0
 	x11-libs/gtk+:2
 	x11-libs/libXScrnSaver:0"
+
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"
